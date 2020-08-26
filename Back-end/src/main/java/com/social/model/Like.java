@@ -15,6 +15,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "likes")
+@Builder
 public class Like {
     @Id
     @GeneratedValue(strategy = IDENTITY)

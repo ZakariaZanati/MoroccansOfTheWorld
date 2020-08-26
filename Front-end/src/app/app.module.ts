@@ -14,11 +14,12 @@ import {ToastrModule} from 'ngx-toastr';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { FeedComponent } from './feed/feed.component';
-import { ProfilComponent } from './profil/profil.component';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
 import {TokenInterceptor} from './token-interceptor';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 import { FormsModule } from '@angular/forms';
+import { CreatePostComponent } from './post/create-post/create-post.component';
+import { ViewPostsComponent } from './post/view-posts/view-posts.component';
 
 @NgModule({
   declarations: [
@@ -29,9 +30,10 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     FooterComponent,
     FeedComponent,
-    ProfilComponent,
     UserProfileComponent,
-    NewsfeedComponent
+    NewsfeedComponent,
+    CreatePostComponent,
+    ViewPostsComponent
   ],
   imports: [
     BrowserModule,

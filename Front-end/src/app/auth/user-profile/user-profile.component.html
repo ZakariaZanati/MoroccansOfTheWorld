@@ -1,0 +1,66 @@
+<div class="wrapper">
+    <div class="profil-wrapper">
+
+      <div class="profil-1" >
+          <span class="pers">Personnal Informations</span>
+          <div class="profile-img">
+            <div *ngIf=retrievedImage>
+                <img [src]="retrievedImage" class="img"/>
+            </div>
+            <input type="file" (change)="onFileChanged($event)">
+            <input type="button" (click)="onUpload()" value="upload">
+          </div>
+          <div class="infos">
+              <div class="info">
+                  <span class="value"><i class="far fa-user"></i>{{username}}</span>
+              </div>
+              
+              <div class="info">
+                  <span class="value"><i class="fas fa-birthday-cake"></i>22</span>
+              </div>
+              <div class="info">
+                  <span class="value"><i class="far fa-envelope"></i>{{email}}</span>
+              </div>
+              <div class="info">
+                  <span class="value"><i class="fas fa-phone-alt"></i>0666666666</span>
+              </div>
+              <div class="info">
+                  <span class="value"><i class="fas fa-map-marker-alt"></i> Rabat, Maroc</span>
+              </div>
+              <div class="info">
+                  <span class="value"><i class="fas fa-suitcase"></i>Software engineer</span>
+              </div>
+              <div class="info">
+                  <span class="value"><i class="fas fa-link"></i>www.example.com</span>
+              </div>
+          </div>
+      </div>
+
+      <div class="profil-2">
+          <div class="about-me">
+              <span class="header">About Me</span> 
+              <div class="text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus ipsa, sint hic rem delectus minus sed 
+                  molestias provident itaque voluptate et fugit reiciendis minima atque ea reprehenderit laborum non explicabo?
+              </div>
+              <div class="edit">
+                  <button class="submit" type="submit"><i class="far fa-edit"></i>Edit</button>
+              </div>
+          </div>
+
+          <div class="about-me">
+              <span class="header">Professional Experience</span> 
+              <div class="text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus ipsa, sint hic rem delectus minus sed 
+                  molestias provident itaque voluptate et fugit reiciendis minima atque ea reprehenderit laborum non explicabo?
+              </div>
+              <div class="edit">
+                  <button class="submit" type="submit"><i class="far fa-edit"></i>Edit</button>
+              </div>
+          </div>
+          
+          <div class="about-me">
+              <span class="header">My CV</span> 
+          </div>
+
+      </div>
+    </div>
+    </div>

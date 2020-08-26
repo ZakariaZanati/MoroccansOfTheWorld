@@ -1,0 +1,22 @@
+<div class="nav-bar">  
+    <div class="logo-icon">
+        <div routerLink="/" style="cursor: pointer;">LOGO</div>
+    </div>
+    <div class="actualite">
+        <div>News</div>
+    </div>
+    
+    <div class="sign-in-container">
+        <div *ngIf="isLoggedIn" class="sign-in">
+            <div><a routerLink="/profile">{{username}}</a></div>
+            <div><button (click)="logout()" class="logout">Logout</button></div>
+        </div>
+        <div *ngIf="!isLoggedIn" class="sign-in">
+            <div><a routerLink="/sign-up">SIGN UP</a></div>
+            <div><a routerLink="/login">SIGN IN</a></div>
+        </div>
+    </div>
+</div>
+<div class="btn">
+    <span class="fa fa-bars"></span>
+</div>

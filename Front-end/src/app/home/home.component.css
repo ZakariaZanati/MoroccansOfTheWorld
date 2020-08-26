@@ -1,0 +1,115 @@
+.content{
+    width: 70%;
+    display: flex;
+    margin: 20px auto;
+    flex-direction: column;
+}
+
+
+.two{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 60px;
+}
+
+.hub{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(146, 182, 230);
+    width: auto;
+    height: 550px;
+
+}
+
+
+.title{
+    background-color: rgb(97, 105, 170);
+    color: white;
+    padding: 14px;
+    font-size: large;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+ul li {
+    list-style: none;
+    padding: 6px;
+    border-bottom: 1px solid gray;
+    color: white;
+}
+ul li:hover {
+    color: gray;
+    cursor: pointer;
+}
+
+.hub-img1{
+  background-image: url('../../assets/skill.png');
+  background-position: center;
+  background-size: cover;
+  height: 200px;
+}
+
+.hub-img2{
+  background-image: url('../../assets/entrepreneurship.png');
+  background-position: center;
+  background-size: cover;
+  height: 200px;
+}
+.hub-img3{
+  background-image: url('../../assets/tech.jpg');
+  background-position: center;
+  background-size: cover;
+  height: 200px;
+}
+
+
+
+.img{
+    background-image: url('../../assets/homeimage.jpg');
+    background-position: center;
+    background-size: cover;
+    height: 700px;
+}
+
+.fa-caret-right{
+  color: white;
+  margin-right: 5px;
+}
+
+
+.background{
+    width: 100%;
+    background-color: black;
+    opacity: 0.5;
+    height: 200px;
+    top: 580px;
+    position: absolute;
+}
+
+.about-us{
+    background-color: rgb(238, 202, 103); 
+    text-align: center; 
+    border-radius: 50%; 
+    width: 140px; 
+    line-height: 140px; 
+    height: 140px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.about-us:hover{
+    background-color: rgb(245, 219, 149); 
+}
+
+.background-2{
+    width: 100%;
+    height: 200px;
+    top: 580px;
+    position: absolute;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

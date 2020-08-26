@@ -1,0 +1,90 @@
+
+
+.profil-wrapper{
+    width: 70%;
+    height: 500px;
+    margin: 50px auto;
+    display: grid;
+    grid-template-columns: 30% 65%;
+    column-gap: 5%;
+}
+
+.profil-1{
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+}
+
+.profil-2{
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+
+}
+
+.edit{
+    display: flex;
+    justify-content: right;
+    margin-top: 20px;
+}
+
+.submit{
+    padding: 6px 12px;
+    background-color: rgb(48, 131, 187);
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    border-style: none;
+}
+
+.submit i {
+    margin-right: 10px;
+}
+
+.about-me{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+.header{
+    font-size: large;
+    font-weight: bold;
+    border-bottom: 1px solid grey;
+    margin-bottom: 10px;
+    color: rgb(48, 131, 187);
+}
+
+.pers{
+    margin: 15px auto;
+    font-size: large;
+    font-weight: bold;
+    color: rgb(48, 131, 187);
+}
+.profile-img{
+    background-image: url('../../assets/profil.jfif');
+    background-position: center;
+    background-size: cover;
+    height: 200px;
+}
+
+
+
+
+.infos{
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto;
+}
+
+.info{
+    margin-bottom: 10px;
+    font-weight: bolder;
+}
+
+.info span i{
+    font-size: large;
+    color: rgb(48, 131, 187);
+    margin-right: 20px;
+}
+
+

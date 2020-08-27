@@ -1,5 +1,6 @@
 package com.social.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,8 +26,7 @@ public class Image {
     @Column(name = "picByte", length = 1048570)
     private byte[] picByte;
 
-    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
-    @JoinColumn(name = "userId",referencedColumnName = "userId")
+    @OneToOne(mappedBy = "image")
     private User user;
 
     public Image(String originalFilename, String contentType, byte[] compressBytes) {

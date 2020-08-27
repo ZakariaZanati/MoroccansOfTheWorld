@@ -1,5 +1,6 @@
 package com.social.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -37,6 +38,11 @@ public class User {
 
     private Instant created;
     private boolean enabled;
+
+    @JsonIgnore
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "image_id")
+    private Image image;
 
     @OneToMany(mappedBy = "user")
     private Set<Like> likes = new HashSet<>();

@@ -5,6 +5,7 @@ import com.social.model.Image;
 import com.social.model.User;
 import com.social.repository.ImageRepository;
 import com.social.repository.UserRepository;
+import com.social.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +31,9 @@ public class ProfileController {
     @Autowired
     private ImageRepository imageRepository;
 
+    @Autowired
+    private AuthService authService;
+
     @GetMapping("/profile")
     public ResponseEntity<User> currentUserInfos(){
         System.out.println("test profile");
@@ -45,17 +49,22 @@ public class ProfileController {
     @PostMapping("/img")
     public ResponseEntity.BodyBuilder uploadImage(@RequestParam("imageFile") MultipartFile file) throws IOException {
         System.out.println("save image");
+        User user = authService.getCurrentUser();
+
         Image img = new Image(file.getOriginalFilename(),file.getContentType(),compressBytes(file.getBytes()));
-        img.setUser(this.getCurrentUser());
         imageRepository.save(img);
+        user.setImage(img);
+        userRepository.save(user);
         return ResponseEntity.status(HttpStatus.OK);
     }
 
     @GetMapping("/profile/img")
     public ResponseEntity<Image> getImage(){
         System.out.println("get image");
-        final Optional<Image> retrieveImage = imageRepository.findByUser(this.getCurrentUser());
-        Image img = new Image(retrieveImage.get().getName(),retrieveImage.get().getType(),decompressBytes(retrieveImage.get().getPicByte()));
+        //final Optional<Image> retrieveImage = imageRepository.findByUser(this.getCurrentUser());
+        User user = authService.getCurrentUser();
+        Image img = new Image(user.getImage().getName(),user.getImage().getType(),decompressBytes(user.getImage().getPicByte()));
+
         return new ResponseEntity<>(img,HttpStatus.OK);
     }
 

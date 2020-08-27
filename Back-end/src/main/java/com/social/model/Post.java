@@ -31,6 +31,7 @@ public class Post {
 
     private String imageName;
     private String imageType;
+    @Column(length = 1048570)
     private byte[] imageBytes;
 
     @ManyToOne(fetch = LAZY)

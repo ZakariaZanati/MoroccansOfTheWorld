@@ -1,1 +1,15 @@
-<p>create-post works!</p>
+<div class="new_post">
+    <form [formGroup]="createPostForm" (ngSubmit)="createPost()">
+        <div class="post_header">
+            <span class="post_title">Create post</span>
+        </div>
+        <div class="text">
+            <textarea [formControlName]="'description'"  id="post_text" cols="30" rows="10" placeholder="What's on your mind"></textarea>
+        </div>
+        <div class="buttons">
+            <input type="file" id="file" (change)="onFileChanged($event)" >
+            <label for="file"><i class="far fa-file-image"></i> Image</label>
+            <button type="submit">Post</button>
+        </div>
+    </form>
+</div>

@@ -5,6 +5,7 @@ import com.social.repository.PostRepository;
 import com.social.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,9 +24,10 @@ public class PostController {
     private PostRepository postRepository;
 
     @PostMapping
-    public ResponseEntity<Void> createPost(@RequestPart("imageFile")MultipartFile file,
-                                           @RequestPart("postText") String text) throws IOException {
+    public ResponseEntity<Void> createPost(@RequestPart("postImage") MultipartFile file,
+                                           @RequestPart("postDescription") String text) throws IOException {
 
+        System.out.println("file intercepted");
         postService.save(file,text);
 
         return new ResponseEntity<>(HttpStatus.CREATED);

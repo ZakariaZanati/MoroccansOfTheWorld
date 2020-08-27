@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../shared/auth.service';
 import { HttpClient, HttpEventType } from '@angular/common/http';
+import { FormBuilder } from '@angular/forms';
 
 
 @Component({

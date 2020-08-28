@@ -1,6 +1,5 @@
 .profil-wrapper{
     width: 70%;
-    height: 500px;
     margin: 50px auto;
     display: grid;
     grid-template-columns: 30% 65%;
@@ -12,6 +11,8 @@
     flex-direction: column;
     background-color: whitesmoke;
 }
+
+
 
 .profil-2{
     display: flex;
@@ -62,8 +63,15 @@
     /*background-image: url('/assets/profil.jfif');*/
     background-position: center;
     background-size: cover;
-    height: 200px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
 
+}
+.buttons{
+    margin:20px 0;
+    display: flex;
+    justify-content: space-around;
 }
 .img{
     width: 100%;

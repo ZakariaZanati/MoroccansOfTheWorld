@@ -4,6 +4,7 @@ import {PostService} from '../../shared/post.service';
 import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms';
 import { throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-post',
@@ -15,7 +16,8 @@ export class CreatePostComponent implements OnInit {
   createPostForm: FormGroup;
   file : File;
 
-  constructor(private postService:PostService,private formBuilder : FormBuilder,private http:HttpClient) {
+  constructor(private postService:PostService,private formBuilder : FormBuilder,private http:HttpClient,
+    private router: Router) {
     
   }
 
@@ -43,6 +45,7 @@ export class CreatePostComponent implements OnInit {
     },err=>{
       console.log(err)
     });
+    window.location.reload();
   }
 
 }

@@ -1,1 +1,33 @@
-<p>view-posts works!</p>
+<div class="user_post" *ngFor="let post of posts">
+    <div class="user_post_header">
+        <div class="user_img"></div>
+        <span class="username">{{post.userName}}</span>
+    </div>
+    <div class="text_container">
+        <div class="text_content">
+        {{post.description}}    
+        </div>
+    </div>
+    <div class="image_container">
+        <img [src]="post.image" alt="">
+    </div>  
+    <div class="reactions_container">
+        <div class="likes"><i class="fas fa-heart"></i> {{post.likeCount}} likes</div>
+        <div class="comments"><i class="fas fa-comments"></i> {{post.commentCount}} comments</div>
+        <div class="add_like"><span><i class="far fa-heart"></i>like</span></div>
+    </div>
+    <div class="add_reaction">
+        <div class="add_comment"><input type="text" name="comment" id="comment" placeholder="add a comment ..."></div>  
+    </div>
+    <div class="comments_container">
+        <div class="comment">
+            <div class="user">user one</div>
+            <div class="user_comment">ceci est un commentaire</div>
+        </div>
+        <div class="comment">
+            <div class="user">user two</div>
+            <div class="user_comment">ceci est un 2eme commentaire</div>
+        </div>
+    </div>
+    
+</div>

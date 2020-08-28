@@ -1,6 +1,8 @@
 package com.social.service;
 
+import com.social.dto.PostResponse;
 import com.social.exceptions.SpringRedditException;
+import com.social.mapper.PostMapper;
 import com.social.model.Post;
 import com.social.model.User;
 import com.social.repository.PostRepository;
@@ -16,6 +18,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.time.Instant;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.zip.Deflater;
 
 @Service
@@ -29,6 +33,10 @@ public class PostService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private PostMapper postMapper;
+
+
     @Transactional
     public void save(MultipartFile file,String description) throws IOException {
 
@@ -37,9 +45,10 @@ public class PostService {
             post = Post.builder()
                     .createdDate(Instant.now())
                     .description(description)
+                    .likeCount(0)
                     .imageName(file.getOriginalFilename())
                     .imageType(file.getContentType())
-                    .imageBytes(compressBytes(file.getBytes()))
+                    .imageBytes(file.getBytes())
                     .user(this.getCurrentUser())
                     .build();
         }
@@ -77,4 +86,14 @@ public class PostService {
 
         return outputStream.toByteArray();
     }
+
+    @Transactional(readOnly = true)
+    public List<PostResponse> getAllPosts() {
+        return  postRepository.findAll()
+                    .stream()
+                    .map(postMapper::mapToDto)
+                    .collect(Collectors.toList());
+    }
+
+
 }

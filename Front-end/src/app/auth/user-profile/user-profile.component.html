@@ -7,8 +7,10 @@
             <div *ngIf=retrievedImage>
                 <img [src]="retrievedImage" class="img"/>
             </div>
-            <input type="file" (change)="onFileChanged($event)">
-            <input type="button" (click)="onUpload()" value="upload">
+            <div class="buttons">
+                <input type="file" (change)="onFileChanged($event)">
+                <input type="button" *ngIf="selectedFile" (click)="onUpload()" value="upload">
+            </div>
           </div>
           <div class="infos">
               <div class="info">

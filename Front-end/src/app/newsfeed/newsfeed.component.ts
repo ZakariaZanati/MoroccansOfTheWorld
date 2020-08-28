@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {PostModel} from '../shared/post-model';
+import {PostService} from '../shared/post.service';
 
 @Component({
   selector: 'app-newsfeed',
@@ -7,7 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewsfeedComponent implements OnInit {
 
-  constructor() { }
+  posts : Array<PostModel> = [];
+
+  constructor(private postService : PostService) { 
+    this.postService.getAllPosts().subscribe(post =>{
+      this.posts = post;
+      this.posts.map(post =>{
+        const img = post.image;
+        post.image = "data:image/jpeg;base64,"+post.image;
+      })
+    });
+  }
 
   ngOnInit(): void {
   }

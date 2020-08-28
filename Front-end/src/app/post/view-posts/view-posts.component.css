@@ -1,0 +1,241 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.content-wrapper{
+    width: 80%;
+    margin: 50px auto;
+    background-color: white;
+    display: grid;
+    grid-template-columns: 60% 35%;
+    column-gap: 5%;
+}
+
+.post-content{
+    width: 78%;
+    margin: 20px auto;
+    height: auto;
+}
+
+.events-content{
+    width: 95%;
+    margin: 20px auto;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+}
+
+.title{
+    background-color: black;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.title span{
+    padding: 8px 10px;
+    background-color: rgb(113, 113, 202);
+}
+
+.event{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+    align-items: center;
+}
+
+.event_title{
+    font-weight: bold;
+}
+
+.event_container{
+    width: 80%;
+    display: flex;
+    margin-bottom: 5px;
+    cursor: pointer;
+
+}
+.event-img{
+    margin-right: 20px;
+}
+
+.new_post{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: whitesmoke;
+    border: 1px solid #bbbbbb;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    margin-bottom: 20px;
+}
+
+#post_text{
+    width: 560px;
+    height: 80px;
+    resize: none;
+    overflow: auto;
+    margin-bottom: 20px;
+    border:none;
+    font-family: Verdana, Tahoma, sans-serif;
+    padding-left: 10px;
+    border:none;
+
+}
+
+.post_header{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    background-color: #b1afaf;
+    color: white;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.post_title{
+    margin: 5px 10px;
+}
+
+input[type="file"]{
+    display: none;
+}
+
+.buttons>label{
+    color: white;
+    padding: 5px 8px;
+    background-color: rgb(90, 123, 212);
+    cursor: pointer;
+    border-radius: 8px;
+    border: none;
+}
+
+.buttons>label:hover{
+    background-color: rgb(71, 97, 170);
+}
+
+button[type="submit"]{
+    color: white;
+    padding: 7px 20px;
+    background-color: rgb(90, 123, 212);
+    cursor: pointer;
+    border-radius: 8px;
+    outline: none;
+    border:none
+}
+button[type="submit"]:hover{
+    background-color: rgb(71, 97, 170);
+}
+
+.buttons{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+.user_post{
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+    padding: 16px;
+    border-bottom:1px solid black;
+}
+
+.user_post_header{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.user_img{
+    background-color: rgb(46, 43, 36); 
+    border-radius: 50%; 
+    width: 40px; 
+    height: 40px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.text_container{
+    margin: 10px 0;
+}
+
+.image_container{
+    align-self: center;
+    height: 400px;
+    overflow: hidden;
+}
+.image_container>img{
+    width: 530px;
+}
+
+.reactions_container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.reactions_container .likes{
+    color: rgb(71, 97, 170);
+    margin-right: 10px;
+}
+.reactions_container .comments{
+    color: rgb(71, 97, 170);
+}
+.reactions_container .add_like{
+    color: #4761aa;
+    margin-left: 300px;
+}
+
+.add_reaction{
+    width: 100%;
+}
+.add_comment>input{
+    width: 100%;
+    border:1px solid #4761aa ;
+    border-radius: 10px;
+    height: 40px;
+    padding: 10px;
+}
+
+.comments_container{
+    width: 100%;
+}
+
+.comments_container>.comment{
+    background-color: white;
+    margin: 10px 0;
+    border-radius: 10px;
+    padding: 10px;
+    border:1px solid #4761aa ;
+
+}
+.comment>.user{
+    font-weight: bold;
+    color:#4761aa;
+}
+
+.job{
+    border:1px solid #d1cece;
+    border-radius: 10px;
+    background-color: #d1cece;
+    cursor: pointer;
+}
+
+.sort{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+}
+.sort-select{
+    margin-left: 5px;
+}
+
+

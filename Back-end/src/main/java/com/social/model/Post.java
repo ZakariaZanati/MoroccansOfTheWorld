@@ -26,6 +26,7 @@ public class Post {
     @Lob
     private String description;
     private Integer likeCount = 0;
+    private Integer commentCount = 0;
 
     private Instant createdDate;
 

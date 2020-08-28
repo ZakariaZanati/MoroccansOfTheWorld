@@ -1,0 +1,16 @@
+<div class="add_reaction">
+    <div class="add_comment">
+        <form [formGroup]="commentForm" (ngSubmit)="postComment()" class="comment_form">
+            <input [formControlName]="'text'" type="text" name="comment" id="comment" placeholder="add a comment ...">
+            <button class="form_submit" type="submit"><i class="fas fa-paper-plane"></i></button>
+        </form>
+    </div>  
+</div>
+<div class="comments_container">
+    <div class="comment" *ngFor="let comment of comments">
+        <div class="comment">
+            <div class="user">{{comment.username}}</div>
+            <div class="user_comment">{{comment.text}}</div>
+        </div>
+    </div>
+</div>

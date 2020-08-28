@@ -30,8 +30,11 @@ public class Post {
 
     private Instant createdDate;
 
+    @Nullable
     private String imageName;
+    @Nullable
     private String imageType;
+    @Nullable
     @Column(length = 1048570)
     private byte[] imageBytes;
 

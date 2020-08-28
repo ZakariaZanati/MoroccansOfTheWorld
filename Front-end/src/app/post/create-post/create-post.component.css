@@ -54,7 +54,7 @@ input[type="file"]{
     background-color: rgb(71, 97, 170);
 }
 
-button[type="submit"]{
+.form_new_post{
     color: white;
     padding: 7px 20px;
     background-color: rgb(90, 123, 212);
@@ -63,7 +63,7 @@ button[type="submit"]{
     outline: none;
     border:none
 }
-button[type="submit"]:hover{
+.form_new_post:hover{
     background-color: rgb(71, 97, 170);
 }
 

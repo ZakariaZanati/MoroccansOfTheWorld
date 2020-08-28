@@ -10,11 +10,11 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class ViewPostsComponent implements OnInit {
 
-  @Input() posts : PostModel[];
+  @Input() posts : PostModel[]; 
 
   constructor(private domSanitizer: DomSanitizer) {
     
-   }
+  }
 
   ngOnInit(): void {
   }

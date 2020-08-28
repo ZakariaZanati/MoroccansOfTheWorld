@@ -1,0 +1,42 @@
+.add_reaction{
+    width: 100%;
+}
+input{
+    width: 90%;
+    border:1px solid #4761aa ;
+    border-radius: 10px;
+    height: 40px;
+    padding: 10px;
+}
+
+.comments_container{
+    width: 100%;
+}
+
+.comment_form{
+    display: flex;
+    justify-content: space-between;
+}
+.form_submit{
+    height: 40px;
+    width: 40px;
+    color: white;
+    background-color: #4761aa;
+    border-radius: 10px;
+    border-style: none;
+}
+.form_submit:hover{
+    background-color: #5973b9;
+}
+
+.comments_container>.comment{
+    background-color: white;
+    margin: 10px 0;
+    border-radius: 10px;
+    padding: 10px;
+    border:1px solid #4761aa ;
+}
+.comment>.user{
+    font-weight: bold;
+    color:#4761aa;
+}

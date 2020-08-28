@@ -45,7 +45,7 @@ export class CreatePostComponent implements OnInit {
     },err=>{
       console.log(err)
     });
-    window.location.reload();
+    //window.location.reload();
   }
 
 }

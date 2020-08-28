@@ -23,7 +23,7 @@ public class PostController {
     private PostRepository postRepository;
 
     @PostMapping
-    public ResponseEntity<Void> createPost(@RequestPart("postImage") MultipartFile file,
+    public ResponseEntity<Void> createPost(@RequestPart(value = "postImage",required = false) MultipartFile file,
                                            @RequestPart("postDescription") String text) throws IOException {
 
         System.out.println("file intercepted");

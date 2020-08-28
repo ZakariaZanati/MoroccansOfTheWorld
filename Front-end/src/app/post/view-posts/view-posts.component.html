@@ -8,26 +8,14 @@
         {{post.description}}    
         </div>
     </div>
-    <div class="image_container">
-        <img [src]="post.image" alt="">
+    <div class="image_container" *ngIf="post.image">
+        <img  [src]="post.image" alt="">
     </div>  
     <div class="reactions_container">
         <div class="likes"><i class="fas fa-heart"></i> {{post.likeCount}} likes</div>
         <div class="comments"><i class="fas fa-comments"></i> {{post.commentCount}} comments</div>
         <div class="add_like"><span><i class="far fa-heart"></i>like</span></div>
     </div>
-    <div class="add_reaction">
-        <div class="add_comment"><input type="text" name="comment" id="comment" placeholder="add a comment ..."></div>  
-    </div>
-    <div class="comments_container">
-        <div class="comment">
-            <div class="user">user one</div>
-            <div class="user_comment">ceci est un commentaire</div>
-        </div>
-        <div class="comment">
-            <div class="user">user two</div>
-            <div class="user_comment">ceci est un 2eme commentaire</div>
-        </div>
-    </div>
+    <app-comment [post]="post"></app-comment>
     
 </div>

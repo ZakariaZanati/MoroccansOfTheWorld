@@ -20,6 +20,7 @@ import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 import { FormsModule } from '@angular/forms';
 import { CreatePostComponent } from './post/create-post/create-post.component';
 import { ViewPostsComponent } from './post/view-posts/view-posts.component';
+import { CommentComponent } from './comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ViewPostsComponent } from './post/view-posts/view-posts.component';
     UserProfileComponent,
     NewsfeedComponent,
     CreatePostComponent,
-    ViewPostsComponent
+    ViewPostsComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,

@@ -16,7 +16,10 @@ export class NewsfeedComponent implements OnInit {
       this.posts = post;
       this.posts.map(post =>{
         const img = post.image;
-        post.image = "data:image/jpeg;base64,"+post.image;
+
+        if (img) {
+          post.image = "data:image/jpeg;base64,"+post.image;
+        }
       })
     });
   }

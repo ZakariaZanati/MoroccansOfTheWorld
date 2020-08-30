@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
           this.toastr.success('Signup Successful');
           this.registerSuccessMessage = 'Please Check your inbox for activation email '
             + 'activate your account before you Login!';
-          console.log(this.registerSuccessMessage)
         }
       });
   }
@@ -50,8 +49,13 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginRequestPayload).subscribe(data => {
       if (data) {
         this.isError = false;
-        this.router.navigateByUrl('/newsfeed');
-        this.toastr.success('Login Successful');
+        
+        if (this.authService.isCompleted()) {
+          this.router.navigateByUrl('/newsfeed');
+          this.toastr.success('Login Successful');
+        } else {
+          this.router.navigateByUrl('/userdetails');
+        }
       } else {
         this.isError = true;
         

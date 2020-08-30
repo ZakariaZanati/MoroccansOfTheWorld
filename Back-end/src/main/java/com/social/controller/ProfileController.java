@@ -37,9 +37,8 @@ public class ProfileController {
 
     @PostMapping("/infos")
     public ResponseEntity<User> saveUserDetails(@RequestBody UserDetailsDto userDetailsDto){
-
+        System.out.println(userDetailsDto);
         authService.saveInfos(userDetailsDto);
-        System.out.println("user updated");
         return new ResponseEntity<User>(this.getCurrentUser(),HttpStatus.ACCEPTED);
 
     }

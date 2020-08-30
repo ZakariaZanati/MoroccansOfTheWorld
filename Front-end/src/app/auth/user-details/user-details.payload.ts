@@ -1,13 +1,13 @@
 export class UserDetailsPayload {
 
-    firstName : string;
-    lastName : string;
+    firstName : String;
+    lastName : String;
     birthDate? : Date;
-    phoneNumber? :string;
-    currentJob? : string;
-    website? : string;
-    aboutMe? : string;
-    country? : string;
-    city : string;
+    phoneNumber? :String;
+    currentJob? : String;
+    website? : String;
+    aboutMe? : String;
+    country? : String;
+    city ?: String;
 
 }

@@ -4,6 +4,7 @@ import {SignupRequestPayload} from '../signup/signup-request.payload';
 import {LoginRequestPayload} from '../login/login.request.payload'
 import {LoginResponse} from '../login/login.response.payload'
 import {CurrentUserModel} from '../user-profile/current-user.model';
+import {UserDetailsPayload} from '../user-details/user-details.payload';
 
 import { Observable, throwError } from 'rxjs';
 import { LocalStorageService } from 'ngx-webstorage';
@@ -39,6 +40,7 @@ export class AuthService {
         this.localStorage.store('username',data.username);
         this.localStorage.store('refreshToken',data.refreshToken);
         this.localStorage.store('expiresAt',data.expiresAt);
+        this.localStorage.store('completed',data.completed);
 
         this.loggedIn.emit(true);
         this.username.emit(data.username);
@@ -46,6 +48,9 @@ export class AuthService {
         return true;
       }));
 
+  }
+  userDetails(userDetailsPayload : UserDetailsPayload){
+    return this.httpClient.post<UserDetailsPayload>('http://localhost:8181/api/user/infos',userDetailsPayload)
   }
 
   refreshToken() {
@@ -94,6 +99,10 @@ export class AuthService {
 
   isLoggedIn(): boolean {
     return this.getJwtToken() != null;
+  }
+
+  isCompleted(): boolean {
+    return this.localStorage.retrieve('completed');
   }
 
 }

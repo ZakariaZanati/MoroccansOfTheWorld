@@ -117,7 +117,7 @@ public class User {
     }
 
     public void setFirstName(String firstName) {
-        if (firstName!=null){
+        if (firstName!=null && !firstName.equals("")){
             this.firstName = firstName;
         }
     }
@@ -127,7 +127,7 @@ public class User {
     }
 
     public void setLastName(String lastName) {
-        if (lastName!=null) {
+        if (lastName!=null && !lastName.equals("")) {
             this.lastName = lastName;
         }
     }
@@ -147,7 +147,7 @@ public class User {
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        if (phoneNumber!=null){
+        if (phoneNumber!=null && phoneNumber.equals("")){
             this.phoneNumber = phoneNumber;
         }
     }
@@ -157,7 +157,7 @@ public class User {
     }
 
     public void setCurrentJob(String currentJob) {
-        if (currentJob != null) {
+        if (currentJob != null && currentJob.equals("")) {
             this.currentJob = currentJob;
         }
     }
@@ -167,7 +167,7 @@ public class User {
     }
 
     public void setWebsite(String website) {
-        if (website != null) {
+        if (website != null && website.equals("")) {
             this.website = website;
         }
     }
@@ -177,7 +177,7 @@ public class User {
     }
 
     public void setAboutMe(String aboutMe) {
-        if (aboutMe != null) {
+        if (aboutMe != null && !aboutMe.equals("")) {
             this.aboutMe = aboutMe;
         }
     }
@@ -187,7 +187,7 @@ public class User {
     }
 
     public void setCountry(String country) {
-        if (country != null) {
+        if (country != null && !country.equals("")) {
             this.country = country;
         }
     }
@@ -197,7 +197,7 @@ public class User {
     }
 
     public void setCity(String city) {
-        if (city != null) {
+        if (city != null && !city.equals("")) {
             this.city = city;
         }
     }

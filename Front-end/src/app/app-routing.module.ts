@@ -7,14 +7,15 @@ import { FeedComponent } from './feed/feed.component';
 import { AuthGuard } from './auth/auth.guard';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
+import { UserDetailsComponent } from './auth/user-details/user-details.component';
 
 const routes: Routes = [
   {path : '',component : HomeComponent},
   {path : 'sign-up',component : SignupComponent},
   {path : 'login',component : LoginComponent},
   {path : 'newsfeed',component : NewsfeedComponent,canActivate:[AuthGuard]},
-  {path : 'profile',component : UserProfileComponent,canActivate:[AuthGuard]}
-
+  {path : 'profile',component : UserProfileComponent,canActivate:[AuthGuard]},
+  {path : 'userdetails',component : UserDetailsComponent,canActivate:[AuthGuard]}
 ];
 
 @NgModule({

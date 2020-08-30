@@ -1,0 +1,31 @@
+package com.social.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.Date;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class UserDetailsDto {
+
+    private String firstName;
+
+    private String lastName;
+
+    private Date birthDate;
+
+    private String phoneNumber;
+
+    private String currentJob;
+
+    private String website;
+
+    private String aboutMe;
+
+    private String country;
+
+    private String city;
+}

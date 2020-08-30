@@ -56,6 +56,7 @@ public class PostService {
             post = Post.builder()
                     .createdDate(Instant.now())
                     .description(description)
+                    .likeCount(0)
                     .user(this.getCurrentUser())
                     .build();
         }

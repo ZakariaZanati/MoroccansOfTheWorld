@@ -21,6 +21,7 @@ import { FormsModule } from '@angular/forms';
 import { CreatePostComponent } from './post/create-post/create-post.component';
 import { ViewPostsComponent } from './post/view-posts/view-posts.component';
 import { CommentComponent } from './comment/comment.component';
+import { UserDetailsComponent } from './auth/user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { CommentComponent } from './comment/comment.component';
     NewsfeedComponent,
     CreatePostComponent,
     ViewPostsComponent,
-    CommentComponent
+    CommentComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,

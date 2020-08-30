@@ -1,5 +1,6 @@
 package com.social.controller;
 
+import com.social.dto.UserDetailsDto;
 import com.social.exceptions.SpringRedditException;
 import com.social.model.Image;
 import com.social.model.User;
@@ -33,6 +34,14 @@ public class ProfileController {
 
     @Autowired
     private AuthService authService;
+
+    @PostMapping("/infos")
+    public ResponseEntity.BodyBuilder saveUserDetails(UserDetailsDto userDetailsDto){
+
+        authService.saveInfos(userDetailsDto);
+        return ResponseEntity.status(HttpStatus.OK);
+
+    }
 
     @GetMapping("/profile")
     public ResponseEntity<User> currentUserInfos(){

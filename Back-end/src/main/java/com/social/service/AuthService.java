@@ -1,9 +1,6 @@
 package com.social.service;
 
-import com.social.dto.AuthenticationResponse;
-import com.social.dto.LoginRequest;
-import com.social.dto.RefreshTokenRequest;
-import com.social.dto.RegisterRequest;
+import com.social.dto.*;
 import com.social.exceptions.SpringRedditException;
 import com.social.model.NotificationEmail;
 import com.social.model.User;
@@ -65,6 +62,7 @@ public class AuthService {
             user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
             user.setCreated(Instant.now());
             user.setEnabled(true);
+            user.setCompleted(false);
             userRepository.save(user);
 
             String token = generateVerificationToken(user);
@@ -74,6 +72,22 @@ public class AuthService {
                             "http://localhost:8181/api/auth/accountVerification/"+token));
         }
 
+    }
+
+    @Transactional
+    public void saveInfos(UserDetailsDto userDetailsDto){
+        User user = this.getCurrentUser();
+
+        user.setFirstName(userDetailsDto.getFirstName());
+        user.setLastName(userDetailsDto.getLastName());
+        user.setBirthDate(userDetailsDto.getBirthDate());
+        user.setCity(userDetailsDto.getCity());
+        user.setCountry(userDetailsDto.getCountry());
+        user.setAboutMe(userDetailsDto.getCountry());
+        user.setPhoneNumber(userDetailsDto.getPhoneNumber());
+        user.setCompleted(true);
+
+        userRepository.save(user);
     }
 
     private String generateVerificationToken(User user) {
@@ -118,6 +132,7 @@ public class AuthService {
                     .refreshToken(refreshTokenService.generateRefreshToken().getToken())
                     .expiresAt(Instant.now().plusMillis(jwtProvider.getJwtExpirationInMillis()))
                     .username(loginRequest.getUsername())
+                    .completed(this.getCurrentUser().isCompleted())
                     .build();
     }
 

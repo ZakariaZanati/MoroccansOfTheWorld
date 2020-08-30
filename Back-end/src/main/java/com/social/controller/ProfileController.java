@@ -36,10 +36,11 @@ public class ProfileController {
     private AuthService authService;
 
     @PostMapping("/infos")
-    public ResponseEntity.BodyBuilder saveUserDetails(UserDetailsDto userDetailsDto){
+    public ResponseEntity<User> saveUserDetails(@RequestBody UserDetailsDto userDetailsDto){
 
         authService.saveInfos(userDetailsDto);
-        return ResponseEntity.status(HttpStatus.OK);
+        System.out.println("user updated");
+        return new ResponseEntity<User>(this.getCurrentUser(),HttpStatus.ACCEPTED);
 
     }
 

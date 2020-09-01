@@ -90,7 +90,7 @@ public class PostService {
 
     @Transactional(readOnly = true)
     public List<PostResponse> getAllPosts() {
-        return  postRepository.findAll()
+        return  postRepository.findAllByOrderByCreatedDateDesc()
                     .stream()
                     .map(postMapper::mapToDto)
                     .collect(Collectors.toList());

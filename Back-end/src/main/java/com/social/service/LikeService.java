@@ -31,7 +31,7 @@ public class LikeService {
         }
         else{
             post.setLikeCount(post.getLikeCount()-1);
-            likeRepository.delete(Like.builder().post(post).user(authService.getCurrentUser()).build());
+            likeRepository.delete(like.get());
         }
         postRepository.save(post);
 

@@ -19,10 +19,7 @@
             <div class="comments"><i class="fas fa-comments"></i> {{post.commentCount}} comments</div>
         </div>
         
-        <div class="add_like">
-            <span><i class="far fa-heart"></i></span>
-            <span>like</span>
-        </div>
+        <app-like [post]="post"></app-like>
     </div>
     <app-comment [post]="post"></app-comment>
 </div>

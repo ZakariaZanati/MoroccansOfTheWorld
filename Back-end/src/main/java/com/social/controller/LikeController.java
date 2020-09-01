@@ -19,6 +19,7 @@ public class LikeController {
     @PostMapping
     public ResponseEntity<Void> like(@RequestBody Long postId){
 
+        System.out.println("like clicked"+postId);
         likeService.like(postId);
         return new  ResponseEntity<>(HttpStatus.OK);
     }

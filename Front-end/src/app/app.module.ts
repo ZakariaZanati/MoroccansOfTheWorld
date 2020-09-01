@@ -24,6 +24,7 @@ import { CommentComponent } from './comment/comment.component';
 import { UserDetailsComponent } from './auth/user-details/user-details.component';
 import { RouterModule, ROUTES } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
+import { LikeComponent } from './like/like.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ProfileComponent } from './profile/profile.component';
     ViewPostsComponent,
     CommentComponent,
     UserDetailsComponent,
-    ProfileComponent
+    ProfileComponent,
+    LikeComponent
   ],
   imports: [
     BrowserModule,

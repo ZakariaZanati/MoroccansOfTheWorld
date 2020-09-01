@@ -42,6 +42,7 @@ export class CommentComponent implements OnInit {
       return;
     }
     this.commentPayload.postId = this.post.id;
+    this.post.commentCount = this.post.commentCount+1;
     this.commentService.postComment(this.commentPayload).subscribe(data => {
       this.commentForm.get('text').setValue('');
       this.getCommentsForPost();

@@ -15,6 +15,9 @@ public class PostResponse {
     private Integer likeCount;
     private Integer commentCount;
     private String duration;
+    private String firstName;
+    private String lastName;
+    private byte[] profileImage;
     private boolean liked;
     private byte[] image;
 

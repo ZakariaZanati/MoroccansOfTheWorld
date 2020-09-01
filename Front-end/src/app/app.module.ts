@@ -22,6 +22,8 @@ import { CreatePostComponent } from './post/create-post/create-post.component';
 import { ViewPostsComponent } from './post/view-posts/view-posts.component';
 import { CommentComponent } from './comment/comment.component';
 import { UserDetailsComponent } from './auth/user-details/user-details.component';
+import { RouterModule, ROUTES } from '@angular/router';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { UserDetailsComponent } from './auth/user-details/user-details.component
     CreatePostComponent,
     ViewPostsComponent,
     CommentComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

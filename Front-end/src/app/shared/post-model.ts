@@ -7,4 +7,7 @@ export class PostModel{
     duration : string;
     liked : boolean;
     image : any;
+    firstName : string;
+    lastName : string;
+    profileImage : any;
 }

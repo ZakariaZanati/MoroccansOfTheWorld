@@ -16,7 +16,7 @@ export class NewsfeedComponent implements OnInit {
       this.posts = post;
       this.posts.map(post =>{
         const img = post.image;
-
+        post.profileImage = "data:image/jpeg;base64,"+post.profileImage;
         if (img) {
           post.image = "data:image/jpeg;base64,"+post.image;
         }

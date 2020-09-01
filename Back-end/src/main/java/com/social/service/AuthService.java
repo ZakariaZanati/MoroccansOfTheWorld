@@ -77,10 +77,9 @@ public class AuthService {
     @Transactional
     public void saveInfos(UserDetailsDto userDetailsDto){
         User user = this.getCurrentUser();
-        System.out.println(userDetailsDto);
         user.setFirstName(userDetailsDto.getFirstName());
         user.setLastName(userDetailsDto.getLastName());
-        //user.setBirthDate(userDetailsDto.getBirthDate());
+        user.setBirthDate(userDetailsDto.getBirthDate());
         user.setCity(userDetailsDto.getCity());
         user.setCountry(userDetailsDto.getCountry());
         user.setAboutMe(userDetailsDto.getAboutMe());
@@ -135,6 +134,7 @@ public class AuthService {
                     .expiresAt(Instant.now().plusMillis(jwtProvider.getJwtExpirationInMillis()))
                     .username(loginRequest.getUsername())
                     .completed(this.getCurrentUser().isCompleted())
+                    .fullName(this.getCurrentUser().getFirstName()+" "+this.getCurrentUser().getLastName())
                     .build();
     }
 

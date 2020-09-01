@@ -8,7 +8,16 @@
     
     <div class="sign-in-container">
         <div *ngIf="isLoggedIn" class="sign-in">
-            <div><a routerLink="/profile">{{username}}</a></div>
+            <div>
+                <a class="profile" routerLink="/profile">
+                    <div class="image">
+                        <img [src]="image" alt="profile image">
+                    </div>
+                    <div class="username">
+                        {{username}}
+                    </div>         
+                </a>
+            </div>
             <div><button (click)="logout()" class="logout">Logout</button></div>
         </div>
         <div *ngIf="!isLoggedIn" class="sign-in">

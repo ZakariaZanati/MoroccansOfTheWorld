@@ -147,7 +147,7 @@ public class User {
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        if (phoneNumber!=null && phoneNumber.equals("")){
+        if (phoneNumber!=null && !phoneNumber.equals("")){
             this.phoneNumber = phoneNumber;
         }
     }
@@ -157,7 +157,7 @@ public class User {
     }
 
     public void setCurrentJob(String currentJob) {
-        if (currentJob != null && currentJob.equals("")) {
+        if (currentJob != null && !currentJob.equals("")) {
             this.currentJob = currentJob;
         }
     }
@@ -167,7 +167,7 @@ public class User {
     }
 
     public void setWebsite(String website) {
-        if (website != null && website.equals("")) {
+        if (website != null && !website.equals("")) {
             this.website = website;
         }
     }

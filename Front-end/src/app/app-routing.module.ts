@@ -8,6 +8,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 import { UserDetailsComponent } from './auth/user-details/user-details.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {path : '',component : HomeComponent},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path : 'login',component : LoginComponent},
   {path : 'newsfeed',component : NewsfeedComponent,canActivate:[AuthGuard]},
   {path : 'profile',component : UserProfileComponent,canActivate:[AuthGuard]},
+  {path : 'profile/:name',component : ProfileComponent,canActivate:[AuthGuard]},
   {path : 'userdetails',component : UserDetailsComponent,canActivate:[AuthGuard]}
 ];
 

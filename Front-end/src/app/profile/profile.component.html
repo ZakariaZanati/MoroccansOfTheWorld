@@ -7,11 +7,6 @@
             <div *ngIf=retrievedImage>
                 <img [src]="retrievedImage" class="img"/>
             </div>
-            <div class="buttons">
-                <input type="file" id="file" (change)="onFileChanged($event)">
-                <label *ngIf="!selectedFile" for="file"><i class="far fa-file-image"></i> Select profile image</label>
-                <input class="upload" type="button" *ngIf="selectedFile" (click)="onUpload()" value="upload">
-            </div>
           </div>
           <div class="infos">
               <div class="info">
@@ -36,9 +31,6 @@
               <div class="info" *ngIf="website">
                   <span class="value"><i class="fas fa-link"></i>{{website}}</span>
               </div>
-              <div class="update">
-                  <button type="submit" (click)="updateForm()">Update</button>
-              </div>
           </div>
       </div>
 
@@ -47,12 +39,6 @@
               <span class="header">About Me</span> 
               <div class="text" *ngIf="aboutMe">
                   {{aboutMe}}
-              </div>
-              <div *ngIf="!aboutMe">
-                    Write something about yourself...
-              </div>
-              <div class="edit">
-                  <button class="submit" type="submit"><i class="far fa-edit"></i>Edit</button>
               </div>
           </div>
 

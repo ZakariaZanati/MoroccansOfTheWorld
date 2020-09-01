@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../shared/auth.service';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -19,14 +21,31 @@ export class UserProfileComponent implements OnInit {
   retrieveResponse: any;
   message: string;
   imageName: any;
+  firstName : String;
+  lastName : String;
+  birthDate? : Date;
+  phoneNumber? :String;
+  currentJob? : String;
+  website? : String;
+  aboutMe? : String;
+  country? : String;
+  city ?: String;
 
-  constructor(private authService : AuthService,private httpClient : HttpClient) { }
+  constructor(private authService : AuthService,private httpClient : HttpClient,private router:Router) { }
 
   ngOnInit(): void {
 
     this.authService.getCurrentUserInfo().subscribe(data => {
       this.username = data.username;
       this.email = data.email;
+      this.firstName = data.firstName;
+      this.lastName = data.lastName;
+      this.phoneNumber = data.phoneNumber;
+      this.birthDate = data.birthDate;
+      this.city = data.city;
+      this.country = data.country;
+      this.website = data.website;
+      this.currentJob = data.currentJob;
     })
     this.httpClient.get('http://localhost:8181/api/user/profile/img')
       .subscribe(
@@ -56,26 +75,22 @@ export class UserProfileComponent implements OnInit {
       .subscribe((response) => {
         if (response.status === 200) {
           this.message = 'Image uploaded successfully';
+          
         } else {
           this.message = 'Image not uploaded successfully';
         }
       }
       );
+    }
+  updateForm(){
+    this.router.navigateByUrl('/userdetails')
   }
-  /*
-  getImage() {
-    //Make a call to Sprinf Boot to get the Image Bytes.
-    console.log("get image")
-    this.httpClient.get('http://localhost:8181/api/user/profile/img')
-      .subscribe(
-        res => {
-          console.log(res)
-          this.retrieveResponse = res;
-          this.base64Data = this.retrieveResponse.picByte;
-          this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
-        }
-      );
-  }*/
+
+  reloadComponent() {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['/profile']);
+}
 
 
 

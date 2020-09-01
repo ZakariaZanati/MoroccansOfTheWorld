@@ -41,6 +41,7 @@ export class AuthService {
         this.localStorage.store('refreshToken',data.refreshToken);
         this.localStorage.store('expiresAt',data.expiresAt);
         this.localStorage.store('completed',data.completed);
+        this.localStorage.store('fullName',data.fullName)
 
         this.loggedIn.emit(true);
         this.username.emit(data.username);
@@ -78,11 +79,24 @@ export class AuthService {
     this.localStorage.clear('username');
     this.localStorage.clear('refreshToken');
     this.localStorage.clear('expiresAt');
+    this.localStorage.clear('completed');
+    this.localStorage.clear('fullName');
 
   }
 
+  getUserImage(){
+    return this.httpClient.get('http://localhost:8181/api/user/profile/img')
+  }
+
   getCurrentUserInfo():Observable<CurrentUserModel>{
-    return this.httpClient.get<CurrentUserModel>('http://localhost:8181/api/user/profile')
+    return this.httpClient.get<CurrentUserModel>('http://localhost:8181/api/user/profile');
+  }
+
+  getUserByUserName(username : string):Observable<CurrentUserModel>{
+    return this.httpClient.get<CurrentUserModel>('http://localhost:8181/api/user/profile/'+username);
+  }
+  getImageByUsername(username : string){
+    return this.httpClient.get('http://localhost:8181/api/user/profile/img/'+username);
   }
 
   getUserName(){
@@ -103,6 +117,10 @@ export class AuthService {
 
   isCompleted(): boolean {
     return this.localStorage.retrieve('completed');
+  }
+
+  fullName(): string {
+    return this.localStorage.retrieve('fullName');
   }
 
 }

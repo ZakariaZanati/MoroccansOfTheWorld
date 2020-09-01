@@ -6,22 +6,27 @@
     border: 1px solid #bbbbbb;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 #post_text{
-    width: 560px;
+    width: 100%;
     height: 80px;
-    resize: none;
+    position: relative;
+    resize: none;   
     overflow: auto;
     margin-bottom: 20px;
     border:none;
     font-family: Verdana, Tahoma, sans-serif;
     padding-left: 10px;
-    border:none;
+    border: none;
 
 }
-
+* {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
 .post_header{
     width: 100%;
     display: flex;
@@ -31,6 +36,7 @@
     color: white;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
+    
 }
 
 .post_title{
@@ -42,12 +48,13 @@ input[type="file"]{
 }
 
 .buttons>label{
+    padding: 6px 8px;
     color: white;
-    padding: 5px 8px;
     background-color: rgb(90, 123, 212);
     cursor: pointer;
     border-radius: 8px;
     border: none;
+    text-align: center;
 }
 
 .buttons>label:hover{
@@ -56,7 +63,8 @@ input[type="file"]{
 
 .form_new_post{
     color: white;
-    padding: 7px 20px;
+    width: 75px;
+    height: 35px;
     background-color: rgb(90, 123, 212);
     cursor: pointer;
     border-radius: 8px;
@@ -68,6 +76,7 @@ input[type="file"]{
 }
 
 .buttons{
+    margin: 0 auto;
     width: 80%;
     display: flex;
     justify-content: space-between;

@@ -3,5 +3,6 @@ export interface LoginResponse {
     refreshToken: string,
     expiresAt : Date,
     username : string,
-    completed : boolean
+    completed : boolean,
+    fullName : string
 }

@@ -23,5 +23,9 @@ export class PostService {
     return this.http.get<Array<PostModel>>('http://localhost:8181/api/posts/');
   }
 
+  getAllPostsByCurrentUser():Observable<Array<PostModel>>{
+    return this.http.get<Array<PostModel>>('http://localhost:8181/api/posts/user/');
+  }
+
 
 }

@@ -96,5 +96,13 @@ public class PostService {
                     .collect(Collectors.toList());
     }
 
+    @Transactional(readOnly = true)
+    public List<PostResponse> getAllPostsByUser(User user){
+        return postRepository.findByUserOrderByCreatedDateDesc(user)
+                .stream()
+                .map(postMapper::mapToDto)
+                .collect(Collectors.toList());
+    }
+
 
 }

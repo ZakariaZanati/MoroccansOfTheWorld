@@ -14,7 +14,7 @@
             </div>
           </div>
           <div class="infos">
-              <div class="info">
+              <div class="info" *ngIf="firstName">
                   <span class="value"><i class="far fa-user"></i>{{firstName}} {{lastName}}</span>
               </div>
               
@@ -42,20 +42,23 @@
           </div>
       </div>
 
-      <div class="profil-2">
-          <div class="about-me">
-              <span class="header">About Me</span> 
-              <div class="text" *ngIf="aboutMe">
-                  {{aboutMe}}
-              </div>
-              <div *ngIf="!aboutMe">
-                    Write something about yourself...
-              </div>
-              <div class="edit">
-                  <button class="submit" type="submit"><i class="far fa-edit"></i>Edit</button>
-              </div>
-          </div>
+        <div class="profil-2">
+                <div class="about-me">
+                    <span class="header">About Me</span> 
+                    <div class="text" *ngIf="aboutMe">
+                        {{aboutMe}}
+                    </div>
+                    <div *ngIf="!aboutMe">
+                            Write something about yourself...
+                    </div>
+                    <div class="edit">
+                        <button class="submit" type="submit"><i class="far fa-edit"></i>Edit</button>
+                    </div>
+                </div>
+            <app-create-post></app-create-post>
+            <app-view-posts [posts]="posts"></app-view-posts>
+            
 
-      </div>
+        </div>
     </div>
-    </div>
+</div>

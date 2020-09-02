@@ -3,6 +3,8 @@ import {AuthService} from '../shared/auth.service';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import {PostModel} from '../../shared/post-model';
+import {PostService} from '../../shared/post.service';
 
 
 
@@ -31,7 +33,21 @@ export class UserProfileComponent implements OnInit {
   country? : String;
   city ?: String;
 
-  constructor(private authService : AuthService,private httpClient : HttpClient,private router:Router) { }
+  posts : Array<PostModel> = [];
+
+  constructor(private authService : AuthService,private httpClient : HttpClient,private router:Router,
+    private postService : PostService) {
+      this.postService.getAllPostsByCurrentUser().subscribe(post =>{
+        this.posts = post;
+        this.posts.map(post =>{
+          const img = post.image;
+          post.profileImage = "data:image/jpeg;base64,"+post.profileImage;
+          if (img) {
+            post.image = "data:image/jpeg;base64,"+post.image;
+          }
+        })
+      });
+     }
 
   ngOnInit(): void {
 

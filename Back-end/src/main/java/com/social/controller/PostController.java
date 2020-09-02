@@ -2,6 +2,7 @@ package com.social.controller;
 
 import com.social.dto.PostResponse;
 import com.social.repository.PostRepository;
+import com.social.service.AuthService;
 import com.social.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,7 +21,7 @@ public class PostController {
     private PostService postService;
 
     @Autowired
-    private PostRepository postRepository;
+    private AuthService authService;
 
     @PostMapping
     public ResponseEntity<Void> createPost(@RequestPart(value = "postImage",required = false) MultipartFile file,
@@ -35,6 +36,11 @@ public class PostController {
     @GetMapping
     public ResponseEntity<List<PostResponse>> getAllPosts() {
         return ResponseEntity.status(HttpStatus.OK).body(postService.getAllPosts());
+    }
+
+    @GetMapping("user")
+    public ResponseEntity<List<PostResponse>> getAllPostsByCurrentUser(){
+        return ResponseEntity.status(HttpStatus.OK).body(postService.getAllPostsByUser(authService.getCurrentUser()));
     }
 
 }

@@ -2,9 +2,7 @@ package com.social.service;
 
 import com.social.dto.*;
 import com.social.exceptions.SpringRedditException;
-import com.social.model.NotificationEmail;
-import com.social.model.User;
-import com.social.model.VerificationToken;
+import com.social.model.*;
 import com.social.repository.UserRepository;
 import com.social.repository.VerificationTokenRepository;
 import com.social.security.JwtProvider;
@@ -56,14 +54,28 @@ public class AuthService {
                             +  registerRequest.getEmail());
         }
         else{
-            User user = new User();
-            user.setUsername(registerRequest.getUsername());
-            user.setEmail(registerRequest.getEmail());
-            user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
-            user.setCreated(Instant.now());
+            User user;
+            System.out.println(registerRequest.getUserType());
+            if (registerRequest.getUserType().equals("candidate")){
+                user = new Candidate();
+                user.setUsername(registerRequest.getUsername());
+                user.setEmail(registerRequest.getEmail());
+                user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
+                user.setCreated(Instant.now());
+                user.setUserType(UserType.CANDIDATE);
+            }
+            else {
+                user = new Provider();
+                user.setUsername(registerRequest.getUsername());
+                user.setEmail(registerRequest.getEmail());
+                user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
+                user.setCreated(Instant.now());
+                user.setUserType(UserType.PROVIDER);
+            }
             user.setEnabled(true);
             user.setCompleted(false);
             userRepository.save(user);
+
 
             String token = generateVerificationToken(user);
             mailService.sendMail(new NotificationEmail("Please activate your account",

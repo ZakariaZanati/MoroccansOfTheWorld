@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../auth/shared/auth.service';
+import {PostService} from '../shared/post.service';
+import {PostModel} from '../shared/post-model';
 import { HttpClient } from '@angular/common/http';
 import { Router,ActivatedRoute } from '@angular/router';
 
@@ -29,10 +31,16 @@ export class ProfileComponent implements OnInit {
   city ?: String;
   name : string;
 
-  constructor(private activatedRoute: ActivatedRoute, private authService : AuthService,private httpClient : HttpClient,private router:Router) { }
+  posts : Array<PostModel> = [];
+
+  constructor(private activatedRoute: ActivatedRoute, private authService : AuthService,private httpClient : HttpClient,
+    private router:Router,private postService : PostService) { }
 
   ngOnInit(): void {
     this.name = this.activatedRoute.snapshot.params.name;
+    if (this.name == this.authService.getUserName()) {
+      this.router.navigateByUrl('/profile')
+    }
     this.authService.getUserByUserName(this.name).subscribe(data => {
       this.username = data.username;
       this.email = data.email;
@@ -52,6 +60,17 @@ export class ProfileComponent implements OnInit {
       this.base64Data = this.retrieveResponse.picByte;
       this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
     })
+
+    this.postService.getAllPostsByUser(this.name).subscribe(post =>{
+      this.posts = post;
+      this.posts.map(post =>{
+        const img = post.image;
+        post.profileImage = "data:image/jpeg;base64,"+post.profileImage;
+        if (img) {
+          post.image = "data:image/jpeg;base64,"+post.image;
+        }
+      })
+    });
   }
 
 }

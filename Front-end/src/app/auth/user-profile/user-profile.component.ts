@@ -63,15 +63,7 @@ export class UserProfileComponent implements OnInit {
       this.website = data.website;
       this.currentJob = data.currentJob;
     })
-    this.httpClient.get('http://localhost:8181/api/user/profile/img')
-      .subscribe(
-        res => {
-          console.log(res)
-          this.retrieveResponse = res;
-          this.base64Data = this.retrieveResponse.picByte;
-          this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
-        }
-      );
+    this.getImage();
   }
 
   public onFileChanged(event) {
@@ -80,7 +72,6 @@ export class UserProfileComponent implements OnInit {
   }
 
   onUpload() {
-    console.log(this.selectedFile);
     
     //FormData API provides methods and properties to allow us easily prepare form data to be sent with POST HTTP requests.
     const uploadImageData = new FormData();
@@ -91,6 +82,8 @@ export class UserProfileComponent implements OnInit {
       .subscribe((response) => {
         if (response.status === 200) {
           this.message = 'Image uploaded successfully';
+          console.log("image uploaded")
+          window.location.reload()
           
         } else {
           this.message = 'Image not uploaded successfully';
@@ -102,10 +95,16 @@ export class UserProfileComponent implements OnInit {
     this.router.navigateByUrl('/userdetails')
   }
 
-  reloadComponent() {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.router.onSameUrlNavigation = 'reload';
-    this.router.navigate(['/profile']);
+
+getImage(){
+  this.httpClient.get('http://localhost:8181/api/user/profile/img')
+      .subscribe(
+        res => {
+          this.retrieveResponse = res;
+          this.base64Data = this.retrieveResponse.picByte;
+          this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+        }
+      );
 }
 
 

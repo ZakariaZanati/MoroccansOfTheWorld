@@ -18,8 +18,8 @@
                   <span class="value"><i class="far fa-user"></i>{{firstName}} {{lastName}}</span>
               </div>
               
-              <div class="info">
-                  <span class="value"><i class="fas fa-birthday-cake"></i>22</span>
+              <div class="info" *ngIf="birthDate">
+                  <span class="value"><i class="fas fa-birthday-cake"></i>{{birthDate}}</span>
               </div>
               <div class="info">
                   <span class="value"><i class="far fa-envelope"></i>{{email}}</span>
@@ -55,8 +55,11 @@
                         <button class="submit" type="submit"><i class="far fa-edit"></i>Edit</button>
                     </div>
                 </div>
-            <app-create-post></app-create-post>
-            <app-view-posts [posts]="posts"></app-view-posts>
+                <div class="post_container">
+                    <app-create-post></app-create-post>
+                    <app-view-posts [posts]="posts"></app-view-posts>
+                </div>
+            
             
 
         </div>

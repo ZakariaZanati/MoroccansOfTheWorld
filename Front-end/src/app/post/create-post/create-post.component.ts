@@ -39,13 +39,14 @@ export class CreatePostComponent implements OnInit {
     const uploadPost = new FormData();
     uploadPost.append('postImage',this.createPostForm.get('postImage').value);
     uploadPost.append('postDescription',this.createPostForm.get('description').value);
-    console.log(uploadPost.getAll('postImage'))
     this.http.post<any>('http://localhost:8181/api/posts/',uploadPost).subscribe(data=>{
       console.log(data)
+      this.ngOnInit()
+      window.location.reload();
     },err=>{
       console.log(err)
     });
-    //window.location.reload();
+    
   }
 
 }

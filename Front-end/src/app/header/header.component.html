@@ -10,7 +10,7 @@
         <div *ngIf="isLoggedIn" class="sign-in">
             <div>
                 <a class="profile" routerLink="/profile">
-                    <div class="image">
+                    <div class="image" *ngIf="image">
                         <img [src]="image" alt="profile image">
                     </div>
                     <div class="username">

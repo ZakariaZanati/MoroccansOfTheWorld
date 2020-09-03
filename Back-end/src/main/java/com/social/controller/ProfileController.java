@@ -56,7 +56,7 @@ public class ProfileController {
     }
 
     @PostMapping("/img")
-    public ResponseEntity.BodyBuilder uploadImage(@RequestParam("imageFile") MultipartFile file) throws IOException {
+    public ResponseEntity<Image> uploadImage(@RequestParam("imageFile") MultipartFile file) throws IOException {
         System.out.println("save image");
         User user = authService.getCurrentUser();
 
@@ -64,7 +64,7 @@ public class ProfileController {
         imageRepository.save(img);
         user.setImage(img);
         userRepository.save(user);
-        return ResponseEntity.status(HttpStatus.OK);
+        return ResponseEntity.status(HttpStatus.OK).body(img);
     }
 
     @GetMapping("/profile/img")

@@ -27,5 +27,9 @@ export class PostService {
     return this.http.get<Array<PostModel>>('http://localhost:8181/api/posts/user/');
   }
 
+  getAllPostsByUser(username : string){
+    return this.http.get<Array<PostModel>>('http://localhost:8181/api/posts/user/'+username);
+  }
+
 
 }

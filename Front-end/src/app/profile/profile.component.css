@@ -125,6 +125,11 @@ input[type="file"]{
 .buttons>label:hover,.upload:hover{
     opacity: 0.9;
 }
+.post_container{
+    width: 80%;
+    margin: 50px auto;
+}
+
 
 
 

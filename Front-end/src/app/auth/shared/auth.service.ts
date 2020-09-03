@@ -54,6 +54,10 @@ export class AuthService {
     return this.httpClient.post<UserDetailsPayload>('http://localhost:8181/api/user/infos',userDetailsPayload)
   }
 
+  getUserDetails(){
+    return this.httpClient.get<UserDetailsPayload>('http://localhost:8181/api/user/infos')
+  }
+
   refreshToken() {
     return this.httpClient.post<LoginResponse>('http://localhost:8181/api/auth/refresh/token',
       this.refreshTokenPayload)

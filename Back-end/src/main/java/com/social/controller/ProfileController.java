@@ -43,6 +43,11 @@ public class ProfileController {
 
     }
 
+    @GetMapping("/infos")
+    public ResponseEntity<UserDetailsDto> getUserDetails(){
+        return new ResponseEntity<>(authService.getInfos(),HttpStatus.OK);
+    }
+
     @GetMapping("/profile")
     public ResponseEntity<User> currentUserInfos(){
         System.out.println("test profile");

@@ -103,6 +103,23 @@ public class AuthService {
         userRepository.save(user);
     }
 
+    @Transactional
+    public UserDetailsDto getInfos(){
+        User user = this.getCurrentUser();
+
+        return UserDetailsDto.builder()
+                .firstName(user.getFirstName())
+                .lastName(user.getLastName())
+                .birthDate(user.getBirthDate())
+                .city(user.getCity())
+                .country(user.getCountry())
+                .aboutMe(user.getAboutMe())
+                .phoneNumber(user.getPhoneNumber())
+                .currentJob(user.getCurrentJob())
+                .website(user.getWebsite())
+                .build();
+    }
+
     private String generateVerificationToken(User user) {
         String token = UUID.randomUUID().toString();
         VerificationToken verificationToken = new VerificationToken();

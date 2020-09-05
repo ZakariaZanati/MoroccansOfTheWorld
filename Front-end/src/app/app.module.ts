@@ -25,6 +25,9 @@ import { UserDetailsComponent } from './auth/user-details/user-details.component
 import { RouterModule, ROUTES } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
 import { LikeComponent } from './like/like.component';
+import { ViewGroupComponent } from './groups/view-group/view-group.component';
+import { CreateGroupComponent } from './groups/create-group/create-group.component';
+import { ListGroupComponent } from './groups/list-group/list-group.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,10 @@ import { LikeComponent } from './like/like.component';
     CommentComponent,
     UserDetailsComponent,
     ProfileComponent,
-    LikeComponent
+    LikeComponent,
+    ViewGroupComponent,
+    CreateGroupComponent,
+    ListGroupComponent
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,8 @@ import { UserProfileComponent } from './auth/user-profile/user-profile.component
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 import { UserDetailsComponent } from './auth/user-details/user-details.component';
 import { ProfileComponent } from './profile/profile.component';
+import {ViewGroupComponent} from './groups/view-group/view-group.component';
+import {ListGroupComponent} from './groups/list-group/list-group.component';
 
 const routes: Routes = [
   {path : '',component : HomeComponent},
@@ -17,7 +19,9 @@ const routes: Routes = [
   {path : 'newsfeed',component : NewsfeedComponent,canActivate:[AuthGuard]},
   {path : 'profile',component : UserProfileComponent,canActivate:[AuthGuard]},
   {path : 'profile/:name',component : ProfileComponent,canActivate:[AuthGuard]},
-  {path : 'userdetails',component : UserDetailsComponent,canActivate:[AuthGuard]}
+  {path : 'userdetails',component : UserDetailsComponent,canActivate:[AuthGuard]},
+  {path : 'group',component : ViewGroupComponent},
+  {path : 'groups',component : ListGroupComponent}
 ];
 
 @NgModule({

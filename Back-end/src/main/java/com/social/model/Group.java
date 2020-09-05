@@ -22,7 +22,7 @@ public class Group {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
-    @NotBlank(message = "Community name is required")
+    @NotBlank(message = "Group name is required")
     private String name;
     @NotBlank(message = "Description is required")
     private String description;
@@ -37,4 +37,8 @@ public class Group {
             inverseJoinColumns = @JoinColumn(name = "userId")
     )
     private Set<User> users;
+
+    @ManyToOne
+    @JoinColumn(name = "providerId",referencedColumnName = "userId")
+    private Provider provider;
 }

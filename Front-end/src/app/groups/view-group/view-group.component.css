@@ -1,0 +1,133 @@
+.group_wrapper{
+    background-color: rgba(238, 238, 238, 0.705);
+}
+
+.group_content{
+    width: 75%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 19.5% 50% 25.5%;
+    column-gap: 2.5%;
+}
+
+
+.main_section,.right_section,.left_section{
+    display: flex;
+    flex-direction: column;
+}
+
+.group_header{
+    height: 240px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-bottom: 15px;
+    background-color: white;
+    border: 1px solid #b6b3b3;
+}
+.group_couvert{
+    height: 120px;
+    background-color: rgb(105, 105, 212);
+}
+
+.group_image{
+    width: 88px;
+    height: 88px;
+    background-color: burlywood;
+    position: absolute;
+    top: 65px;
+    left: 20px;
+}
+
+.group_title{
+    position: relative;
+    margin-top: 50px;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.user{
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    background-color: white;
+    border: 1px solid #b6b3b3;
+}
+
+.couvert{
+    height: 70px;
+}
+
+.user_image{
+    height: 80px;
+    width: 80px;    
+    background-color: thistle;
+    position: absolute;
+    top: 110px;
+    align-self: center;
+    border-radius: 50%;
+}
+.user_name{
+    align-self: center;
+    margin-top: 50px;
+    font-weight: bold;
+}
+.user_info{
+    align-self: center;
+    font-size:small ;
+}
+
+.groups_list{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    font-size: 0.8em;
+    color: rgb(126, 125, 125);
+    border: 1px solid #b6b3b3;
+}
+
+.list_title{
+    margin: 10px;
+    font-weight: bold;
+}
+.list{
+    margin-left: 10px;
+}
+
+.list>div{
+    margin-bottom: 5px;
+}
+
+.about,.admin{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border: 1px solid #b6b3b3;
+    color: rgb(95, 94, 94);
+    padding: 6px;
+    margin-bottom: 15px;
+}
+.about_title{
+    font-weight: bold;
+}
+
+.admin_title{
+    font-weight: bold;
+}
+
+.admin_content{
+    display: flex;
+    padding: 6px;
+}
+
+.admin_img{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background-color: wheat;
+    margin-right: 10px;
+}
+.admin_name{
+    font-weight: 600;
+}

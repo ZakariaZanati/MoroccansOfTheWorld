@@ -14,6 +14,10 @@ export class HeaderComponent implements OnInit {
   fullName : string;
   image : any;
   response : any;
+
+  classes:string[] = ['sidebar', 'show']
+  show : boolean = false;
+
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
@@ -35,5 +39,9 @@ export class HeaderComponent implements OnInit {
     this.authService.logout();
     this.isLoggedIn = false;
     this.router.navigateByUrl('');
+  }
+
+  toggleClass(){
+    this.show = !this.show
   }
 }

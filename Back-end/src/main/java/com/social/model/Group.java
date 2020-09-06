@@ -2,8 +2,10 @@ package com.social.model;
 
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -17,6 +19,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity(name = "groupe")
 public class Group {
     @Id
@@ -30,6 +33,9 @@ public class Group {
     @OneToMany(fetch = LAZY)
     private List<Post> posts;
     private Instant createdDate;
+    @Nullable
+    @Column(length = 1048570)
+    private byte[] imageBytes;
     @ManyToMany(fetch = LAZY)
     @JoinTable(
             name = "group_members",

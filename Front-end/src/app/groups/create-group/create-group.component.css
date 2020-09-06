@@ -15,6 +15,11 @@
     padding: 10px;
     background-color: #dbdbdb;
     font-weight: bolder;
+    display: flex;
+    justify-content: space-between;
+}
+.exit{
+    cursor: pointer;
 }
 .body{
     display: flex;

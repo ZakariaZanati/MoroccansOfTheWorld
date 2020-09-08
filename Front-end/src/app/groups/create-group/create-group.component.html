@@ -1,23 +1,35 @@
-<div class="group_wrapper">
-<div class="header">
-    <div>Create a group </div>
-    <div class="exit"><i class="fas fa-times"></i></div>
-</div>
-<div class="body">
-    <div class="img"></div>
-    <div class="img_select"></div>
-    <div class="infos">
-        <div class="name">
-            <label for="name">Groupe name</label><br>
-            <input type="text" id="name">
+<div *ngIf="show">
+    <div class="group_wrapper">
+        <div class="header">
+            <div>Create a group </div>
+            <div class="exit" (click)="cancel()"><i class="fas fa-times"></i></div>
         </div>
-        <div class="description">
-            <label for="desc">Groupe description</label><br>
-            <textarea name="desc" id="desc" cols="30" rows="6"></textarea>
-        </div>
+        <form [formGroup]="createGroupForm" (ngSubmit)="createGroup()">
+            <div class="body">
+                <div class="img">
+                    <div *ngIf="imgURL; else elseBlock">
+                        <img [src]="imgURL">
+                    </div>
+                    <ng-template #elseBlock><img src="../../../assets/defaultpng.png"></ng-template>
+                    <input #file type="file" id="file" (change)="onFileChanged($event)" (change)="preview(file.files)">
+                    <label for="file"><i class="fas fa-edit"></i></label>
+                </div>
+                <div class="img_select"></div>
+                <div class="infos">
+                    <div class="name">
+                        <label for="name">Groupe name</label><br>
+                        <input [formControlName]="'name'" type="text" id="name">
+                    </div>
+                    <div class="description">
+                        <label for="desc">Groupe description</label><br>
+                        <textarea [formControlName]="'description'" name="desc" id="desc" cols="30" rows="6"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <button type="submit">Create</button>
+            </div>
+        </form>
+        
     </div>
-</div>
-<div class="footer">
-    <button type="submit">Create</button>
-</div>
 </div>

@@ -2,7 +2,7 @@
     <div class="list_content">
         <div class="list_header">Groups List</div>
         <div class="options">
-            <div class="create_group"><i class="fas fa-plus"></i> Create group</div>
+            <div class="create_group" (click)="addGroup()"><i class="fas fa-plus"></i> Create group</div>
         </div>
         <div class="group_container">
             <div class="group_img"></div>
@@ -34,6 +34,8 @@
         </div>
     </div>
 </div>
-<app-create-group></app-create-group>
+<div *ngIf="showForm">
+    <app-create-group></app-create-group>
+</div>
 
 

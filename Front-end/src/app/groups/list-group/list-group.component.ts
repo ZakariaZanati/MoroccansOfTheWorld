@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListGroupComponent implements OnInit {
 
+  showForm : boolean = false;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  addGroup(){
+    this.showForm = !this.showForm
   }
 
 }

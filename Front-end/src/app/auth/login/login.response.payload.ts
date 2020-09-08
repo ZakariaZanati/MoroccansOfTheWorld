@@ -4,5 +4,6 @@ export interface LoginResponse {
     expiresAt : Date,
     username : string,
     completed : boolean,
-    fullName : string
+    fullName : string,
+    userType : string
 }

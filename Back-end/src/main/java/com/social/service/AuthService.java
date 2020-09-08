@@ -164,6 +164,7 @@ public class AuthService {
                     .username(loginRequest.getUsername())
                     .completed(this.getCurrentUser().isCompleted())
                     .fullName(this.getCurrentUser().getFirstName()+" "+this.getCurrentUser().getLastName())
+                    .userType(this.getCurrentUser().getUserType().toString())
                     .build();
     }
 

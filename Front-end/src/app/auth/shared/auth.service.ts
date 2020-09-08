@@ -41,7 +41,8 @@ export class AuthService {
         this.localStorage.store('refreshToken',data.refreshToken);
         this.localStorage.store('expiresAt',data.expiresAt);
         this.localStorage.store('completed',data.completed);
-        this.localStorage.store('fullName',data.fullName)
+        this.localStorage.store('fullName',data.fullName);
+        this.localStorage.store('userType',data.userType);
 
         this.loggedIn.emit(true);
         this.username.emit(data.username);
@@ -105,6 +106,10 @@ export class AuthService {
 
   getUserName(){
     return this.localStorage.retrieve('username');
+  }
+
+  getUserType(){
+    return this.localStorage.retrieve('userType');
   }
 
   getJwtToken(){

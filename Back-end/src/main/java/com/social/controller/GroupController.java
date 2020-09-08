@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/group")
+@RequestMapping("/api/groups")
 public class GroupController {
     @Autowired
     private GroupService groupService;

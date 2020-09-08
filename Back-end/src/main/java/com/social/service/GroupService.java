@@ -29,14 +29,27 @@ public class GroupService {
     public void save(MultipartFile file,String name,String description) throws IOException {
         User user = authService.getCurrentUser();
         if (user.getUserType().equals(UserType.PROVIDER)){
-            Group group = Group.builder()
-                    .adminUserName(user.getUsername())
-                    .createdDate(Instant.now())
-                    .name(name)
-                    .description(description)
-                    .imageBytes(file.getBytes())
-                    .provider((Provider) user)
-                    .build();
+            Group group;
+            if (file != null){
+                group = Group.builder()
+                        .adminUserName(user.getUsername())
+                        .createdDate(Instant.now())
+                        .name(name)
+                        .description(description)
+                        .imageBytes(file.getBytes())
+                        .provider((Provider) user)
+                        .build();
+            }
+            else{
+                group = Group.builder()
+                        .adminUserName(user.getUsername())
+                        .createdDate(Instant.now())
+                        .name(name)
+                        .description(description)
+                        .provider((Provider) user)
+                        .build();
+            }
+
             groupRepository.save(group);
         }
         else throw new UserTypeException("Operation not allowed for this type of user");

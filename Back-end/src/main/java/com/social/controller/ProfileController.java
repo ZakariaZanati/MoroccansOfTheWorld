@@ -86,7 +86,7 @@ public class ProfileController {
         System.out.println("get image");
         //final Optional<Image> retrieveImage = imageRepository.findByUser(this.getCurrentUser());
         Optional<User> user = userRepository.findByUsername(userName);
-        Image img = new Image(user.get().getImage().getName(),user.get().getImage().getType(),decompressBytes(user.get().getImage().getPicByte()));
+        Image img = new Image(user.get().getImage().getName(),user.get().getImage().getType(),decompressBytes(user.get().getImage().getPicByte()) );
 
         return new ResponseEntity<>(img,HttpStatus.OK);
     }

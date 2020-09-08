@@ -19,5 +19,6 @@ public class AuthenticationResponse {
     private String refreshToken;
     private boolean completed;
     private String fullName;
+    private String userType;
 
 }

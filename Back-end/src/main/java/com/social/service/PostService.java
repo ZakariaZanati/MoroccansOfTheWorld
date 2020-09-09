@@ -3,8 +3,10 @@ package com.social.service;
 import com.social.dto.PostResponse;
 import com.social.exceptions.SpringRedditException;
 import com.social.mapper.PostMapper;
+import com.social.model.Group;
 import com.social.model.Post;
 import com.social.model.User;
+import com.social.repository.GroupRepository;
 import com.social.repository.PostRepository;
 import com.social.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +21,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.time.Instant;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.zip.Deflater;
 
@@ -32,6 +35,9 @@ public class PostService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private GroupRepository groupRepository;
 
     @Autowired
     private PostMapper postMapper;
@@ -58,6 +64,35 @@ public class PostService {
                     .description(description)
                     .likeCount(0)
                     .user(this.getCurrentUser())
+                    .build();
+        }
+        postRepository.save(post);
+    }
+
+    @Transactional
+    public void saveToGroup(MultipartFile file,String description,Long id) throws IOException {
+        Post post;
+        Optional<Group> group = groupRepository.findById(id);
+
+        if (file != null){
+            post = Post.builder()
+                    .createdDate(Instant.now())
+                    .description(description)
+                    .likeCount(0)
+                    .imageName(file.getOriginalFilename())
+                    .imageType(file.getContentType())
+                    .imageBytes(file.getBytes())
+                    .user(this.getCurrentUser())
+                    .group(group.get())
+                    .build();
+        }
+        else{
+            post = Post.builder()
+                    .createdDate(Instant.now())
+                    .description(description)
+                    .likeCount(0)
+                    .user(this.getCurrentUser())
+                    .group(group.get())
                     .build();
         }
         postRepository.save(post);
@@ -90,7 +125,7 @@ public class PostService {
 
     @Transactional(readOnly = true)
     public List<PostResponse> getAllPosts() {
-        return  postRepository.findAllByOrderByCreatedDateDesc()
+        return  postRepository.findAllByGroupIsNullOrderByCreatedDateDesc()
                     .stream()
                     .map(postMapper::mapToDto)
                     .collect(Collectors.toList());
@@ -99,6 +134,14 @@ public class PostService {
     @Transactional(readOnly = true)
     public List<PostResponse> getAllPostsByUser(User user){
         return postRepository.findByUserOrderByCreatedDateDesc(user)
+                .stream()
+                .map(postMapper::mapToDto)
+                .collect(Collectors.toList());
+    }
+
+    @Transactional(readOnly = true)
+    public List<PostResponse> getAllPostsByGroup(Group group){
+        return postRepository.findAllByGroup(group)
                 .stream()
                 .map(postMapper::mapToDto)
                 .collect(Collectors.toList());

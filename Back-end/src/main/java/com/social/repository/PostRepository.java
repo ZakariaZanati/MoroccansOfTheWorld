@@ -15,4 +15,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     List<Post> findByUserOrderByCreatedDateDesc(User user);
 
     List<Post> findAllByOrderByCreatedDateDesc();
+
+    List<Post> findAllByGroupIsNullOrderByCreatedDateDesc();
+
 }

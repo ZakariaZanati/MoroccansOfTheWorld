@@ -21,16 +21,21 @@
                 <div class="group_couvert">
 
                 </div>
-                <div class="group_image"></div>
-                <div class="group_title">GROUP EXAMPLE</div>
+                <div class="group_image">
+                    <div *ngIf="group.imageBytes; else elseBlock">
+                        <img [src]="group.imageBytes" alt="">
+                    </div>
+                    <ng-template #elseBlock><img src="../../../assets/defaultpng.png"></ng-template>
+                </div>
+                <div class="group_title">{{group.name}}</div>
             </div>
             <app-create-post></app-create-post>
-
+            <app-view-posts [posts]="posts"></app-view-posts>
         </div>
         <div class="right_section">
             <div class="about">
                 <div class="about_title">About this group</div>
-                <div class="about_content">'Emploi au maroc'  groupe de recherche d'emploi et recrutement au maroc.</div>
+                <div class="about_content">{{group.description}}</div>
             </div>
             <div class="admin">
                 <div class="admin_title">Group Admin</div>

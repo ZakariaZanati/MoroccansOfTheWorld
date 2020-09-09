@@ -1,7 +1,9 @@
 package com.social.controller;
 
 import com.social.dto.PostResponse;
+import com.social.model.Group;
 import com.social.model.User;
+import com.social.repository.GroupRepository;
 import com.social.repository.PostRepository;
 import com.social.repository.UserRepository;
 import com.social.service.AuthService;
@@ -29,6 +31,9 @@ public class PostController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private GroupRepository groupRepository;
+
     @PostMapping
     public ResponseEntity<Void> createPost(@RequestPart(value = "postImage",required = false) MultipartFile file,
                                            @RequestPart("postDescription") String text) throws IOException {
@@ -37,6 +42,21 @@ public class PostController {
         postService.save(file,text);
 
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @PostMapping("group/{id}")
+    public ResponseEntity<Void> createGroupPost(@RequestPart(value = "postImage",required = false) MultipartFile file,
+                                                @RequestPart("postDescription") String text,
+                                                @PathVariable("id") Long id) throws IOException {
+
+        postService.saveToGroup(file, text, id);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @GetMapping("group/{id}")
+    public ResponseEntity<List<PostResponse>> getAllGroupPosts(@PathVariable("id") Long id){
+        Optional<Group> group = groupRepository.findById(id);
+        return ResponseEntity.status(HttpStatus.OK).body(postService.getAllPostsByGroup(group.get()));
     }
 
     @GetMapping
@@ -54,5 +74,7 @@ public class PostController {
         Optional<User> user = userRepository.findByUsername(userName);
         return ResponseEntity.status(HttpStatus.OK).body(postService.getAllPostsByUser(user.get()));
     }
+
+
 
 }

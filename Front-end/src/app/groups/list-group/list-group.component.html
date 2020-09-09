@@ -4,34 +4,21 @@
         <div class="options">
             <div class="create_group" (click)="addGroup()"><i class="fas fa-plus"></i> Create group</div>
         </div>
-        <div class="group_container">
-            <div class="group_img"></div>
-            <div class="group_infos">
-                <div class="title">Emploi Maroc</div>
-                <div class="description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. At quod voluptas ab in vel a rem dolor eos? Ma</div>
+        <div *ngFor="let group of groups">
+            <div class="group_container">
+                <div class="group_img">
+                    <div *ngIf="group.imageBytes; else elseBlock">
+                        <img [src]="group.imageBytes" alt="">
+                    </div>
+                    <ng-template #elseBlock><img src="../../../assets/defaultpng.png"></ng-template>
+                </div>
+                <div class="group_infos">
+                    <div class="title"><a [routerLink]="['/group',group.id]"> {{group.name}}</a></div>
+                    <div class="description">{{group.description}}</div>
+                </div>
             </div>
         </div>
-        <div class="group_container">
-            <div class="group_img"></div>
-            <div class="group_infos">
-                <div class="title">Emploi Maroc</div>
-                <div class="description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. At quod voluptas ab in vel a rem dolor eos? Ma</div>
-            </div>
-        </div>
-        <div class="group_container">
-            <div class="group_img"></div>
-            <div class="group_infos">
-                <div class="title">Emploi Maroc</div>
-                <div class="description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. At quod voluptas ab in vel a rem dolor eos? Ma</div>
-            </div>
-        </div>
-        <div class="group_container">
-            <div class="group_img"></div>
-            <div class="group_infos">
-                <div class="title">Emploi Maroc</div>
-                <div class="description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. At quod voluptas ab in vel a rem dolor eos? Ma</div>
-            </div>
-        </div>
+        
     </div>
 </div>
 <div *ngIf="showForm">

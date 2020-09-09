@@ -38,8 +38,9 @@
 .group_img{
     width: 88px;
     height: 88px;
-    background-color: wheat;
     margin-right: 10px;
+    position: relative;
+    border: 1px solid black;
 }
 
 .group_infos{
@@ -57,5 +58,11 @@
 
 .create_group{
     cursor: pointer;
+}
+
+img{
+    width: 86px;
+    height: 86px;
+    position: relative;
 }
 

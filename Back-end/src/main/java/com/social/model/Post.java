@@ -39,7 +39,7 @@ public class Post {
     private byte[] imageBytes;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "id", referencedColumnName = "id")
+    @JoinColumn(name = "groupId", referencedColumnName = "id")
     private Group group;
 
     @ManyToOne(fetch = LAZY)

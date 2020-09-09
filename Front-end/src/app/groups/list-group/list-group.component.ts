@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {GroupModel} from '../group-model';
+import {GroupService} from '../group.service';
 
 @Component({
   selector: 'app-list-group',
@@ -8,7 +10,18 @@ import { Component, OnInit } from '@angular/core';
 export class ListGroupComponent implements OnInit {
 
   showForm : boolean = false;
-  constructor() { }
+  groups : Array<GroupModel> = [];
+  constructor(private groupService : GroupService) {
+    this.groupService.getAllGroups().subscribe(data => {
+      this.groups = data
+      this.groups.map(group => {
+        const img = group.imageBytes;
+        if (img) {
+          group.imageBytes = "data:image/jpeg;base64,"+group.imageBytes
+        }
+      })
+    })
+   }
 
   ngOnInit(): void {
   }

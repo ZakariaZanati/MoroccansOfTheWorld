@@ -4,7 +4,7 @@ import {PostService} from '../../shared/post.service';
 import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms';
 import { throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-create-post',
@@ -15,14 +15,16 @@ export class CreatePostComponent implements OnInit {
 
   createPostForm: FormGroup;
   file : File;
+  id : number;
 
   constructor(private postService:PostService,private formBuilder : FormBuilder,private http:HttpClient,
-    private router: Router) {
+    private router: Router,private activatedRoute: ActivatedRoute) {
     
   }
 
   ngOnInit(): void {
   
+    console.log(this.activatedRoute.snapshot.params.id)
     this.createPostForm = this.formBuilder.group({
       postImage : [''],
       description : ['']
@@ -39,13 +41,25 @@ export class CreatePostComponent implements OnInit {
     const uploadPost = new FormData();
     uploadPost.append('postImage',this.createPostForm.get('postImage').value);
     uploadPost.append('postDescription',this.createPostForm.get('description').value);
-    this.http.post<any>('http://localhost:8181/api/posts/',uploadPost).subscribe(data=>{
-      console.log(data)
-      this.ngOnInit()
-      window.location.reload();
-    },err=>{
-      console.log(err)
-    });
+    if (this.activatedRoute.snapshot.params.id) {
+      this.id = this.activatedRoute.snapshot.params.id;
+      this.http.post<any>('http://localhost:8181/api/posts/group/'+this.id,uploadPost).subscribe(data=>{
+        console.log(data)
+        window.location.reload();
+      },err=>{
+        console.log(err)
+      });
+    }
+    else {
+      this.http.post<any>('http://localhost:8181/api/posts/',uploadPost).subscribe(data=>{
+        console.log(data)
+        this.ngOnInit()
+        window.location.reload();
+      },err=>{
+        console.log(err)
+      });
+    }
+    
     
   }
 

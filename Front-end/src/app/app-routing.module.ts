@@ -20,8 +20,8 @@ const routes: Routes = [
   {path : 'profile',component : UserProfileComponent,canActivate:[AuthGuard]},
   {path : 'profile/:name',component : ProfileComponent,canActivate:[AuthGuard]},
   {path : 'userdetails',component : UserDetailsComponent,canActivate:[AuthGuard]},
-  {path : 'group',component : ViewGroupComponent},
-  {path : 'groups',component : ListGroupComponent}
+  {path : 'group/:id',component : ViewGroupComponent,canActivate:[AuthGuard]},
+  {path : 'groups',component : ListGroupComponent,canActivate:[AuthGuard]}
 ];
 
 @NgModule({

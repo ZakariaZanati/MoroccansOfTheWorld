@@ -38,6 +38,11 @@
     top: 65px;
     left: 20px;
 }
+.group_image img{
+    width: 88px;
+    height: 88px;
+    position: relative;
+}
 
 .group_title{
     position: relative;

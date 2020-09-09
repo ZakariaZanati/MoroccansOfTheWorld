@@ -62,6 +62,8 @@ public abstract class PostMapper {
 
     byte[] getImage(String username){
         User user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User name not found - " + username));;
+        if (user.getImage() == null)
+            return null;
         return ProfileController.decompressBytes(user.getImage().getPicByte());
     }
 }

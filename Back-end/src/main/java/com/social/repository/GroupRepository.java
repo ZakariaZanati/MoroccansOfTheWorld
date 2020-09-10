@@ -13,7 +13,6 @@ public interface GroupRepository extends JpaRepository<Group,Long> {
 
     List<Group> findAll();
 
-    List<Group> findAllByUsersIn(Collection<Set<User>> users);
-
     Optional<Group> findById(Long id);
+
 }

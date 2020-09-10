@@ -1,11 +1,11 @@
 package com.social.service;
 
+import com.social.dto.GroupResponse;
 import com.social.exceptions.UserTypeException;
-import com.social.model.Group;
-import com.social.model.Provider;
-import com.social.model.User;
-import com.social.model.UserType;
+import com.social.mapper.GroupMapper;
+import com.social.model.*;
 import com.social.repository.GroupRepository;
+import com.social.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +14,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -25,6 +30,12 @@ public class GroupService {
 
     @Autowired
     private AuthService authService;
+
+    @Autowired
+    private GroupMapper groupMapper;
+
+    @Autowired
+    private UserRepository userRepository;
 
     public void save(MultipartFile file,String name,String description) throws IOException {
         User user = authService.getCurrentUser();
@@ -54,4 +65,71 @@ public class GroupService {
         }
         else throw new UserTypeException("Operation not allowed for this type of user");
     }
+
+    public void sendRequest(Group group){
+        User user = authService.getCurrentUser();
+        UserGroup userGroup = new UserGroup(group,user,Status.REQUESTED,Instant.now());
+        System.out.println(userGroup.toString());
+        //userGroupRepository.save(userGroup);
+        Set<UserGroup> userGroups = new HashSet<>();
+        userGroups.add(userGroup);
+        group.setUserGroups(userGroups);
+    }
+
+    public List<User> viewRequests(Group group){
+        Set<UserGroup> userGroups = group.getUserGroups();
+        System.out.println(userGroups);
+        List<User> users = new ArrayList<>();
+        for (UserGroup usergroup:
+             userGroups) {
+            if (usergroup.getStatus().equals(Status.REQUESTED)){
+                users.add(usergroup.getUser());
+            }
+        }
+
+        return users;
+    }
+
+    public void respondToRequest(Status status,Group group,User user){
+        Set<UserGroup> userGroups = user.getUserGroups();
+        for (UserGroup usergroup:
+             userGroups) {
+            if (usergroup.getGroup().equals(group)){
+                usergroup.setStatus(status);
+            }
+        }
+        user.setUserGroups(userGroups);
+        userRepository.save(user);
+    }
+
+    public String getStatus(Group group){
+        Set<UserGroup> userGroups = authService.getCurrentUser().getUserGroups();
+        for (UserGroup usergroup:
+                userGroups) {
+            if (usergroup.getGroup().equals(group)){
+                return usergroup.getStatus().name();
+            }
+        }
+        return "NotRequested";
+    }
+
+    public List<GroupResponse> getAllGroups(){
+        return groupRepository.findAll()
+                .stream()
+                .map(groupMapper::mapToDto)
+                .collect(Collectors.toList());
+    }
+
+    public GroupResponse getGroup(Group group){
+        return GroupResponse.builder()
+                .id(group.getId())
+                .description(group.getDescription())
+                .name(group.getName())
+                .adminUserName(group.getAdminUserName())
+                .imageBytes(group.getImageBytes())
+                .build();
+
+    }
+
+
 }

@@ -63,16 +63,17 @@ public class User {
 
     @Nullable
     @JsonIgnore
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "image_id")
     private Image image;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private Set<Like> likes = new HashSet<>();
 
-
-    @ManyToMany(mappedBy = "users")
-    private Set<Group> groups;
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<UserGroup> userGroups = new HashSet<>();
 
     public Long getUserId() {
         return userId;
@@ -244,11 +245,12 @@ public class User {
         this.likes = likes;
     }
 
-    public Set<Group> getGroups() {
-        return groups;
+
+    public Set<UserGroup> getUserGroups() {
+        return userGroups;
     }
 
-    public void setGroups(Set<Group> groups) {
-        this.groups = groups;
+    public void setUserGroups(Set<UserGroup> userGroups) {
+        this.userGroups = userGroups;
     }
 }

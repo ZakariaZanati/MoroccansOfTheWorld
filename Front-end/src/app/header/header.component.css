@@ -8,6 +8,10 @@
     border-bottom: 3px solid black;
 }
 
+.logo{
+    width: 300px;
+}
+
 .nav-bar .sign-in-container{
     display: flex;
     align-items: center;
@@ -18,7 +22,7 @@
 .btn{
     position: absolute;
     top: 15px;
-    left: 260px;
+    left: 280px;
 
     height: 45px;
     width: 45px;
@@ -36,6 +40,7 @@
     color: white;
     font-size: 28px;
 }
+
 .btn.click span:before{
     content: '\f00d';
 }

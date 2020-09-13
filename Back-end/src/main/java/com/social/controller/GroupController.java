@@ -42,7 +42,7 @@ public class GroupController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PostMapping("/request/{id}")
+    @GetMapping("/request/{id}")
     public ResponseEntity.BodyBuilder sendRequest(@PathVariable("id") Long id){
         //System.out.println("send request");
         groupService.sendRequest(groupRepository.findById(id).get());
@@ -68,7 +68,7 @@ public class GroupController {
             groupService.respondToRequest(Status.REJECTED,groupRepository.findById(id).get(),user);
         }
 
-        return ResponseEntity.status(HttpStatus.OK);
+        return ResponseEntity.accepted();
     }
 
     @GetMapping("/request/status/{id}")

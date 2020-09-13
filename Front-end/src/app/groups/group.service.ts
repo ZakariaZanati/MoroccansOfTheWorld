@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import {GroupModel} from './group-model';
 import {PostModel} from '../shared/post-model';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -29,5 +30,21 @@ export class GroupService {
 
   getGroupPosts(id : number):Observable<Array<PostModel>>{
     return this.http.get<Array<PostModel>>('http://localhost:8181/api/posts/group/'+id)
+  }
+
+  sendRequest(id : number){
+    return this.http.get('http://localhost:8181/api/groups/request/'+id);
+  }
+
+  public getRequestStatus(id : number){
+    return this.http.get('http://localhost:8181/api/groups/request/status/'+id,{responseType : 'text'});
+  }
+
+  getAllRequests(id : number){
+    return this.http.get('http://localhost:8181/api/groups/requests/'+id);
+  }
+
+  respondToRequest(id : number,response : FormData){
+    return this.http.post('http://localhost:8181/api/groups/respond/'+id,response);
   }
 }

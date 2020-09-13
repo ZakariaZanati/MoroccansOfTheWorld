@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {GroupModel} from '../group-model';
 import {GroupService} from '../group.service';
+import {AuthService} from '../../auth/shared/auth.service'
 
 @Component({
   selector: 'app-list-group',
@@ -11,7 +12,12 @@ export class ListGroupComponent implements OnInit {
 
   showForm : boolean = false;
   groups : Array<GroupModel> = [];
-  constructor(private groupService : GroupService) {
+  userType : string;
+
+  constructor(private groupService : GroupService,private authService : AuthService) {
+
+    this.userType = authService.getUserType();
+
     this.groupService.getAllGroups().subscribe(data => {
       this.groups = data
       this.groups.map(group => {

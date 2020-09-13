@@ -4,9 +4,12 @@
       <div class="profil-1" >
           <span class="pers">Personnal Informations</span>
           <div class="profile-img">
-            <div *ngIf=retrievedImage>
+            <div *ngIf="retrievedImage; else elseBlock">
                 <img [src]="retrievedImage" class="img"/>
             </div>
+            <ng-template #elseBlock>
+                <img src="../../assets/defaultpng.png" class="img" alt="">
+            </ng-template>
           </div>
           <div class="infos">
               <div class="info">

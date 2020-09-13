@@ -77,3 +77,8 @@ input[type="file"]{
     justify-content: space-between;
     margin-bottom: 5px;
 }
+
+.image img{
+    width: 100%;
+    margin-bottom: 20px;
+}

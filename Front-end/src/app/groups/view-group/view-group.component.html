@@ -1,12 +1,14 @@
 <div class="group_wrapper">
     <div class="group_content">
         <div class="left_section">
+            <!--
             <div class="user">
                 <div class="couvert" style="background-color: aqua;"></div>
                 <div class="user_image"></div>
                 <div class="user_name">Zakaria Zanati</div>
                 <div class="user_info">Joined from : mai 2020</div>
             </div>
+            -->
             <div class="groups_list">
                 <div class="list_title">Groupes</div>
                 <div class="list">
@@ -15,11 +17,12 @@
                     <div><i class="fas fa-users"></i> Software & Technology</div>
                 </div>
             </div>
+        
         </div>
         <div class="main_section">
             <div class="group_header">
                 <div class="group_couvert">
-
+                    <img src='../../../assets/unnamed.jpg' style="width: 100%; height: 100%; position: relative;" alt="">
                 </div>
                 <div class="group_image">
                     <div *ngIf="group.imageBytes; else elseBlock">
@@ -28,9 +31,20 @@
                     <ng-template #elseBlock><img src="../../../assets/defaultpng.png"></ng-template>
                 </div>
                 <div class="group_title">{{group.name}}</div>
+                <div class="join_button">
+                    <button *ngIf="requestStatus == 'NotRequested'" type="submit" (click)="joinGroup()">Join</button>
+                    <div *ngIf="requestStatus=='REQUESTED'"><i class="far fa-clock"></i> Pending</div>
+                </div>
             </div>
-            <app-create-post></app-create-post>
-            <app-view-posts [posts]="posts"></app-view-posts>
+            
+            <app-create-post *ngIf="requestStatus == 'JOINED'"></app-create-post>
+            <app-view-posts *ngIf="requestStatus == 'JOINED'" [posts]="posts"></app-view-posts>
+            <div *ngIf="requestStatus != 'JOINED'" class="forbidden">
+                <div>
+                    <i class="fas fa-lock"></i>
+                    <span>Join this group to view the content</span>
+                </div>
+            </div>
         </div>
         <div class="right_section">
             <div class="about">
@@ -40,10 +54,12 @@
             <div class="admin">
                 <div class="admin_title">Group Admin</div>
                 <div class="admin_content">
-                    <div class="admin_img"></div>
+                    <div class="admin_img">
+                        <img [src] ="retrievedImage" class="img">
+                    </div>
                     <div class="admin_infos">
-                        <div class="admin_name">Zakaria Zanati</div>
-                        <div class="admin_job">Sotware engineer</div>
+                        <div class="admin_name"><a [routerLink]="['/profile',username]">{{firstName}} {{lastName}}</a> </div>
+                        <div class="admin_job">{{currentJob}}</div>
                     </div>
                 </div>
             </div>

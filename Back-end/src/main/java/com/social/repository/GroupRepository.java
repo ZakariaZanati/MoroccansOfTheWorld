@@ -1,18 +1,21 @@
 package com.social.repository;
 
 import com.social.model.Group;
-import com.social.model.User;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 public interface GroupRepository extends JpaRepository<Group,Long> {
 
-    List<Group> findAll();
+    //List<Group> findAll();
 
     Optional<Group> findById(Long id);
+
+    Iterable<Group> findAll(SpringDataWebProperties.Sort sort);
+    Page<Group> findAll(Pageable pageable);
 
 }

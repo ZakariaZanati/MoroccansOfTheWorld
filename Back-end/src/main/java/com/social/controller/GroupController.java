@@ -1,6 +1,7 @@
 package com.social.controller;
 
 import com.social.dto.GroupResponse;
+import com.social.dto.UserInfos;
 import com.social.model.Group;
 import com.social.model.Status;
 import com.social.model.User;
@@ -50,13 +51,13 @@ public class GroupController {
     }
 
     @GetMapping("/requests/{id}")
-    public ResponseEntity<List<User>> viewRequests(@PathVariable("id") Long id){
+    public ResponseEntity<List<UserInfos>> viewRequests(@PathVariable("id") Long id){
         Optional<Group> group = groupRepository.findById(id);
         return ResponseEntity.status(HttpStatus.OK).body(groupService.viewRequests(group.get()));
     }
 
     @PostMapping("/respond/{id}")
-    public ResponseEntity.BodyBuilder respondToRequest(@PathVariable("id") Long id,
+    public ResponseEntity<Void> respondToRequest(@PathVariable("id") Long id,
                                                  @RequestPart("userName")String userName,
                                                  @RequestPart("response")String response){
         User user = userRepository.findByUsername(userName).get();
@@ -68,7 +69,7 @@ public class GroupController {
             groupService.respondToRequest(Status.REJECTED,groupRepository.findById(id).get(),user);
         }
 
-        return ResponseEntity.accepted();
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @GetMapping("/request/status/{id}")

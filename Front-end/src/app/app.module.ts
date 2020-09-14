@@ -28,6 +28,7 @@ import { LikeComponent } from './like/like.component';
 import { ViewGroupComponent } from './groups/view-group/view-group.component';
 import { CreateGroupComponent } from './groups/create-group/create-group.component';
 import { ListGroupComponent } from './groups/list-group/list-group.component';
+import { JoinRequestsComponent } from './groups/join-requests/join-requests.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { ListGroupComponent } from './groups/list-group/list-group.component';
     LikeComponent,
     ViewGroupComponent,
     CreateGroupComponent,
-    ListGroupComponent
+    ListGroupComponent,
+    JoinRequestsComponent
   ],
   imports: [
     BrowserModule,

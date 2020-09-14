@@ -1,8 +1,10 @@
 package com.social.service;
 
 import com.social.dto.GroupResponse;
+import com.social.dto.UserInfos;
 import com.social.exceptions.UserTypeException;
 import com.social.mapper.GroupMapper;
+import com.social.mapper.UserMapper;
 import com.social.model.*;
 import com.social.repository.GroupRepository;
 import com.social.repository.UserRepository;
@@ -36,6 +38,9 @@ public class GroupService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private UserMapper userMapper;
 
     public void save(MultipartFile file,String name,String description) throws IOException {
         User user = authService.getCurrentUser();
@@ -76,7 +81,7 @@ public class GroupService {
         group.setUserGroups(userGroups);
     }
 
-    public List<User> viewRequests(Group group){
+    public List<UserInfos> viewRequests(Group group){
         Set<UserGroup> userGroups = group.getUserGroups();
         System.out.println(userGroups);
         List<User> users = new ArrayList<>();
@@ -87,7 +92,9 @@ public class GroupService {
             }
         }
 
-        return users;
+        return users.stream()
+                .map(userMapper::mapToDto)
+                .collect(Collectors.toList());
     }
 
     public void respondToRequest(Status status,Group group,User user){

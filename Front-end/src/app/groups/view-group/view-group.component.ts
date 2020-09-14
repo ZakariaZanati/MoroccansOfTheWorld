@@ -28,6 +28,7 @@ export class ViewGroupComponent implements OnInit {
   firstName : String;
   lastName : String;
   currentJob? : String;
+  isAdmin : boolean;
   constructor(private groupService : GroupService,private activatedRoute: ActivatedRoute,private authService : AuthService) {
       
    }
@@ -55,7 +56,8 @@ export class ViewGroupComponent implements OnInit {
         this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
       })
       if (this.authService.getUserName() == this.admin) {
-        this.requestStatus = 'JOINED'
+        this.requestStatus = 'JOINED';
+        this.isAdmin = true;
       }
       else{
       this.groupService.getRequestStatus(this.id).subscribe(status => {

@@ -1,0 +1,19 @@
+<div class="requests" *ngIf="requests.length != 0">
+    <div class="request" *ngFor="let request of requests">
+        <div class="image">
+            <div class="img">
+                <div *ngIf="request.image; else elseBlock">
+                    <img [src]="request.image" alt="">
+                </div>
+                <ng-template #elseBlock><img src="../../../assets/defaultpng.png"></ng-template>
+            </div>
+        </div>
+        <div class="response">
+            <div class="name">{{request.firstName}} {{request.lastName}}</div>
+            <div class="buttons">
+                <button class="accept" (click)="requestResponse(request.username,'accepted')"><i class="fas fa-check"></i></button>
+                <button class="reject" (click)="requestResponse(request.username,'rejected')"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+    </div>
+</div>

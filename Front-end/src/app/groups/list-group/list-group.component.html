@@ -1,8 +1,11 @@
 <div class="list_wrapper">
     <div class="list_content">
         <div class="list_header">Groups List</div>
-        <div class="options">
+        <div class="add_group">
             <div *ngIf="userType.toLowerCase() == 'provider'" class="create_group" (click)="addGroup()"><i class="fas fa-plus"></i> Create group</div>
+        </div>
+        <div class="options">
+            <div class="search"><input type="search" placeholder="Search ..."><i class="fas fa-search"></i></div>
         </div>
         <div *ngFor="let group of groups">
             <div class="group_container">

@@ -20,10 +20,10 @@
     background-color: #f3f3f3;
 }
 
-.options{
+.add_group{
     background-color: #f3f3f3;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-around;
     padding-bottom: 20px;
 }
 
@@ -64,5 +64,34 @@ img{
     width: 86px;
     height: 86px;
     position: relative;
+}
+
+.options{
+    display: flex;
+    justify-content: flex-start;
+    background-color: #f3f3f3;
+    padding-bottom: 20px;
+}
+.search{
+    position: relative;
+}
+.search input{
+    border: none;
+    width: 200px;
+    padding: 6px 15px;
+    border-radius: 15px;
+}
+.search input:focus{
+    border: 1px solid gray;
+}
+.search i {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.search i:hover {
+    color: gray;
 }
 

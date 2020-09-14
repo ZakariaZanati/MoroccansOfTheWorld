@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import {GroupModel} from './group-model';
 import {PostModel} from '../shared/post-model';
+import {JoinRequest} from './join-requests/join-request.payload';
 
 
 @Injectable({
@@ -40,8 +41,8 @@ export class GroupService {
     return this.http.get('http://localhost:8181/api/groups/request/status/'+id,{responseType : 'text'});
   }
 
-  getAllRequests(id : number){
-    return this.http.get('http://localhost:8181/api/groups/requests/'+id);
+  getAllRequests(id : number):Observable<Array<JoinRequest>>{
+    return this.http.get<Array<JoinRequest>>('http://localhost:8181/api/groups/requests/'+id);
   }
 
   respondToRequest(id : number,response : FormData){

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import {GroupModel} from './group-model';
+import {GroupResponse} from './group-response';
 import {PostModel} from '../shared/post-model';
 import {JoinRequest} from './join-requests/join-request.payload';
 
@@ -23,6 +24,16 @@ export class GroupService {
 
   getAllGroups():Observable<Array<GroupModel>>{
     return this.http.get<Array<GroupModel>>('http://localhost:8181/api/groups');
+  }
+
+  getGroupsPage(pageNumber : number,pageSize : number,name : string):Observable<GroupResponse>{
+
+    let params = new HttpParams();
+    params = params.append('page',pageNumber.toString());
+    params = params.append('size', pageSize.toString());
+    params = params.append('name',name);
+
+    return this.http.get<GroupResponse>('http://localhost:8181/api/groups/pageable',{params: params});
   }
 
   getGroup(id : number):Observable<GroupModel>{

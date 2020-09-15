@@ -1,6 +1,7 @@
 package com.social.service;
 
 import com.social.dto.GroupResponse;
+import com.social.dto.GroupsResponse;
 import com.social.dto.UserInfos;
 import com.social.exceptions.UserTypeException;
 import com.social.mapper.GroupMapper;
@@ -96,6 +97,25 @@ public class GroupService {
                 .map(userMapper::mapToDto)
                 .collect(Collectors.toList());
     }
+    /*
+    public GroupsResponse getUserGroups(){
+        User user = authService.getCurrentUser();
+        Set<UserGroup> userGroups = user.getUserGroups();
+        List<Group> groups = new ArrayList<>();
+        for (UserGroup usergroup:
+             userGroups) {
+            if (usergroup.getStatus().equals(Status.JOINED)){
+                groups.add(usergroup.getGroup());
+            }
+        }
+        List<GroupResponse> groupResponses = groups.stream()
+                .map(groupMapper::mapToDto)
+                .collect(Collectors.toList());
+
+        GroupsResponse groupsResponse = new GroupsResponse()
+    }
+
+     */
 
     public void respondToRequest(Status status,Group group,User user){
         Set<UserGroup> userGroups = user.getUserGroups();

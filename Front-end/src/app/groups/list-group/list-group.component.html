@@ -5,7 +5,7 @@
             <div *ngIf="userType.toLowerCase() == 'provider'" class="create_group" (click)="addGroup()"><i class="fas fa-plus"></i> Create group</div>
         </div>
         <div class="options">
-            <div class="search"><input type="search" placeholder="Search ..."><i class="fas fa-search"></i></div>
+            <div class="search"><input (input)="onSearchChange($event.target.value)" type="search" placeholder="Search ..."><i class="fas fa-search"></i></div>
         </div>
         <div *ngFor="let group of groups">
             <div class="group_container">
@@ -21,6 +21,15 @@
                 </div>
             </div>
         </div>
+        <ul class="pagination justify-content-center">
+            <li class="page-item"><a (click)="previousClick()" class="page-link">Previous</a></li>
+            <li *ngFor='let index of pageIndexes' class="page-item" [ngClass]="active(index)">
+                    <a (click)="getPaginationWithIndex(index)" class="page-link">
+                      {{index + 1}}
+                    </a>
+            </li>
+            <li class="page-item"><a (click)="nextClick()" class="page-link">Next</a></li>
+          </ul>
         
     </div>
 </div>

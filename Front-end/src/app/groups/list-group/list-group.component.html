@@ -6,7 +6,10 @@
         </div>
         <div class="options">
             <div class="search"><input (input)="onSearchChange($event.target.value)" type="search" placeholder="Search ..."><i class="fas fa-search"></i></div>
-        </div>
+            <form><label class="checkbox-inline"><div class="current"><input type="checkbox" (change)="userGroups()"> Your groups</div></label>
+            
+        </form>
+            </div>
         <div *ngFor="let group of groups">
             <div class="group_container">
                 <div class="group_img">
@@ -29,7 +32,7 @@
                     </a>
             </li>
             <li class="page-item"><a (click)="nextClick()" class="page-link">Next</a></li>
-          </ul>
+        </ul>
         
     </div>
 </div>

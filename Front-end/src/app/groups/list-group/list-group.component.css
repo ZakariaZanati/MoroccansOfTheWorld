@@ -1,5 +1,6 @@
 .list_wrapper{
     background-color: #f3f3f3;
+    height: 900px;
     padding-bottom: 20px;
 }
 
@@ -8,7 +9,6 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    background-color: white;
 }
 
 .list_header{
@@ -33,6 +33,7 @@
     display: flex;
     padding: 10px;
     border: 1px solid rgb(192, 191, 191);
+    background-color: white;
 }
 
 .group_img{
@@ -68,7 +69,7 @@ img{
 
 .options{
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     background-color: #f3f3f3;
     padding-bottom: 20px;
 }
@@ -80,6 +81,12 @@ img{
     width: 200px;
     padding: 6px 15px;
     border-radius: 15px;
+}
+.current{
+    margin-top: 15px;
+}
+.current input{
+    width: 10px;
 }
 .search input:focus{
     border: 1px solid gray;
@@ -95,3 +102,8 @@ img{
     color: gray;
 }
 
+ul{
+    background-color:  #f3f3f3;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}

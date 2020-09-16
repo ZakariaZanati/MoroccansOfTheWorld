@@ -26,13 +26,16 @@ export class GroupService {
     return this.http.get<Array<GroupModel>>('http://localhost:8181/api/groups');
   }
 
-  getGroupsPage(pageNumber : number,pageSize : number,name : string):Observable<GroupResponse>{
+  getGroupsPage(pageNumber : number,pageSize : number,name : string,current : boolean):Observable<GroupResponse>{
 
     let params = new HttpParams();
+    console.log(current);
     params = params.append('page',pageNumber.toString());
     params = params.append('size', pageSize.toString());
+    params = params.append('current',current.toString());
     params = params.append('name',name);
-
+    
+    console.log(params)
     return this.http.get<GroupResponse>('http://localhost:8181/api/groups/pageable',{params: params});
   }
 

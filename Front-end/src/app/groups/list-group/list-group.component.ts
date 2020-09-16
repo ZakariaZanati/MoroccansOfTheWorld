@@ -19,6 +19,7 @@ export class ListGroupComponent implements OnInit {
   totalPages : number = 0;
   pageIndexes : Array<number> = [];
   name : string = "";
+  current : boolean = false;
 
   constructor(private groupService : GroupService,private authService : AuthService) {
 
@@ -38,7 +39,7 @@ export class ListGroupComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getPage(0,4,this.name);
+    this.getPage(0,4,this.name,this.current);
     
   }
 
@@ -46,10 +47,10 @@ export class ListGroupComponent implements OnInit {
     this.showForm = !this.showForm
   }
 
-  getPage(page : number,size : number,name : string){
+  getPage(page : number,size : number,name : string,current : boolean){
     
     console.log(name);
-    this.groupService.getGroupsPage(page,size,name).subscribe((response : GroupResponse)=> {
+    this.groupService.getGroupsPage(page,size,name,current).subscribe((response : GroupResponse)=> {
       console.log(response);
       this.groups = response.groups;
       this.groups.map(group => {
@@ -67,18 +68,18 @@ export class ListGroupComponent implements OnInit {
 
   nextClick(){
     if(this.currentSelectedPage < this.totalPages-1){
-      this.getPage(++this.currentSelectedPage,4,this.name);
+      this.getPage(++this.currentSelectedPage,4,this.name,this.current);
     }  
   }
 
   previousClick(){
     if(this.currentSelectedPage > 0){
-      this.getPage(--this.currentSelectedPage,4,this.name);
+      this.getPage(--this.currentSelectedPage,4,this.name,this.current);
     }  
   }
 
   getPaginationWithIndex(index: number) {
-    this.getPage(index, 4,this.name);
+    this.getPage(index, 4,this.name,this.current);
   }
 
   active(index: number) {
@@ -92,7 +93,12 @@ export class ListGroupComponent implements OnInit {
   onSearchChange(searchValue: string): void { 
     console.log(searchValue) 
     this.name = searchValue;
-    this.getPage(0,4,this.name);
+    this.getPage(0,4,this.name,this.current);
+  }
+
+  userGroups(){
+    this.current = !this.current;
+    this.getPage(0,4,"",this.current);
   }
 
 }

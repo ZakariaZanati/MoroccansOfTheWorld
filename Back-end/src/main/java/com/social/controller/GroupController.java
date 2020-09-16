@@ -7,6 +7,7 @@ import com.social.mapper.GroupMapper;
 import com.social.model.Group;
 import com.social.model.Status;
 import com.social.model.User;
+import com.social.model.UserGroup;
 import com.social.repository.GroupRepository;
 import com.social.repository.UserRepository;
 import com.social.service.AuthService;
@@ -24,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @RestController
@@ -95,14 +97,24 @@ public class GroupController {
     @GetMapping("/pageable")
     public ResponseEntity<GroupsResponse> getGroupsPage(@Param(value = "page") int page,
                                                         @Param(value = "size") int size,
-                                                        @Param(value = "name") String name){
+                                                        @Param(value = "name") String name,
+                                                        @Param(value = "current") Boolean current){
+        System.out.println(current);
         Pageable requestedPage = PageRequest.of(page,size);
         Page<Group> groups;
-        if (name.equals("")){
-            groups = groupRepository.findAll(requestedPage);
+        if (!current){
+            if (name.equals("")){
+                groups = groupRepository.findAll(requestedPage);
+            }
+            else{
+                groups = groupRepository.findByNameContains(name,requestedPage);
+            }
         }
         else{
-            groups = groupRepository.findByNameContains(name,requestedPage);
+            User user = authService.getCurrentUser();
+            Set<UserGroup> userGroups = user.getUserGroups();
+            userGroups.removeIf(usergroup -> !usergroup.getStatus().equals(Status.JOINED));
+            groups = groupRepository.findByUserGroupsIn(userGroups,requestedPage);
         }
 
         List<GroupResponse> groupResponses = groups.stream()

@@ -17,7 +17,7 @@
     align-items: center;
     justify-content: center;
     height: 100%;
-    width: 25%;
+    width: 30%;
 }
 .btn{
     position: absolute;
@@ -47,12 +47,16 @@
 
 .sign-in{
     display: flex;
-    width: 60%;
+    width: 80%;
     justify-content: space-between;
 }
-.sign-in>div{
+.sign-in>.one{
     align-self: center;
-    width: 40%;
+    width: 10%;
+}
+.sign-in>.two{
+    align-self: center;
+    width: 35%;
 }
 .sign-in div a{
     color: black;
@@ -80,13 +84,14 @@
 
 .profile{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .image{
     border-radius: 50%;
     width: 30px;
     height: 30px;
+    
 }
 .image>img{
     position: relative;

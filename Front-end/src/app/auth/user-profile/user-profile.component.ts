@@ -71,46 +71,40 @@ export class UserProfileComponent implements OnInit {
     this.selectedFile = event.target.files[0];
   }
 
-  onUpload() {
-    
-    //FormData API provides methods and properties to allow us easily prepare form data to be sent with POST HTTP requests.
-    const uploadImageData = new FormData();
-    uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
-  
-    //Make a call to the Spring Boot Application to save the image
-    this.httpClient.post('http://localhost:8181/api/user/img', uploadImageData, { observe: 'response' })
-      .subscribe((response) => {
-        if (response.status === 200) {
-          this.message = 'Image uploaded successfully';
-          console.log("image uploaded")
-          window.location.reload()
-          
-        } else {
-          this.message = 'Image not uploaded successfully';
-        }
-      }
-      );
+    onUpload() {
+      
+      //FormData API provides methods and properties to allow us easily prepare form data to be sent with POST HTTP requests.
+        const uploadImageData = new FormData();
+        uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
+      
+        //Make a call to the Spring Boot Application to save the image
+        this.httpClient.post('http://localhost:8181/api/user/img', uploadImageData, { observe: 'response' })
+          .subscribe((response) => {
+            if (response.status === 200) {
+              this.message = 'Image uploaded successfully';
+              console.log("image uploaded")
+              window.location.reload()
+              
+            } else {
+              this.message = 'Image not uploaded successfully';
+            }
+          }
+          );
     }
   updateForm(){
     this.router.navigateByUrl('/userdetails')
   }
 
 
-getImage(){
-  this.httpClient.get('http://localhost:8181/api/user/profile/img')
-      .subscribe(
-        res => {
-          this.retrieveResponse = res;
-          this.base64Data = this.retrieveResponse.picByte;
-          this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
-        }
-      );
-}
-
-
-
-
-
-
+  getImage(){
+    this.httpClient.get('http://localhost:8181/api/user/profile/img')
+        .subscribe(
+          res => {
+            this.retrieveResponse = res;
+            this.base64Data = this.retrieveResponse.picByte;
+            this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+          }
+        );
+  }
 
 }

@@ -29,6 +29,8 @@ import { ViewGroupComponent } from './groups/view-group/view-group.component';
 import { CreateGroupComponent } from './groups/create-group/create-group.component';
 import { ListGroupComponent } from './groups/list-group/list-group.component';
 import { JoinRequestsComponent } from './groups/join-requests/join-requests.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { VerificationComponent } from './verification/verification.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { JoinRequestsComponent } from './groups/join-requests/join-requests.comp
     ViewGroupComponent,
     CreateGroupComponent,
     ListGroupComponent,
-    JoinRequestsComponent
+    JoinRequestsComponent,
+    NotificationsComponent,
+    VerificationComponent
   ],
   imports: [
     BrowserModule,

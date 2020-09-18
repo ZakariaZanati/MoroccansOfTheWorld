@@ -11,6 +11,7 @@ import { UserDetailsComponent } from './auth/user-details/user-details.component
 import { ProfileComponent } from './profile/profile.component';
 import {ViewGroupComponent} from './groups/view-group/view-group.component';
 import {ListGroupComponent} from './groups/list-group/list-group.component';
+import { VerificationComponent } from './verification/verification.component';
 
 const routes: Routes = [
   {path : '',component : HomeComponent},
@@ -20,8 +21,10 @@ const routes: Routes = [
   {path : 'profile',component : UserProfileComponent,canActivate:[AuthGuard]},
   {path : 'profile/:name',component : ProfileComponent,canActivate:[AuthGuard]},
   {path : 'userdetails',component : UserDetailsComponent,canActivate:[AuthGuard]},
+  {path : 'userdetails/:verification',component : UserDetailsComponent,canActivate:[AuthGuard]},
   {path : 'group/:id',component : ViewGroupComponent,canActivate:[AuthGuard]},
-  {path : 'groups',component : ListGroupComponent,canActivate:[AuthGuard]}
+  {path : 'groups',component : ListGroupComponent,canActivate:[AuthGuard]},
+  {path : 'verification',component : VerificationComponent}
 ];
 
 @NgModule({

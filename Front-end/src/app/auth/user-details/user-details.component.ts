@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {AuthService} from '../shared/auth.service';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import {UserDetailsPayload} from './user-details.payload'
 import { tap } from 'rxjs/operators';
@@ -16,12 +16,17 @@ export class UserDetailsComponent implements OnInit {
 
   userDetailsPayload : Observable<UserDetailsPayload>;
   userDetailsForm : FormGroup;
+  verification : string;
 
-  constructor(private authService : AuthService,private router: Router,
-    private toastr : ToastrService) { 
+  constructor(private activatedRoute : ActivatedRoute, private authService : AuthService,private router: Router,
+    private toastr : ToastrService) {
+      
     }
 
    ngOnInit() :void {
+
+    this.verification = this.activatedRoute.snapshot.params.verification;
+
       this.userDetailsForm = new FormGroup({
         firstName : new FormControl(''),
         lastName : new FormControl(''),

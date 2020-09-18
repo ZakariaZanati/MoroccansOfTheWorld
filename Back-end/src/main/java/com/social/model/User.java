@@ -60,6 +60,8 @@ public class User {
     private Instant created;
     private boolean enabled;
     private boolean completed;
+    private boolean verificationRequested;
+    private boolean verified;
 
     @Nullable
     @JsonIgnore
@@ -74,6 +76,11 @@ public class User {
     @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<UserGroup> userGroups = new HashSet<>();
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private Set<Notification> notifications = new HashSet<>();
+
 
     public Long getUserId() {
         return userId;
@@ -252,5 +259,29 @@ public class User {
 
     public void setUserGroups(Set<UserGroup> userGroups) {
         this.userGroups = userGroups;
+    }
+
+    public Set<Notification> getNotifications() {
+        return notifications;
+    }
+
+    public void setNotifications(Set<Notification> notifications) {
+        this.notifications = notifications;
+    }
+
+    public boolean isVerificationRequested() {
+        return verificationRequested;
+    }
+
+    public void setVerificationRequested(boolean verificationRequested) {
+        this.verificationRequested = verificationRequested;
+    }
+
+    public boolean isVerified() {
+        return verified;
+    }
+
+    public void setVerified(boolean verified) {
+        this.verified = verified;
     }
 }

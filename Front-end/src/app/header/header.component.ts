@@ -44,4 +44,5 @@ export class HeaderComponent implements OnInit {
   toggleClass(){
     this.show = !this.show
   }
+
 }

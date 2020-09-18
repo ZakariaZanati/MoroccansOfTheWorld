@@ -4,13 +4,14 @@
             <img src="../../assets/logo2.png" alt="">
         </div>
     </div>
-    <div class="actualite">
-        <div>News</div>
-    </div>
+    
     
     <div class="sign-in-container">
         <div *ngIf="isLoggedIn" class="sign-in">
-            <div>
+            <div class="one">
+                <app-notifications></app-notifications>
+            </div>
+            <div class="two">
                 <a class="profile" routerLink="/profile">
                     <div class="image" *ngIf="image">
                         <img [src]="image" alt="profile image">
@@ -20,7 +21,7 @@
                     </div>         
                 </a>
             </div>
-            <div><button (click)="logout()" class="logout">Logout</button></div>
+            <div class="two"><button (click)="logout()" class="logout">Logout</button></div>
         </div>
         <div *ngIf="!isLoggedIn" class="sign-in">
             <div><a routerLink="/sign-up">SIGN UP</a></div>

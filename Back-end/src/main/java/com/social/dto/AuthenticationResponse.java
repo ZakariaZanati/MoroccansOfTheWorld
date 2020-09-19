@@ -20,5 +20,6 @@ public class AuthenticationResponse {
     private boolean completed;
     private String fullName;
     private String userType;
+    private boolean verified;
 
 }

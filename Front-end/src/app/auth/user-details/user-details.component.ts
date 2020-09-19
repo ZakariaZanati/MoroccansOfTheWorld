@@ -4,7 +4,6 @@ import {AuthService} from '../shared/auth.service';
 import { Router,ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import {UserDetailsPayload} from './user-details.payload'
-import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -49,6 +48,10 @@ export class UserDetailsComponent implements OnInit {
   userDetails(){
 
     this.authService.userDetails(this.userDetailsForm.value).subscribe(()=>{
+
+      if(this.verification){
+        this.authService.requestVerification().subscribe(response => console.log(response));
+      }
       this.router.navigate(['/profile'])
     })
   }

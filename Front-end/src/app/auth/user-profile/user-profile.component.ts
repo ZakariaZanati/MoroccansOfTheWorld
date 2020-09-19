@@ -33,6 +33,8 @@ export class UserProfileComponent implements OnInit {
   country? : String;
   city ?: String;
 
+  isVerified : boolean;
+
   posts : Array<PostModel> = [];
 
   constructor(private authService : AuthService,private httpClient : HttpClient,private router:Router,
@@ -50,6 +52,8 @@ export class UserProfileComponent implements OnInit {
      }
 
   ngOnInit(): void {
+
+    this.isVerified = this.authService.isVerified();
 
     this.authService.getCurrentUserInfo().subscribe(data => {
       this.username = data.username;

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { throwError } from 'rxjs';
+import {UserVerification} from './user-verification.payload';
+import {VerificationService} from './verification.service';
 
 @Component({
   selector: 'app-verification',
@@ -7,9 +10,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VerificationComponent implements OnInit {
 
-  constructor() { }
+  users : Array<UserVerification> = []
+
+  constructor(private verificationService : VerificationService) { }
 
   ngOnInit(): void {
+
+    this.getRequests();
+
+  }
+
+  getRequests(){
+    this.verificationService.getAllVerificationRequests().subscribe(data => {
+      this.users = data;
+      console.log(data);
+    },err => throwError(err));
+  }
+
+  respondToRequest(id : number,response : string){
+    this.verificationService.setUserVerification(id,response).subscribe(response => {
+      console.log(response);
+      this.getRequests();
+    },err => throwError(err));
   }
 
 }

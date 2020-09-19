@@ -1,42 +1,52 @@
-<table>
-    <thead>
-        <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Phone number</th>
-            <th>City</th>
-            <th>Country</th>
-            <th>Current Job</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Zakaria</td>
-            <td>Zanati</td>
-            <td>zakaria@gmail.com</td>
-            <td>0616144542</td>
-            <td>Rabat</td>
-            <td>Morocco</td>
-            <td>Software engineer</td>
-        </tr>
-        <tr>
-            <td>Zakaria</td>
-            <td>Zanati</td>
-            <td>zakaria@gmail.com</td>
-            <td>0616144542</td>
-            <td>Rabat</td>
-            <td>Morocco</td>
-            <td>Software engineer</td>
-        </tr>
-        <tr>
-            <td>Zakaria</td>
-            <td>Zanati</td>
-            <td>zakaria@gmail.com</td>
-            <td>0616144542</td>
-            <td>Rabat</td>
-            <td>Morocco</td>
-            <td>Software engineer</td>
-        </tr>
-    </tbody>
-</table>
+<div class="verification_wrapper">
+    <div class="table_container">
+        <div class="title">Account verification requests</div>
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Phone number</th>
+                        <th>City</th>
+                        <th>Country</th>
+                        <th>Current Job</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users">
+                        <td>{{user.firstName}} {{user.lastName}} </td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.phoneNumber}}</td>
+                        <td>{{user.city}}</td>
+                        <td>{{user.country}}</td>
+                        <td>{{user.currentJob}}</td>
+                        <td class="button"><button type="submit" class="accept" (click)="respondToRequest(user.userId,'accept')"><i class="fas fa-check"></i> Accept</button></td>
+                        <td class="button"><button type="submit"class="reject" (click)="respondToRequest(user.userId,'reject')" ><i class="fas fa-times"></i> Reject</button></td>
+                    </tr>
+                    <tr> 
+                        <td>Zakaria Zanati</td>
+                        <td>zakaria@gmail.com</td>
+                        <td>0616144542</td>
+                        <td>Rabat</td>
+                        <td>Morocco</td>
+                        <td>Software engineer</td>
+                        <td class="button"><button type="submit" class="accept"><i class="fas fa-check"></i> Accept</button></td>
+                        <td class="button"><button type="submit"class="reject" ><i class="fas fa-times"></i> Reject</button></td>
+                    </tr>
+                    <tr>
+                        
+                        <td>Zakaria Zanati</td>
+                        <td>zakaria@gmail.com</td>
+                        <td>0616144542</td>
+                        <td>Rabat</td>
+                        <td>Morocco</td>
+                        <td>Software engineer</td>
+                        <td class="button"><button type="submit" class="accept"><i class="fas fa-check"></i> Accept</button></td>
+                        <td class="button"><button type="submit"class="reject" ><i class="fas fa-times"></i> Reject</button></td>
+                    </tr>
+                </tbody>
+            </table>            
+        </div>
+    </div>
+</div>

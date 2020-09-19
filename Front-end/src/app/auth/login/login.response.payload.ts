@@ -5,5 +5,6 @@ export interface LoginResponse {
     username : string,
     completed : boolean,
     fullName : string,
-    userType : string
+    userType : string,
+    verified : boolean
 }

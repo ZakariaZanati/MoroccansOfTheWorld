@@ -8,6 +8,7 @@ import com.social.repository.ImageRepository;
 import com.social.repository.UserRepository;
 import com.social.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -41,6 +42,14 @@ public class ProfileController {
         authService.saveInfos(userDetailsDto);
         return new ResponseEntity<User>(this.getCurrentUser(),HttpStatus.ACCEPTED);
 
+    }
+
+    @GetMapping("/verification")
+    public ResponseEntity<Void> requestVerification(){
+        User user = authService.getCurrentUser();
+        user.setVerificationRequested(true);
+        userRepository.save(user);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/infos")

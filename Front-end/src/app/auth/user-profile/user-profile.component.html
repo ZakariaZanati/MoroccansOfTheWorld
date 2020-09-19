@@ -18,7 +18,7 @@
           </div>
           <div class="infos">
               <div class="info" *ngIf="firstName">
-                  <span class="value"><i class="far fa-user"></i>{{firstName}} {{lastName}}</span>
+                  <span class="value"><i class="far fa-user"></i>{{firstName}} {{lastName}} <i *ngIf="isVerified" style="color: #5151fd;" class="fas fa-check-circle"></i></span>
               </div>
               
               <div class="info" *ngIf="birthDate">
@@ -68,7 +68,7 @@
     </div>
 </div>
 <div class="options">
-    <div class="option" [routerLink]="['/userdetails','verification']"><a >Become verified</a> </div>
+    <div class="option" *ngIf="!isVerified" [routerLink]="['/userdetails','verification']"><a >Become verified</a> </div>
     <div class="option"><a>Make job offers</a> </div>
     <div class="option"><a >Add Experiences</a> </div>
     <div class="option"><a >Offer events</a> </div>

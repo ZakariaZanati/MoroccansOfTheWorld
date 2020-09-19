@@ -74,6 +74,8 @@ public class AuthService {
             }
             user.setEnabled(true);
             user.setCompleted(false);
+            user.setVerificationRequested(false);
+            user.setVerified(false);
             userRepository.save(user);
 
 
@@ -165,6 +167,7 @@ public class AuthService {
                     .completed(this.getCurrentUser().isCompleted())
                     .fullName(this.getCurrentUser().getFirstName()+" "+this.getCurrentUser().getLastName())
                     .userType(this.getCurrentUser().getUserType().toString())
+                    .verified(this.getCurrentUser().isVerified())
                     .build();
     }
 

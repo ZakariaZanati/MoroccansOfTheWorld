@@ -5,6 +5,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { FeedComponent } from './feed/feed.component';
 import { AuthGuard } from './auth/auth.guard';
+import { AdminGuard } from './auth/admin.guard';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 import { UserDetailsComponent } from './auth/user-details/user-details.component';
@@ -24,7 +25,7 @@ const routes: Routes = [
   {path : 'userdetails/:verification',component : UserDetailsComponent,canActivate:[AuthGuard]},
   {path : 'group/:id',component : ViewGroupComponent,canActivate:[AuthGuard]},
   {path : 'groups',component : ListGroupComponent,canActivate:[AuthGuard]},
-  {path : 'verification',component : VerificationComponent}
+  {path : 'verification',component : VerificationComponent,canActivate:[AdminGuard]}
 ];
 
 @NgModule({

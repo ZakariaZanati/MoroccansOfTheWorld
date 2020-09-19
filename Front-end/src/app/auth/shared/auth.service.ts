@@ -43,6 +43,7 @@ export class AuthService {
         this.localStorage.store('completed',data.completed);
         this.localStorage.store('fullName',data.fullName);
         this.localStorage.store('userType',data.userType);
+        this.localStorage.store('verified',data.verified);
 
         this.loggedIn.emit(true);
         this.username.emit(data.username);
@@ -52,7 +53,11 @@ export class AuthService {
 
   }
   userDetails(userDetailsPayload : UserDetailsPayload){
-    return this.httpClient.post<UserDetailsPayload>('http://localhost:8181/api/user/infos',userDetailsPayload)
+    return this.httpClient.post<UserDetailsPayload>('http://localhost:8181/api/user/infos',userDetailsPayload);
+  }
+
+  requestVerification(){
+    return this.httpClient.get('http://localhost:8181/api/user/verification');
   }
 
   getUserDetails(){
@@ -126,6 +131,10 @@ export class AuthService {
 
   isCompleted(): boolean {
     return this.localStorage.retrieve('completed');
+  }
+
+  isVerified():boolean {
+    return this.localStorage.retrieve('verified');
   }
 
   fullName(): string {

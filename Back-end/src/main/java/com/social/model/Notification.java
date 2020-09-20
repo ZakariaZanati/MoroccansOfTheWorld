@@ -3,6 +3,7 @@ package com.social.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 @Builder
 @Entity
 public class Notification {
@@ -26,6 +28,8 @@ public class Notification {
     private Instant createdDate;
 
     private NotificationType notificationType;
+
+    private boolean seen;
 
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)

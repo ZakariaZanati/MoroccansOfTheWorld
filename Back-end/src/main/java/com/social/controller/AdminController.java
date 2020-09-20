@@ -57,6 +57,7 @@ public class AdminController {
                 .message("You account is now verified")
                 .createdDate(Instant.now())
                 .user(user)
+                .seen(false)
                 .build();
         notificationRepository.save(notification);
         userRepository.save(user);

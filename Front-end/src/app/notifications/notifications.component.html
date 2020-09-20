@@ -1,7 +1,5 @@
 <div (click)="showNotifications()" [class.new] = "new" class="notification"><i  class="fas fa-bell"></i><span *ngIf="new">{{count}}</span></div>
 <div *ngIf="show" class="notifications_container">
     <div class="title">Notifications</div>
-    <div class="notif">Your request to join Linked Maroc has been accepted</div>
-    <div class="notif">Your request to join Linked Maroc has been accepted</div>
-    <div class="notif">Your request to join Linked Maroc has been accepted</div>
+    <div class="notif" *ngFor="let notification of notifications">{{notification.message}}</div>
 </div>

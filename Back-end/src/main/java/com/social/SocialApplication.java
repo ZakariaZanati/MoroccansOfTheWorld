@@ -17,7 +17,7 @@ import java.time.Instant;
 @SpringBootApplication
 @EnableAsync
 @Import(SwaggerConfiguration.class)
-public class SocialApplication implements CommandLineRunner {
+public class SocialApplication {
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -29,6 +29,7 @@ public class SocialApplication implements CommandLineRunner {
 		SpringApplication.run(SocialApplication.class, args);
 	}
 
+	/*
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -45,4 +46,6 @@ public class SocialApplication implements CommandLineRunner {
 				.build();
 		userRepository.save(user);
 	}
+
+	 */
 }

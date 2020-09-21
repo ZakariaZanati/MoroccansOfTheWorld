@@ -1,0 +1,161 @@
+<div class="cove_img">
+</div>
+<div class="title">
+    Find Trainnings & Courses <br> to expand you knowledge <br> on the latest skills and tools <br> across core functional areas
+</div>
+<div class="topics_container">
+    <div class="topics">
+        <div class="topic">
+            <span>Business Topics</span>
+            <div class="img"></div>
+            <div class="desc">
+                Business skills training is becoming a necessity in maximizing employee performance, regardless of job level or function. From leadership development to soft skills training, our business courses can help your team stay ahead.
+            </div>
+    
+        </div>
+        <div class="topic">
+            <span>Technology Topics</span>
+            <div class="img"></div>
+            <div class="desc">
+                As technology continues to evolve, the skills gap for workplace technology experts widens. Our technology courses can provide your technical teams with the training they need to gain new skills or become more advanced in their existing skillsets.         
+            </div>  
+        </div>
+        <div class="topic">
+            <span>Creative Topics</span>
+            <div class="img"></div>
+            <div class="desc">
+                These days, design and technology go hand in hand. Being adept with design and engineering technology has become just as important as creative soft skills. Our creative courses can help you learn AutoCAD, Photoshop, and many other software tools to improve creative skills.
+            </div>   
+        </div>
+    </div>
+    <div class="create"><button type="submit">Offer a course</button></div>
+</div>
+
+<div class="courses_wrapper">
+    <span>Explore our courses</span>
+    <div class="options">
+        <div class="name_filter">
+            <input type="search" placeholder="Search ..."><i class="fas fa-search"></i>
+        </div>
+        <div class="filters">
+            <div class="sort">
+                <label class="sort-label" for="sort">Categorie :</label>
+                <select class="sort-select" name="" id="sort">
+                    <option value=""></option>
+                    <option value="">Technology</option>
+                    <option value="">Science</option>
+                    <option value="">Business</option>
+                </select>
+            </div>
+            <div class="date_filter">
+                <label for="date">Date : </label>
+                <input type="date" name="date" id="date">
+            </div>
+        </div>
+        
+    </div>
+    <div class="courses">
+        <div class="course">
+            <div class="course_img"></div>
+            <div class="name">Course Name</div>
+            <div class="day">Date : 10/12/2020 at 16h</div>
+            <div class="duration">Duration : 2h</div>
+            <div class="description">Provider : Zalaria Zanati</div>
+        </div>
+        <div class="course">
+            <div class="course_img"></div>
+            <div class="name">Course Name</div>
+            <div class="description">Provider : Zalaria Zanati</div>
+            <div class="day">Date : 10/12/2020 at 16h</div>
+            <div class="duration">Duration : 2h</div>
+            <div class="location">Location : Paris</div>
+            
+        </div>
+        <div class="course">
+            <div class="course_img"></div>
+            <div class="name">Course Name</div>
+            <div class="day">Date : 10/12/2020 at 16h</div>
+            <div class="duration">Duration : 2h</div>
+            <div class="description">Provider : Zalaria Zanati</div>
+        </div>
+        <div class="course">
+            <div class="course_img"></div>
+            <div class="name">Course Name</div>
+            <div class="day">Date : 10/12/2020 at 16h</div>
+            <div class="duration">Duration : 2h</div>
+            <div class="description">Provider : Zalaria Zanati</div>
+        </div>
+        <div class="course">
+            <div class="course_img"></div>
+            <div class="name">Course Name</div>
+            <div class="day">Date : 10/12/2020 at 16h</div>
+            <div class="duration">Duration : 2h</div>
+            <div class="description">Provider : Zalaria Zanati</div>
+        </div>
+        <div class="course">
+            <div class="course_img"></div>
+            <div class="name">Course Name</div>
+            <div class="day">Date : 10/12/2020 at 16h</div>
+            <div class="duration">Duration : 2h</div>
+            <div class="description">Provider : Zalaria Zanati</div>
+        </div>
+    </div>
+</div>
+
+<div >
+    <div class="group_wrapper">
+        <div class="header">
+            <div>Create a course </div>
+            <div class="exit"><i class="fas fa-times"></i></div>
+        </div>
+        <form>
+            <div class="body">
+                <div class="img">
+                    <div >
+                        <img>
+                    </div>
+                    <ng-template #elseBlock><img src="../../../assets/defaultpng.png"></ng-template>
+                    <input #file type="file" id="file">
+                    <label for="file"><i class="fas fa-edit"></i></label>
+                </div>
+                <div class="img_select"></div>
+                <div class="infos">
+                    <div class="name">
+                        <label for="name">Course name</label><br>
+                        <input [formControlName]="'name'" type="text" id="name">
+                    </div>
+                    <div class="name">
+                        <label for="name">Date : </label>
+                        <input [formControlName]="'name'" type="date" id="name">
+                        <label for="name">Hour : </label>
+                        <input [formControlName]="'name'" type="time" id="name">
+                    </div>
+                    <div class="name">
+                        <label for="name">Duration : </label>
+                        <input [formControlName]="'name'" type="time" id="name">
+                    </div>
+                    <div class="name">
+                        <label for="name">Online :</label>
+                        Yes <input type="checkbox" name="yes" id=""> No <input type="checkbox" name="no" id="">
+                    </div>
+                    <div class="description">
+                        <label for="desc">Course description</label><br>
+                        <textarea [formControlName]="'description'" name="desc" id="desc" cols="20" rows="6"></textarea>
+                    </div>
+                    <div class="name">
+                        <label for="name">Course Link</label><br>
+                        <input [formControlName]="'name'" type="text" id="name">
+                    </div>
+                    <div class="name">
+                        <label for="name">Course Location</label><br>
+                        <input [formControlName]="'name'" type="text" id="name">
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <button type="submit">Create</button>
+            </div>
+        </form>
+        
+    </div>
+</div>

@@ -13,6 +13,7 @@ import { ProfileComponent } from './profile/profile.component';
 import {ViewGroupComponent} from './groups/view-group/view-group.component';
 import {ListGroupComponent} from './groups/list-group/list-group.component';
 import { VerificationComponent } from './verification/verification.component';
+import { TrainingsComponent } from './trainings/trainings.component';
 
 const routes: Routes = [
   {path : '',component : HomeComponent},
@@ -25,7 +26,8 @@ const routes: Routes = [
   {path : 'userdetails/:verification',component : UserDetailsComponent,canActivate:[AuthGuard]},
   {path : 'group/:id',component : ViewGroupComponent,canActivate:[AuthGuard]},
   {path : 'groups',component : ListGroupComponent,canActivate:[AuthGuard]},
-  {path : 'verification',component : VerificationComponent,canActivate:[AdminGuard]}
+  {path : 'verification',component : VerificationComponent,canActivate:[AdminGuard]},
+  {path : 'courses',component : TrainingsComponent}
 ];
 
 @NgModule({

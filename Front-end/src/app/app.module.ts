@@ -31,6 +31,7 @@ import { ListGroupComponent } from './groups/list-group/list-group.component';
 import { JoinRequestsComponent } from './groups/join-requests/join-requests.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { VerificationComponent } from './verification/verification.component';
+import { TrainingsComponent } from './trainings/trainings.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { VerificationComponent } from './verification/verification.component';
     ListGroupComponent,
     JoinRequestsComponent,
     NotificationsComponent,
-    VerificationComponent
+    VerificationComponent,
+    TrainingsComponent
   ],
   imports: [
     BrowserModule,

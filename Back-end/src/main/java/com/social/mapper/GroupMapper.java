@@ -13,6 +13,6 @@ public interface GroupMapper {
     @Mapping(target = "description",source = "description")
     @Mapping(target = "adminUserName",source = "adminUserName")
     @Mapping(target = "imageBytes",source = "imageBytes")
-    public abstract GroupResponse mapToDto(Group group);
+    GroupResponse mapToDto(Group group);
 
 }

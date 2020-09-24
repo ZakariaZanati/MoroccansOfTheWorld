@@ -11,7 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 public class CoursesResponse {
 
-    private List<CourseResponse> groups;
+    private List<CourseResponse> courses;
     private int totalPages;
     private int pageNumber;
     private int pageSize;

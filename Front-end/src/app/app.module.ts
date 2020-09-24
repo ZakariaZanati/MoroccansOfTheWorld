@@ -32,6 +32,7 @@ import { JoinRequestsComponent } from './groups/join-requests/join-requests.comp
 import { NotificationsComponent } from './notifications/notifications.component';
 import { VerificationComponent } from './verification/verification.component';
 import { TrainingsComponent } from './trainings/trainings.component';
+import {CalendarModule} from 'primeng/calendar';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { TrainingsComponent } from './trainings/trainings.component';
     NgxWebstorageModule.forRoot(),
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    FormsModule
+    FormsModule,
+    CalendarModule
   ],
   providers: [
     {

@@ -171,25 +171,27 @@
     padding: 0 10px;
 }
 
-.group_wrapper{
-    width: 700px;
-    height: 550px;
+.course_wrapper{
+    width: 740px;
+    
     position: absolute;
     background-color: white;
     left: 0;
     right: 0;
     margin-left: auto;
     margin-right: auto;
-    top: 160px;
+    top: 350px;
     margin: auto;
 }
 
+
 .header{
     padding: 10px;
-    background-color: #dbdbdb;
+    background-color:  #a4b3df;
     font-weight: bolder;
     display: flex;
     justify-content: space-between;
+    color: white;
 }
 .exit{
     cursor: pointer;
@@ -199,12 +201,13 @@
     padding: 10px;
     position: relative;
 }
+
 .img{
     width: 200px;
     height: 250px;
     margin-right: 30px;
     position: relative;
-    border: 1px solid rgb(128, 128, 128);
+    border: 1px solid royalblue;
     background-position: center;
     background-size: cover;
 }
@@ -219,20 +222,22 @@
 
 .footer{
     padding: 10px;
-    background-color: #dbdbdb;
+    background-color: #a4b3df;
     display: flex;
     justify-content: flex-end;
 }
 .footer>button{
-    background-color: black;
+    background-color: royalblue;
     color: white;
     font-weight: bold;
     padding: 4px;
     border-radius: 7px;
+    outline: none;
+    border: none;
 }
 
 .footer>button:hover{
-    background-color: rgb(61, 61, 61);
+    background-color:rgb(22, 72, 221);
 }
 
 input[type="file"]{
@@ -240,22 +245,40 @@ input[type="file"]{
 }
 
 .img>label{
-    color: black;
+    color: royalblue;
     position: absolute;
     border-radius: 50%;
     background-color: white;
     width: 30px;
     height: 30px;
-    top: 70px;
-    left: 70px;
+    top: 230px;
+    left: 185px;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid black;
+    border: 2px solid royalblue;
 }
 .img img{
     width: 200px;
     height: 250px;
     position: relative;
+}
+
+.infos div{
+    padding-bottom: 10px;
+}
+
+.infos input,select,textarea{
+    border-radius: 20px;
+    border: 1px solid royalblue;
+    padding: 3px 10px;
+    outline: none;
+}
+
+.infos label{
+    margin-right: 8px;
+}
+.infos input[type='date']{
+    margin-right: 10px;
 }

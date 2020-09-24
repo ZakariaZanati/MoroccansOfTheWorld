@@ -24,17 +24,6 @@ export class ListGroupComponent implements OnInit {
   constructor(private groupService : GroupService,private authService : AuthService) {
 
     this.userType = authService.getUserType();
-    /*
-    this.groupService.getAllGroups().subscribe(data => {
-      this.groups = data
-      this.groups.map(group => {
-        const img = group.imageBytes;
-        if (img) {
-          group.imageBytes = "data:image/jpeg;base64,"+group.imageBytes
-        }
-      })
-    })
-    */
    
   }
 
@@ -100,5 +89,7 @@ export class ListGroupComponent implements OnInit {
     this.current = !this.current;
     this.getPage(0,4,"",this.current);
   }
+
+  
 
 }

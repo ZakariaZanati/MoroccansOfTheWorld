@@ -33,7 +33,9 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { VerificationComponent } from './verification/verification.component';
 import { TrainingsComponent } from './trainings/trainings.component';
 import {CalendarModule} from 'primeng/calendar';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CreateCourseComponent } from './courses/create-course/create-course.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +59,8 @@ import {CalendarModule} from 'primeng/calendar';
     JoinRequestsComponent,
     NotificationsComponent,
     VerificationComponent,
-    TrainingsComponent
+    TrainingsComponent,
+    CreateCourseComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +71,9 @@ import {CalendarModule} from 'primeng/calendar';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     FormsModule,
-    CalendarModule
+    CalendarModule,
+    MatDatepickerModule,
+    NgbModule
   ],
   providers: [
     {

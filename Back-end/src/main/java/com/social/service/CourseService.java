@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -42,18 +43,20 @@ public class CourseService {
 
     public void save(MultipartFile file, String name,
                      String description,
-                     Date date,
+                     LocalDateTime date,
                      String location,
                      String link,
                      String category,
-                     String duration) throws IOException {
+                     String duration,
+                     String time) throws IOException {
         User user = authService.getCurrentUser();
         if (user.getUserType().equals(UserType.PROVIDER)){
             Course course = Course.builder()
                     .category(category)
-                    .date(date)
+                    .dateTime(date)
                     .description(description)
                     .duration(duration)
+                    .time(time)
                     .imageBytes(file.getBytes())
                     .link(link)
                     .location(location)

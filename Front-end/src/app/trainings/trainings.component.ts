@@ -7,6 +7,8 @@ import {CourseResponse} from './training-response';
 import {CourseModel} from './training.payload';
 import {AuthService} from '../auth/shared/auth.service'
 import { throwError } from 'rxjs';
+import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-trainings',
@@ -43,92 +45,27 @@ export class TrainingsComponent implements OnInit {
   dateFilter : Date;
 
   constructor(private formBuilder : FormBuilder,private http:HttpClient,
-    private courseService : TrainingsService,public _DomSanitizationService: DomSanitizer,private authService : AuthService ) {
+    private courseService : TrainingsService,public _DomSanitizationService: DomSanitizer,private authService : AuthService,private router : Router ) {
       this.userType = authService.getUserType(); 
     }
 
   ngOnInit(): void {
-
-    this.courseForm = this.formBuilder.group({
-      courseImg : [''],
-      name : [''],
-      description : [''],
-      link : [''],
-      location : [''],
-      date : [''],
-      duration : [''],
-      category : ['']
-    })
-
     this.getPage(0,4,this.name,this.categoryFilter,this.dateFilter);
-
-  }
-
-  public onFileChanged(event) {
-    //Select File
-    this.file = event.target.files[0];
-    this.courseForm.get('courseImg').setValue(this.file);
-    //this.image = "data:image/jpeg;base64,"+this.file;
-  }
-
-  preview(files) {
-    if (files.length === 0)
-      return;
- 
-    var mimeType = files[0].type;
-    if (mimeType.match(/image\/*/) == null) {
-      this.message = "Only images are supported.";
-      return;
-    }
- 
-    var reader = new FileReader();
-    this.imagePath = files;
-    reader.readAsDataURL(files[0]); 
-    reader.onload = (_event) => { 
-      this.imgURL = reader.result; 
-    }
-  }
-
-  cancel(){
-    this.show = !this.show
   }
 
 
   addCourse(){
-    this.showForm =!this.showForm
-  }
-
-  createCourse(){
-    const uploadCourse = new FormData();
-    uploadCourse.append('courseImg',this.courseForm.get('courseImg').value);
-    uploadCourse.append('name',this.courseForm.get('name').value);
-    uploadCourse.append('description',this.courseForm.get('description').value);
-    uploadCourse.append('link',this.courseForm.get('link').value);
-    uploadCourse.append('location',this.courseForm.get('location').value);
-    uploadCourse.append('duration',this.courseForm.get('duration').value);
-    uploadCourse.append('date',this.courseForm.get('date').value);
-    uploadCourse.append('category',this.courseForm.get('category').value);
-    this.courseService.createCourse(uploadCourse);
-    window.location.reload();
-  }
-
-  showLink(){
-    this.showLinkField = true;
-    this.showLocationField = false;
-  }
-  showLocation(){
-    this.showLocationField = true;
-    this.showLinkField = false;
+    this.router.navigateByUrl('/create-course')
   }
 
   getPage(page : number,size : number,name : string,category : string, date : Date){
     this.courseService.getCoursesPage(page,size,name,category,date).subscribe((response : CourseResponse) => {
       this.courses = response.courses;
       console.log(response)
-      this.courses.map(cours => {
-        const img = cours.imageBytes;
+      this.courses.map(course => {
+        const img = course.imageBytes;
         if (img) {
-          cours.imageBytes = "data:image/jpeg;base64,"+cours.imageBytes
+          course.imageBytes = "data:image/jpeg;base64,"+course.imageBytes
         }
         this.totalPages = response.totalPages;
         this.pageIndexes = Array(this.totalPages).fill(0).map((x,i)=>i);

@@ -1,0 +1,62 @@
+<div class="course_wrapper">
+    <div class="header">
+        Create a course
+    </div>
+    <form [formGroup]="courseForm" (ngSubmit)="createCourse()">
+        <div class="body">
+            <div class="img">
+                <div *ngIf="imgURL">
+                    <img [src]="imgURL">
+                </div>
+                <input #file type="file" id="file" (change)="onFileChanged($event)" (change)="preview(file.files)">
+                <label for="file"><i class="fas fa-edit"></i></label>
+            </div>
+            <div class="infos">
+                <div class="name">
+                    <label for="name">Course name</label>
+                    <input  [formControlName]="'name'" type="text" id="name">
+                </div>
+                <div class="category">
+                    <label for="category">Category</label>
+                    <select [formControlName]="'category'" id="category">
+                        <option *ngFor="let categ of categories" [ngValue]="categ">{{categ}}</option>
+                    </select>
+                </div>
+                <div class="date">
+                    <label for="date">Date </label>
+                    <div class="input-group-append">
+                        <input placeholder="yyyy-mm-dd" [formControlName]="'courseDate'" ngbDatepicker #d="ngbDatepicker">
+                        <button 
+                        class="btn btn-outline-secondary calendar"
+                        (click)="d.toggle()"
+                        type="button"><i class="fa fa-calendar"></i></button>
+                    </div>
+                </div>
+                <div class="duration">
+                    <label for="">Time</label>
+                    <ngb-timepicker [formControlName]="'courseTime'"></ngb-timepicker><hr>
+                </div>
+                <div class="duration">
+                    <label for="">Duration</label>
+                    <ngb-timepicker [formControlName]="'courseDuration'"></ngb-timepicker><hr>
+                </div>
+                <div class="description">
+                    <label for="desc">Course description</label><br>
+                    <textarea [formControlName]="'description'" name="desc" id="desc" cols="22" rows="4"></textarea>
+                </div>
+                <div class="link">
+                    <label for="link">Course Link</label>
+                    <input [formControlName]="'link'" type="text">
+                </div>
+                <div class="location">
+                    <label for="location">Course Location</label>
+                    <input [formControlName]="'location'" type="text" >
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <button type="submit">Create</button>
+        </div>
+    </form>
+</div>

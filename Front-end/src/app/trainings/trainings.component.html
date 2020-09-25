@@ -28,7 +28,7 @@
             </div>   
         </div>
     </div>
-    <div class="create"><button type="submit" (click)="addCourse()">Offer a course</button></div>
+    <div *ngIf="userType.toLowerCase()=='provider'" class="create"><button type="submit" (click)="addCourse()">Offer a course</button></div>
 </div>
 
 <div class="courses_wrapper">
@@ -69,68 +69,6 @@
                 <div class="description">Provider : {{course.providerUserName}}</div>
             </div>
         </div>
-        <ul class="pagination justify-content-center">
-            <li class="page-item"><a (click)="previousClick()" class="page-link">Previous</a></li>
-            <li *ngFor='let index of pageIndexes' class="page-item" [ngClass]="active(index)">
-                    <a (click)="getPaginationWithIndex(index)" class="page-link">
-                      {{index + 1}}
-                    </a>
-            </li>
-            <li class="page-item"><a (click)="nextClick()" class="page-link">Next</a></li>
-        </ul>
-    </div>
-</div>
-
-<div *ngIf="showForm">
-    <div class="course_wrapper">
-        <div class="header">
-            <div>Create a course </div>
-            <div class="exit" (click)="addCourse()"><i class="fas fa-times"></i></div>
-        </div>
-        <form [formGroup]="courseForm" (ngSubmit)="createCourse()">
-            <div class="body">
-                <div class="img">
-                    <div *ngIf="imgURL">
-                        <img [src]="imgURL">
-                    </div>
-                    <input #file type="file" id="file" (change)="onFileChanged($event)" (change)="preview(file.files)">
-                    <label for="file"><i class="fas fa-edit"></i></label>
-                </div>
-                <div class="infos">
-                    <div class="name">
-                        <label for="name">Course name</label>
-                        <input [formControlName]="'name'" type="text" id="name">
-                    </div>
-                    <div class="category">
-                        <label for="category">Category</label>
-                        <select [formControlName]="'category'" id="category">
-                            <option *ngFor="let categ of categories" [ngValue]="categ">{{categ}}</option>
-                        </select>
-                    </div>
-                    <div class="date">
-                        <label for="date">Date </label>
-                        <input [formControlName]="'date'" type="date">
-                        <label for="duration">Duration </label>
-                        <input [formControlName]="'duration'" type="time" id="duration">
-                    </div>
-                    <div class="description">
-                        <label for="desc">Course description</label><br>
-                        <textarea [formControlName]="'description'" name="desc" id="desc" cols="22" rows="4"></textarea>
-                    </div>
-                    <div class="link">
-                        <label for="link">Course Link</label>
-                        <input [formControlName]="'link'" type="text">
-                    </div>
-                    <div class="location">
-                        <label for="location">Course Location</label>
-                        <input [formControlName]="'location'" type="text" >
-                    </div>
-                </div>
-            </div>
-            <div class="footer">
-                <button type="submit">Create</button>
-            </div>
-        </form>
         
     </div>
 </div>

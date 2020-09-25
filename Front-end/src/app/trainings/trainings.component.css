@@ -148,6 +148,7 @@
 }
 
 .course{
+    height: 400px;
     display: flex;
     flex-direction: column;
     border: 2px solid royalblue;
@@ -156,8 +157,14 @@
 }
 
 .course_img{
-    height: 200px;
-    background-color: rgb(142, 149, 168);
+    height: 150px;
+    position: relative;
+}
+
+.course_img img{
+    height: 150px;
+    width: 200px;
+    position: relative;
 }
 
 .course>.name{
@@ -282,3 +289,6 @@ input[type="file"]{
 .infos input[type='date']{
     margin-right: 10px;
 }
+
+
+

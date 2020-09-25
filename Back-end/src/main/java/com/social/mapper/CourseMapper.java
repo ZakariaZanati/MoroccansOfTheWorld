@@ -16,7 +16,8 @@ public interface CourseMapper {
     @Mapping(target = "category",source = "category")
     @Mapping(target = "link",source = "link")
     @Mapping(target = "location",source = "location")
-    @Mapping(target = "date",source = "date")
+    @Mapping(target = "dateTime",expression = "java(course.getDateTime().toString())")
     @Mapping(target = "duration",source = "duration")
+    @Mapping(target = "time",source = "time")
     CourseResponse mapToDto(Course course);
 }

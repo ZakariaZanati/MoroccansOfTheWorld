@@ -23,6 +23,8 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -44,11 +46,12 @@ public class CourseController {
                                              @RequestPart("link")String link,
                                              @RequestPart("category") String category,
                                              @RequestPart("date")String date,
-                                             @RequestPart(value = "duration",required = false) String duration) throws IOException, ParseException {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Date date1 = format.parse(date);
-        System.out.println(name);
-        courseService.save(courseImg, name, description, date1, location, link, category, duration);
+                                             @RequestPart(value = "duration",required = false) String duration,
+                                             @RequestPart("time") String time) throws IOException, ParseException {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX");
+        LocalDateTime dateTime = LocalDateTime.parse(date,formatter);
+        System.out.println(dateTime);
+        courseService.save(courseImg, name, description, dateTime, location, link, category, duration,time);
 
         return new ResponseEntity<>(HttpStatus.OK);
     }

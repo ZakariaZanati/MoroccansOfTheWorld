@@ -58,15 +58,15 @@
         <div *ngFor="let course of courses">
             <div class="course">
                 <div class="course_img">
-                    <div *ngIf="course.imageBytes; else elseBlock">
+                    <div *ngIf="course.imageBytes">
                         <img [src]="course.imageBytes" alt="">
                     </div>
-                    <ng-template #elseBlock><img src="../../../assets/defaultpng.png"></ng-template>
                 </div>
+               
                 <div class="name">{{course.name}}</div>
-                <div class="day">Date : {{course.date}} at 16h</div>
-                <div class="duration">Duration : 2h</div>
-                <div class="description">Provider : {{course.providerUserName}}</div>
+                <div class="day">Date : {{course.dateTime}} at {{course.time}}</div>
+                <div class="duration">Duration : {{course.duration}}</div>
+                <div class="description">Provider : {{course.providerUsername}}</div>
             </div>
         </div>
         

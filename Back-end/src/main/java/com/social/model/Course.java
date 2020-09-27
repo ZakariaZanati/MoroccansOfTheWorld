@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -41,6 +42,8 @@ public class Course {
 
     private String category;
 
+    @Nullable
+    @Column(length = 1048570)
     private byte[] imageBytes;
 
 

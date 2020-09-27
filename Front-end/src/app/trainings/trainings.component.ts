@@ -63,6 +63,7 @@ export class TrainingsComponent implements OnInit {
       this.courses = response.courses;
       console.log(response)
       this.courses.map(course => {
+        course.dateTime = new Date(course.dateTime).toLocaleDateString()
         const img = course.imageBytes;
         if (img) {
           course.imageBytes = "data:image/jpeg;base64,"+course.imageBytes

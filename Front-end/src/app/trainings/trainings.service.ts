@@ -32,7 +32,7 @@ export class TrainingsService {
       params.append('date',"");
     }
     else {
-      params = params.append('date',date.toString());
+      params = params.append('date',date.toISOString());
     }
     params = params.append('page',pageNumber.toString());
     params = params.append('size', pageSize.toString());

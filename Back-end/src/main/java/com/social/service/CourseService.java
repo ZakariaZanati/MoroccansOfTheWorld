@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -70,12 +71,19 @@ public class CourseService {
 
     }
 
-    public CoursesResponse getCourses(Pageable pageable,String name,String category){
+    public CoursesResponse getCourses(Pageable pageable,String name,String category,String date){
 
         Page<Course> courses;
         if (name.equals("")){
             if (category.equals("")){
-                courses = courseRepository.findAll(pageable);
+                if (date.equals("")){
+                    courses = courseRepository.findAll(pageable);
+                }
+                else {
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX");
+                    LocalDateTime dateTime = LocalDateTime.parse(date,formatter);
+                    courses = courseRepository.findByDateTime(dateTime,pageable);
+                }
             }
             else {
                 courses = courseRepository.findByCategory(category,pageable);

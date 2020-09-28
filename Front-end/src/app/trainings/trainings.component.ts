@@ -10,6 +10,7 @@ import { throwError } from 'rxjs';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import { Router, RouterLink } from '@angular/router';
 
+
 @Component({
   selector: 'app-trainings',
   templateUrl: './trainings.component.html',
@@ -17,23 +18,9 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class TrainingsComponent implements OnInit {
 
-  
-
-  show : boolean = false;
-  showForm : boolean = false;
-  courseForm : FormGroup;
-  file : File;
-  showLinkField : boolean = true;
-  showLocationField : boolean = true;
-
   categories = ['Computer science','History','Communication','Data science','Cloud computing'
                                 ,'Economics','Biology','Art','Physics','Psychiatry','Fiance','Medicine','Philosophy']
   
-  public imagePath;
-  imgURL: any;
-  public message: string;
-
-
   courses : Array<CourseModel> = [];
   userType : string;
   currentSelectedPage : number = 0;
@@ -42,7 +29,9 @@ export class TrainingsComponent implements OnInit {
   pageIndexes : Array<number> = [];
   name : string = "";
   categoryFilter : string = "";
-  dateFilter : Date;
+  dateFilter : NgbDate;
+  dateFormat : Date;
+
 
   constructor(private formBuilder : FormBuilder,private http:HttpClient,
     private courseService : TrainingsService,public _DomSanitizationService: DomSanitizer,private authService : AuthService,private router : Router ) {
@@ -50,7 +39,7 @@ export class TrainingsComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.getPage(0,4,this.name,this.categoryFilter,this.dateFilter);
+    this.getPage(0,8,this.name,this.categoryFilter,this.dateFormat);
   }
 
 
@@ -77,18 +66,18 @@ export class TrainingsComponent implements OnInit {
 
   nextClick(){
     if(this.currentSelectedPage < this.totalPages-1){
-      this.getPage(++this.currentSelectedPage,4,this.name,this.categoryFilter,this.dateFilter);
+      this.getPage(++this.currentSelectedPage,8,this.name,this.categoryFilter,this.dateFormat);
     }  
   }
 
   previousClick(){
     if(this.currentSelectedPage > 0){
-      this.getPage(--this.currentSelectedPage,4,this.name,this.categoryFilter,this.dateFilter);
+      this.getPage(--this.currentSelectedPage,8,this.name,this.categoryFilter,this.dateFormat);
     }  
   }
 
   getPaginationWithIndex(index: number) {
-    this.getPage(index, 4,this.name,this.categoryFilter,this.dateFilter);
+    this.getPage(index, 8,this.name,this.categoryFilter,this.dateFormat);
   }
 
   active(index: number) {
@@ -102,6 +91,15 @@ export class TrainingsComponent implements OnInit {
   onSearchChange(searchValue: string): void { 
     console.log(searchValue) 
     this.name = searchValue;
-    this.getPage(0,4,this.name,this.categoryFilter,this.dateFilter);
+    this.getPage(0,8,this.name,this.categoryFilter,null);
+  }
+
+  filterByDate(){
+    this.dateFormat = new Date(this.dateFilter.year,this.dateFilter.month-1,this.dateFilter.day);
+    this.getPage(0,8,"","",this.dateFormat);
+  }
+
+  filterByCategory(){
+    this.getPage(0,8,"",this.categoryFilter,null);
   }
 }

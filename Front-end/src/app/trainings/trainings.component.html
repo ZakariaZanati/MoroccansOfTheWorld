@@ -35,21 +35,22 @@
     <span>Explore our courses</span>
     <div class="options">
         <div class="name_filter">
-            <input type="search" placeholder="Search ..."><i class="fas fa-search"></i>
+            <input (input)="onSearchChange($event.target.value)" type="search" placeholder="Search ..."><i class="fas fa-search"></i>
         </div>
         <div class="filters">
             <div class="sort">
                 <label class="sort-label" for="sort">Categorie :</label>
-                <select class="sort-select" name="" id="sort">
-                    <option value=""></option>
-                    <option value="">Technology</option>
-                    <option value="">Science</option>
-                    <option value="">Business</option>
+                <select [(ngModel)]="categoryFilter" (change)="filterByCategory()" class="sort-select" name="" id="sort">
+                    <option *ngFor="let categ of categories" [ngValue]="categ">{{categ}}</option>
                 </select>
             </div>
             <div class="date_filter">
                 <label for="date">Date : </label>
-                <input type="date" name="date" id="date">
+                <input placeholder="yyyy-mm-dd" [(ngModel)]="dateFilter" (change)="filterByDate()" ngbDatepicker #d="ngbDatepicker">
+                <button 
+                class="btn btn-outline-secondary calendar"
+                (click)="d.toggle()"
+                type="button"><i class="fa fa-calendar"></i></button>
             </div>
         </div>
         
@@ -71,4 +72,13 @@
         </div>
         
     </div>
+    <ul class="pagination justify-content-center">
+        <li class="page-item"><a (click)="previousClick()" class="page-link">Previous</a></li>
+        <li *ngFor='let index of pageIndexes' class="page-item" [ngClass]="active(index)">
+                <a (click)="getPaginationWithIndex(index)" class="page-link">
+                  {{index + 1}}
+                </a>
+        </li>
+        <li class="page-item"><a (click)="nextClick()" class="page-link">Next</a></li>
+    </ul>
 </div>

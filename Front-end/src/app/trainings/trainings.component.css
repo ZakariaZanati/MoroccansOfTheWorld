@@ -112,7 +112,12 @@
     color: royalblue;
 }
 
-.date_filter>input{
+.date_filter{
+    position: relative;
+}
+
+.date_filter input{
+    width: 180px;
     border-radius: 15px;
     padding: 6px 15px;
     border: 1px solid royalblue;
@@ -120,6 +125,14 @@
 }
 .date_filter>label{
     margin: 0 10px;
+}
+
+.date_filter button {
+    position: absolute;
+    border: none;
+    border-radius: 15px;
+    right: 1px;
+    outline: none;
 }
 .filters{
     display: flex;

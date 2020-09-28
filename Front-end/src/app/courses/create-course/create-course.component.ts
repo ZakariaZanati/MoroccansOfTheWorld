@@ -5,6 +5,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {AuthService} from '../../auth/shared/auth.service'
 import { throwError } from 'rxjs';
 import {TrainingsService} from '../../trainings/trainings.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-course',
@@ -27,7 +28,7 @@ export class CreateCourseComponent implements OnInit {
 
 
   constructor(private formBuilder : FormBuilder,public _DomSanitizationService: DomSanitizer,
-    private courseService : TrainingsService) { }
+    private courseService : TrainingsService,private router : Router) { }
 
   ngOnInit(): void {
 
@@ -76,8 +77,9 @@ export class CreateCourseComponent implements OnInit {
 
     let time = this.courseForm.get('courseTime').value;
     let duration = this.courseForm.get('courseDuration').value
-    let timeFormat = time.hour+' h '+time.minute;
-    let durationFormat = duration.hour+' h '+duration.minute+' min';
+    
+    let timeFormat = (time.hour.toString().startsWith('0') ? '0'+time.hour : (time.hour))+'h'+(time.minute == 0 ? '' : (time.minute.toString().length == 1 ? '0'+time.minute : (time.minute)));
+    let durationFormat = (duration.hour.toString().startsWith('0') ? '0'+duration.hour : (duration.hour))+'h'+(time.minute == 0 ? '' : (duration.minute.toString().length ==1 ? '0'+duration.minute+'min' : (duration.minute+'min')));
     const uploadCourse = new FormData();
     uploadCourse.append('courseImg',this.courseForm.get('courseImg').value);
     uploadCourse.append('name',this.courseForm.get('name').value);
@@ -90,6 +92,7 @@ export class CreateCourseComponent implements OnInit {
     uploadCourse.append('category',this.courseForm.get('category').value);
     this.courseService.createCourse(uploadCourse);
     console.log(dateFormat.toISOString())
+    this.router.navigateByUrl('/courses')
   }
 
 

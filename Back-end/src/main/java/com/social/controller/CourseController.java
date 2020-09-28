@@ -62,8 +62,9 @@ public class CourseController {
                                                       @Param(value = "name") String name,
                                                       @Param(value = "category")String category,
                                                       @Param(value = "date")String date){
+
         Pageable requestedPage = PageRequest.of(page,size);
-        CoursesResponse coursesResponse = courseService.getCourses(requestedPage,name,category);
+        CoursesResponse coursesResponse = courseService.getCourses(requestedPage,name,category,date);
         System.out.println(coursesResponse);
         return ResponseEntity.status(HttpStatus.OK).body(coursesResponse);
     }

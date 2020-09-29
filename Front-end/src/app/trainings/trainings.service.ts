@@ -29,9 +29,11 @@ export class TrainingsService {
   getCoursesPage(pageNumber : number,pageSize : number,name : string,category : string,date : Date):Observable<CourseResponse>{
     let params = new HttpParams();
     if (!date) {
-      params.append('date',"");
+      console.log(date)
+      params = params.append('date',"");
     }
     else {
+      console.log(date)
       params = params.append('date',date.toISOString());
     }
     params = params.append('page',pageNumber.toString());

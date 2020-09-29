@@ -11,4 +11,5 @@ export class CourseModel {
     time : string
     duration : string;
     category : string;
+    show? : boolean;
 }

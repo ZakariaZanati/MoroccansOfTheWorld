@@ -46,7 +46,7 @@
             </div>
             <div class="date_filter">
                 <label for="date">Date : </label>
-                <input placeholder="yyyy-mm-dd" [(ngModel)]="dateFilter" (change)="filterByDate()" ngbDatepicker #d="ngbDatepicker">
+                <input placeholder="yyyy-mm-dd" [(ngModel)]="dateFilter" (ngModelChange)="filterByDate()" ngbDatepicker #d="ngbDatepicker">
                 <button 
                 class="btn btn-outline-secondary calendar"
                 (click)="d.toggle()"
@@ -65,10 +65,12 @@
                 </div>
                
                 <div class="name">{{course.name}}</div>
-                <div class="day">Date : {{course.dateTime}} at {{course.time}}</div>
-                <div class="duration">Duration : {{course.duration}}</div>
-                <div class="description">Provider : {{course.providerUsername}}</div>
+                <div class="info ">Date : {{course.dateTime}} at {{course.time}}</div>
+                <div class="info ">Duration : {{course.duration}}</div>
+                <div class="info ">Provider : {{course.providerUsername}}</div>
+                <div class="details"><button (click)="toogleCourse(course)"><i class="fas fa-info"></i> Details</button></div>
             </div>
+            <div *ngIf="course.show" class="course_details"><app-view-course [course]="course"></app-view-course> </div>
         </div>
         
     </div>

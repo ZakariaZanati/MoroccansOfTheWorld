@@ -52,6 +52,7 @@ export class TrainingsComponent implements OnInit {
       this.courses = response.courses;
       console.log(response)
       this.courses.map(course => {
+        course.show = false;
         course.dateTime = new Date(course.dateTime).toLocaleDateString()
         const img = course.imageBytes;
         if (img) {
@@ -95,11 +96,15 @@ export class TrainingsComponent implements OnInit {
   }
 
   filterByDate(){
-    this.dateFormat = new Date(this.dateFilter.year,this.dateFilter.month-1,this.dateFilter.day);
+    this.dateFormat = new Date(this.dateFilter.year,this.dateFilter.month-1,this.dateFilter.day+1);
     this.getPage(0,8,"","",this.dateFormat);
   }
 
   filterByCategory(){
     this.getPage(0,8,"",this.categoryFilter,null);
+  }
+
+  toogleCourse(course){
+    course.show = !course.show;
   }
 }

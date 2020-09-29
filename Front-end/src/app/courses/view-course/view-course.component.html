@@ -1,0 +1,16 @@
+<div class="course">
+    <div class="image">
+        <div *ngIf="course.imageBytes">
+            <img [src]="course.imageBytes" alt="">
+        </div>
+    </div>
+    <div class="infos">
+        <div class="name">{{course.name}}</div>
+        <div class="description">{{course.description}}</div>
+        <div class="provider">{{course.providerUsername}}</div>
+        <div class="date">{{course.dateTime}} at {{course.time}} </div>
+        <div class="duration">{{course.duration}}</div>
+        <div *ngIf="course.link" class="link">{{course.link}}</div>
+        <div *ngIf="course.location" class="location">{{course.location}}</div>
+    </div>
+</div>

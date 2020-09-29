@@ -1,0 +1,21 @@
+.course{
+    width: 500px;
+    height: 400px;
+    display: grid;
+    background-color: white;
+    color: black;
+    grid-template-columns: 30% 60%;
+    column-gap: 10%;
+    padding: 20px;
+}
+
+.image{
+    width: 130px;
+    height: 300px;
+    
+}
+.image img{
+    width: 150px;
+    height: 300px;
+    margin-right: 10px;
+}

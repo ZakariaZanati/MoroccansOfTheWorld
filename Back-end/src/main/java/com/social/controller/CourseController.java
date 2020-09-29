@@ -50,6 +50,7 @@ public class CourseController {
                                              @RequestPart("time") String time) throws IOException, ParseException {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX");
         LocalDateTime dateTime = LocalDateTime.parse(date,formatter);
+        System.out.println(date);
         System.out.println(dateTime);
         courseService.save(courseImg, name, description, dateTime, location, link, category, duration,time);
 
@@ -64,8 +65,8 @@ public class CourseController {
                                                       @Param(value = "date")String date){
 
         Pageable requestedPage = PageRequest.of(page,size);
+        System.out.println(date);
         CoursesResponse coursesResponse = courseService.getCourses(requestedPage,name,category,date);
-        System.out.println(coursesResponse);
         return ResponseEntity.status(HttpStatus.OK).body(coursesResponse);
     }
 

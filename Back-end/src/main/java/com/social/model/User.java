@@ -81,6 +81,15 @@ public class User {
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private Set<Notification> notifications = new HashSet<>();
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "user1",cascade = CascadeType.ALL)
+    private Set<UserConnection> receivedConnections = new HashSet<>();
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user2",cascade = CascadeType.ALL)
+    private Set<UserConnection> requestedConnections = new HashSet<>();
+
+
 
     public Long getUserId() {
         return userId;
@@ -283,5 +292,21 @@ public class User {
 
     public void setVerified(boolean verified) {
         this.verified = verified;
+    }
+
+    public Set<UserConnection> getReceivedConnections() {
+        return receivedConnections;
+    }
+
+    public void setReceivedConnections(Set<UserConnection> receivedConnections) {
+        this.receivedConnections = receivedConnections;
+    }
+
+    public Set<UserConnection> getRequestedConnections() {
+        return requestedConnections;
+    }
+
+    public void setRequestedConnections(Set<UserConnection> requestedConnections) {
+        this.requestedConnections = requestedConnections;
     }
 }

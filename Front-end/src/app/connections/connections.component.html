@@ -1,0 +1,18 @@
+<div (click)="showRequests()" [class.new] = "new" class="connections"><i class="fas fa-users"></i><span *ngIf="new">{{count}}</span></div>
+<div *ngIf="show" class="connections_container">
+    <div class="title">Connection requests</div>
+    <div class="requests" >
+        <div class="request">
+            <div class="img">
+
+            </div>
+            <div class="opt">
+                <div class="name">Zakaria Zanati</div>
+                <div class="response">
+                    <button class="accept">Accept</button>
+                    <button class="reject">Reject</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

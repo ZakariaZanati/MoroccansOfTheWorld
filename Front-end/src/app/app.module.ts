@@ -36,7 +36,8 @@ import {CalendarModule} from 'primeng/calendar';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreateCourseComponent } from './courses/create-course/create-course.component';
-import { ViewCourseComponent } from './courses/view-course/view-course.component'; 
+import { ViewCourseComponent } from './courses/view-course/view-course.component';
+import { ConnectionsComponent } from './connections/connections.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +63,8 @@ import { ViewCourseComponent } from './courses/view-course/view-course.component
     VerificationComponent,
     TrainingsComponent,
     CreateCourseComponent,
-    ViewCourseComponent
+    ViewCourseComponent,
+    ConnectionsComponent
   ],
   imports: [
     BrowserModule,

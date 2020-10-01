@@ -1,4 +1,5 @@
 export class CurrentUserModel {
+    userId : number;
     username : string;
     email : string;
     firstName : String;

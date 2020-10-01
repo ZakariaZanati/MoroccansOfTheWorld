@@ -85,9 +85,12 @@ public class User {
     @OneToMany(mappedBy = "user1",cascade = CascadeType.ALL)
     private Set<UserConnection> receivedConnections = new HashSet<>();
 
+    /*
     @JsonIgnore
     @OneToMany(mappedBy = "user2",cascade = CascadeType.ALL)
     private Set<UserConnection> requestedConnections = new HashSet<>();
+
+     */
 
 
 
@@ -302,6 +305,8 @@ public class User {
         this.receivedConnections = receivedConnections;
     }
 
+
+/*
     public Set<UserConnection> getRequestedConnections() {
         return requestedConnections;
     }
@@ -309,4 +314,6 @@ public class User {
     public void setRequestedConnections(Set<UserConnection> requestedConnections) {
         this.requestedConnections = requestedConnections;
     }
+
+ */
 }

@@ -4,6 +4,7 @@ import {PostService} from '../shared/post.service';
 import {PostModel} from '../shared/post-model';
 import { HttpClient } from '@angular/common/http';
 import { Router,ActivatedRoute } from '@angular/router';
+import {ConnectionsService} from '../connections/connections.service';
 
 @Component({
   selector: 'app-profile',
@@ -30,11 +31,13 @@ export class ProfileComponent implements OnInit {
   country? : String;
   city ?: String;
   name : string;
+  id : number;
 
+  connectionStatus : string;
   posts : Array<PostModel> = [];
 
   constructor(private activatedRoute: ActivatedRoute, private authService : AuthService,private httpClient : HttpClient,
-    private router:Router,private postService : PostService) { }
+    private router:Router,private postService : PostService,private connectionService : ConnectionsService) { }
 
   ngOnInit(): void {
     this.name = this.activatedRoute.snapshot.params.name;
@@ -42,6 +45,7 @@ export class ProfileComponent implements OnInit {
       this.router.navigateByUrl('/profile')
     }
     this.authService.getUserByUserName(this.name).subscribe(data => {
+      this.id = data.userId;
       this.username = data.username;
       this.email = data.email;
       this.firstName = data.firstName;
@@ -71,6 +75,24 @@ export class ProfileComponent implements OnInit {
         }
       })
     });
+
+    this.getConnectionStatus();
   }
+
+  snedConnectionRequest(){
+    this.connectionService.sendConnectionRequest(this.id).subscribe(data => {
+      console.log(data);
+      this.getConnectionStatus();
+    })
+  }
+
+  getConnectionStatus(){
+    this.connectionService.connectionStatus(this.activatedRoute.snapshot.params.name).subscribe(data => {
+      this.connectionStatus = data;
+      console.log(data);
+    })
+  }
+
+
 
 }

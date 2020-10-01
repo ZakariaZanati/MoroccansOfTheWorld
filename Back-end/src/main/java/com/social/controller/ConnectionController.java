@@ -36,10 +36,11 @@ public class ConnectionController {
         User user = authService.getCurrentUser();
         User requestedUser = userRepository.findById(id).get();
         UserConnection connection = new UserConnection(user,requestedUser, UserConnection.ConnectionStatus.REQUESTED,false);
+        System.out.println(connection.toString());
         Set<UserConnection> connections = new HashSet<>();
         connections.add(connection);
-        user.setRequestedConnections(connections);
-        userRepository.save(user);
+        //user.setRequestedConnections(connections);
+        //userRepository.save(user);
         requestedUser.setReceivedConnections(connections);
         userRepository.save(requestedUser);
 
@@ -73,12 +74,14 @@ public class ConnectionController {
         User currentUser = authService.getCurrentUser();
 
         Set<UserConnection> connections = currentUser.getReceivedConnections();
-        connections.addAll(currentUser.getRequestedConnections());
         for (UserConnection connection:
              connections) {
             if (connection.getUser1() == user || connection.getUser2() == user){
                 if (connection.getStatus().equals(UserConnection.ConnectionStatus.CONNECTED)){
                     return ResponseEntity.status(HttpStatus.OK).body("CONNECTED");
+                }
+                else if(connection.getStatus().equals(UserConnection.ConnectionStatus.REQUESTED)){
+                    return ResponseEntity.status(HttpStatus.OK).body("REQUESTED");
                 }
             }
         }

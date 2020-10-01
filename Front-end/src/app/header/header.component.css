@@ -52,7 +52,9 @@
 }
 .sign-in>.one{
     align-self: center;
-    width: 10%;
+    display: flex;
+    width: 20%;
+    justify-content: space-between;
 }
 .sign-in>.two{
     align-self: center;
@@ -85,6 +87,7 @@
 .profile{
     display: flex;
     justify-content: space-around;
+    align-items: center;
 }
 
 .image{

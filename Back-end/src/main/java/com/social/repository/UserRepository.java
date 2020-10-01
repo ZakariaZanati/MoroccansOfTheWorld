@@ -15,7 +15,4 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByUsername(String username);
     Optional<User> findByEmail(String email);
     List<User> findAllByVerificationRequestedAndVerified(Boolean verification,Boolean verified);
-    Set<User> findByReceivedConnectionsIn(java.util.Set receivedConnections);
-    Set<User> findByRequestedConnectionsIn(java.util.Set requestedConnection);
-
 }

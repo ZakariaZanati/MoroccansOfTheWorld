@@ -11,6 +11,11 @@
                 <img src="../../assets/defaultpng.png" class="img" alt="">
             </ng-template>
           </div>
+          <div class="connect">
+              <button *ngIf="connectionStatus == 'NotCONNECTED'" (click)="snedConnectionRequest()">Connect</button>
+              <button *ngIf="connectionStatus == 'REQUESTED'" >Pending</button>
+              <button *ngIf="connectionStatus == 'CONNECTED'">Connected</button>
+          </div>
           <div class="infos">
               <div class="info">
                   <span class="value"><i class="far fa-user"></i>{{firstName}} {{lastName}}</span>

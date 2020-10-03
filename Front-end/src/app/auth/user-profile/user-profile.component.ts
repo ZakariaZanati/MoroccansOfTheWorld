@@ -29,11 +29,13 @@ export class UserProfileComponent implements OnInit {
   phoneNumber? :String;
   currentJob? : String;
   website? : String;
-  aboutMe? : String;
+  aboutMe? : string;
   country? : String;
   city ?: String;
 
   isVerified : boolean;
+  editable : boolean = false;
+  updateAboutMe : string;
 
   posts : Array<PostModel> = [];
 
@@ -66,6 +68,7 @@ export class UserProfileComponent implements OnInit {
       this.country = data.country;
       this.website = data.website;
       this.currentJob = data.currentJob;
+      this.aboutMe = data.aboutMe;
     })
     this.getImage();
   }
@@ -109,6 +112,18 @@ export class UserProfileComponent implements OnInit {
             this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
           }
         );
+  }
+
+  editAboutMe(){
+    console.log(this.editable)
+    this.editable = true;
+  }
+
+  saveAboutMe(){
+    let aboutme = new FormData();
+    aboutme.append('aboutme',this.aboutMe);
+    this.authService.setAboutMe(aboutme).subscribe(data => console.log(data),err => console.log(err));
+    window.location.reload();
   }
 
 }

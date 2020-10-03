@@ -48,15 +48,24 @@
         <div class="profil-2">
                 <div class="about-me">
                     <span class="header">About Me</span> 
-                    <div class="text" *ngIf="aboutMe">
-                        {{aboutMe}}
+                    <div *ngIf="!editable">
+                        <div class="text" *ngIf="aboutMe">
+                            {{aboutMe}}
+                        </div>
+                        <div *ngIf="!aboutMe">
+                                Write something about yourself...
+                        </div>
+                        <div class="edit">
+                            <button class="submit" type="submit" (click)="editAboutMe()"><i class="far fa-edit"></i>Edit</button>
+                        </div>
                     </div>
-                    <div *ngIf="!aboutMe">
-                            Write something about yourself...
+                    <div *ngIf="editable">
+                        <textarea [(ngModel)]="aboutMe"  name="" id="" cols="40" rows="3"></textarea>
+                        <div class="edit">
+                            <button class="submit" type="submit" (click)="saveAboutMe()"><i class="far fa-edit" ></i>Save</button>
+                        </div>
                     </div>
-                    <div class="edit">
-                        <button class="submit" type="submit"><i class="far fa-edit"></i>Edit</button>
-                    </div>
+                   
                 </div>
                 <div class="post_container">
                     <app-create-post></app-create-post>

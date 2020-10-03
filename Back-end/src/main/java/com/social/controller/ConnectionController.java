@@ -35,29 +35,34 @@ public class ConnectionController {
     private ResponseEntity<Void> sendConnectionRequest(@PathVariable Long id){
         User user = authService.getCurrentUser();
         User requestedUser = userRepository.findById(id).get();
-        UserConnection connection = new UserConnection(user,requestedUser, UserConnection.ConnectionStatus.REQUESTED,false);
+        UserConnection.ConnectionId connectionId = new UserConnection.ConnectionId(user.getUserId(),requestedUser.getUserId());
+        UserConnection connection = UserConnection.builder()
+                .connectionId(connectionId)
+                .source(user)
+                .target(requestedUser)
+                .seen(false)
+                .status(UserConnection.ConnectionStatus.REQUESTED)
+                .build();
         System.out.println(connection.toString());
         Set<UserConnection> connections = new HashSet<>();
         connections.add(connection);
-        //user.setRequestedConnections(connections);
-        //userRepository.save(user);
-        requestedUser.setReceivedConnections(connections);
+        System.out.println(connections);
+        requestedUser.setConnections(connections);
         userRepository.save(requestedUser);
-
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @GetMapping("/requests")
     private ResponseEntity<List<UserInfos>> viewConnectionRequests(){
         User user = authService.getCurrentUser();
-        Set<UserConnection> connections = user.getReceivedConnections();
+        Set<UserConnection> connections = user.getConnections();
 
         List<User> userRequests = new ArrayList<>();
 
         for (UserConnection connection:
              connections) {
             if (connection.getStatus().equals(UserConnection.ConnectionStatus.REQUESTED)){
-                userRequests.add(connection.getUser1());
+                userRequests.add(connection.getSource());
             }
         }
 
@@ -73,10 +78,10 @@ public class ConnectionController {
         User user = userRepository.findByUsername(username).get();
         User currentUser = authService.getCurrentUser();
 
-        Set<UserConnection> connections = currentUser.getReceivedConnections();
+        Set<UserConnection> connections = currentUser.getConnections();
         for (UserConnection connection:
              connections) {
-            if (connection.getUser1() == user || connection.getUser2() == user){
+            if (connection.getSource() == user || connection.getTarget() == user){
                 if (connection.getStatus().equals(UserConnection.ConnectionStatus.CONNECTED)){
                     return ResponseEntity.status(HttpStatus.OK).body("CONNECTED");
                 }
@@ -92,11 +97,11 @@ public class ConnectionController {
 
     @PostMapping("/respond/{id}")
     private ResponseEntity<Void> respondToRequest(@PathVariable Long id,@RequestPart("response") String response){
-        Set<UserConnection> connections = authService.getCurrentUser().getReceivedConnections();
+        Set<UserConnection> connections = authService.getCurrentUser().getConnections();
         User user = userRepository.findById(id).get();
         for (UserConnection connection:
              connections) {
-            if (connection.getUser2() == user){
+            if (connection.getTarget() == user){
                 if (response.equals("ACCEPTED")){
                     connection.setStatus(UserConnection.ConnectionStatus.CONNECTED);
                 }
@@ -105,7 +110,7 @@ public class ConnectionController {
                 }
             }
         }
-        authService.getCurrentUser().setReceivedConnections(connections);
+        authService.getCurrentUser().setConnections(connections);
         userRepository.save(authService.getCurrentUser());
 
         return ResponseEntity.status(HttpStatus.OK).build();
@@ -113,14 +118,14 @@ public class ConnectionController {
 
     @GetMapping
     private ResponseEntity<List<UserInfos>> getAllConnections(){
-        Set<UserConnection> connections = authService.getCurrentUser().getReceivedConnections();
+        Set<UserConnection> connections = authService.getCurrentUser().getConnections();
 
         List<User> users = new ArrayList<>();
 
         for (UserConnection connection:
                 connections) {
             if (connection.getStatus().equals(UserConnection.ConnectionStatus.CONNECTED)){
-                users.add(connection.getUser1());
+                users.add(connection.getSource());
             }
         }
 

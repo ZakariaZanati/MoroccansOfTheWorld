@@ -8,7 +8,7 @@ export class CurrentUserModel {
     phoneNumber? :String;
     currentJob? : String;
     website? : String;
-    aboutMe? : String;
+    aboutMe? : string;
     country? : String;
     city ?: String;
 }

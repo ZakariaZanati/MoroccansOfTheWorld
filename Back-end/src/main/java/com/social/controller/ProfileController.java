@@ -100,6 +100,16 @@ public class ProfileController {
         return new ResponseEntity<>(img,HttpStatus.OK);
     }
 
+    @PostMapping("/profile/about")
+    public ResponseEntity<Void> updateAboutMe(@RequestPart("aboutme")String aboutme){
+        System.out.println(aboutme);
+        User user = authService.getCurrentUser();
+        user.setAboutMe(aboutme);
+        userRepository.save(user);
+
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
     private User getCurrentUser(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return userRepository.findByUsername(authentication.getName()).orElseThrow(()->new SpringRedditException("User Not Found"));

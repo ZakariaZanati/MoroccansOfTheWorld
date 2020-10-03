@@ -56,6 +56,11 @@ export class AuthService {
     return this.httpClient.post<UserDetailsPayload>('http://localhost:8181/api/user/infos',userDetailsPayload);
   }
 
+  setAboutMe(about : FormData){
+    
+    return this.httpClient.post('http://localhost:8181/api/user/profile/about',about);
+  }
+
   requestVerification(){
     return this.httpClient.get('http://localhost:8181/api/user/verification');
   }

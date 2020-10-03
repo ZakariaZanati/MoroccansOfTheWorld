@@ -36,6 +36,10 @@
     border-style: none;
 }
 
+.submit:hover{
+    background-color: rgb(109, 142, 240);
+}
+
 .submit i {
     margin-right: 10px;
 }

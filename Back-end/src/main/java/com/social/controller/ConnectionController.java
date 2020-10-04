@@ -47,7 +47,9 @@ public class ConnectionController {
         Set<UserConnection> connections = new HashSet<>();
         connections.add(connection);
         System.out.println(connections);
-        requestedUser.setConnections(connections);
+        user.setConnections(connections);
+        userRepository.save(user);
+        requestedUser.setReceivedConnections(connections);
         userRepository.save(requestedUser);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
@@ -55,7 +57,7 @@ public class ConnectionController {
     @GetMapping("/requests")
     private ResponseEntity<List<UserInfos>> viewConnectionRequests(){
         User user = authService.getCurrentUser();
-        Set<UserConnection> connections = user.getConnections();
+        Set<UserConnection> connections = user.getReceivedConnections();
 
         List<User> userRequests = new ArrayList<>();
 
@@ -79,6 +81,7 @@ public class ConnectionController {
         User currentUser = authService.getCurrentUser();
 
         Set<UserConnection> connections = currentUser.getConnections();
+        connections.addAll(currentUser.getReceivedConnections());
         for (UserConnection connection:
              connections) {
             if (connection.getSource() == user || connection.getTarget() == user){
@@ -97,11 +100,11 @@ public class ConnectionController {
 
     @PostMapping("/respond/{id}")
     private ResponseEntity<Void> respondToRequest(@PathVariable Long id,@RequestPart("response") String response){
-        Set<UserConnection> connections = authService.getCurrentUser().getConnections();
+        Set<UserConnection> connections = authService.getCurrentUser().getReceivedConnections();
         User user = userRepository.findById(id).get();
         for (UserConnection connection:
              connections) {
-            if (connection.getTarget() == user){
+            if (connection.getSource() == user){
                 if (response.equals("ACCEPTED")){
                     connection.setStatus(UserConnection.ConnectionStatus.CONNECTED);
                 }
@@ -110,8 +113,10 @@ public class ConnectionController {
                 }
             }
         }
-        authService.getCurrentUser().setConnections(connections);
+        authService.getCurrentUser().setReceivedConnections(connections);
         userRepository.save(authService.getCurrentUser());
+        user.setConnections(connections);
+        userRepository.save(user);
 
         return ResponseEntity.status(HttpStatus.OK).build();
     }
@@ -119,11 +124,17 @@ public class ConnectionController {
     @GetMapping
     private ResponseEntity<List<UserInfos>> getAllConnections(){
         Set<UserConnection> connections = authService.getCurrentUser().getConnections();
-
+        Set<UserConnection> receivedConnections = authService.getCurrentUser().getReceivedConnections();
         List<User> users = new ArrayList<>();
 
         for (UserConnection connection:
                 connections) {
+            if (connection.getStatus().equals(UserConnection.ConnectionStatus.CONNECTED)){
+                users.add(connection.getTarget());
+            }
+        }
+        for (UserConnection connection:
+             receivedConnections) {
             if (connection.getStatus().equals(UserConnection.ConnectionStatus.CONNECTED)){
                 users.add(connection.getSource());
             }

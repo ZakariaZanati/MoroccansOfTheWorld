@@ -10,7 +10,22 @@
                 <div class="name">Zakaria Zanati</div>
                 <div class="response">
                     <button class="accept">Accept</button>
-                    <button class="reject">Reject</button>
+                    <button class="reject">Decline</button>
+                </div>
+            </div>
+        </div>
+        <div *ngFor="let request of requests" class="request">
+            <div class="img">
+                <div *ngIf="request.image; else elseBlock">
+                    <img [src]="request.image" alt="">
+                </div>
+                <ng-template #elseBlock><img src="../../../assets/defaultpng.png"></ng-template>
+            </div>
+            <div class="opt">
+                <div class="name">{{request.firstName}} {{request.lastName}}</div>
+                <div class="response">
+                    <button class="accept" (click)="requestResponse(request.id,'ACCEPTED')" >Accept</button>
+                    <button class="reject" (click)="requestResponse(request.id,'DECLINED')">Decline</button>
                 </div>
             </div>
         </div>

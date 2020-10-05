@@ -13,6 +13,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -43,7 +44,7 @@ public class User {
 
     private String lastName;
 
-    private Date birthDate;
+    private LocalDateTime birthDate;
 
     private String phoneNumber;
 
@@ -152,11 +153,11 @@ public class User {
         }
     }
 
-    public Date getBirthDate() {
+    public LocalDateTime getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDateTime birthDate) {
         if (birthDate != null) {
             this.birthDate = birthDate;
         }

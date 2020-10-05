@@ -44,8 +44,8 @@
               </div>
           </div>
       </div>
-
         <div class="profil-2">
+            <div *ngIf="option == 1">
                 <div class="about-me">
                     <span class="header">About Me</span> 
                     <div *ngIf="!editable">
@@ -71,14 +71,38 @@
                     <app-create-post></app-create-post>
                     <app-view-posts [posts]="posts"></app-view-posts>
                 </div>
+            </div>
+            <div *ngIf="option == 2">
+                <div class="connections_title header">Your connections</div>
+                <div class="connections_content">
+                    <div class="connection">
+                        <div class="conn_img">
+                            <div *ngIf="connection.image; else elseBlock">
+                                <img [src]="connection.image" alt="">
+                            </div>
+                            <ng-template #elseBlock><img src="../../../assets/defaultpng.png"></ng-template>
+                        </div>
+                        <div class="conn_name">
+                            Zakaria Zanati
+                        </div>
+                        <div class="conn_job">
+                            Software engineer
+                        </div>
+                        <div class="conn_view">
+                            <button>View</button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+                
         </div>
-        
 
     </div>
 </div>
 <div class="options">
+    <div class="option"><a (click)="changeOption(1)" >Activities</a></div>
     <div class="option" *ngIf="!isVerified" [routerLink]="['/userdetails','verification']"><a >Become verified</a> </div>
-    <div class="option"><a>Make job offers</a> </div>
-    <div class="option"><a >Add Experiences</a> </div>
-    <div class="option"><a >Offer events</a> </div>
+    <div class="option"><a (click)="changeOption(2)">Connections</a> </div>
+    <div class="option"><a >Experiences</a> </div>
 </div>

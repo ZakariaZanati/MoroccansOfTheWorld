@@ -17,7 +17,7 @@ public class UserDetailsDto {
 
     private String lastName;
 
-    private Date birthDate;
+    private String birthDate;
 
     private String phoneNumber;
 

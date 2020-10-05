@@ -18,6 +18,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -91,9 +93,13 @@ public class AuthService {
     @Transactional
     public void saveInfos(UserDetailsDto userDetailsDto){
         User user = this.getCurrentUser();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX");
+        LocalDateTime dateTime = LocalDateTime.parse(userDetailsDto.getBirthDate(),formatter);
+
         user.setFirstName(userDetailsDto.getFirstName());
         user.setLastName(userDetailsDto.getLastName());
-        user.setBirthDate(userDetailsDto.getBirthDate());
+        user.setBirthDate(dateTime);
         user.setCity(userDetailsDto.getCity());
         user.setCountry(userDetailsDto.getCountry());
         user.setAboutMe(userDetailsDto.getAboutMe());
@@ -112,7 +118,7 @@ public class AuthService {
         return UserDetailsDto.builder()
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
-                .birthDate(user.getBirthDate())
+                .birthDate(user.getBirthDate().toString())
                 .city(user.getCity())
                 .country(user.getCountry())
                 .aboutMe(user.getAboutMe())

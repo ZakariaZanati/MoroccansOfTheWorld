@@ -55,7 +55,7 @@
     font-weight: bold;
     border-bottom: 1px solid grey;
     margin-bottom: 10px;
-    color: rgb(48, 131, 187);
+    color: #3083bb;
 }
 
 .pers{
@@ -163,6 +163,67 @@ input[type="file"]{
 
 .option:hover{
     background-color: rgb(84, 84, 197);
+}
+
+
+/*connections*/
+
+.connections_title{
+    padding: 8px 5px;
+}
+
+.connections_content{
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    column-gap: 10px;
+    row-gap: 10px;
+}
+
+.connection{
+    height: 200px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #3083bb;
+    border-radius: 10px;
+}
+
+.conn_img{
+    height: 80px;
+    width: 80px;
+    background-color: black;
+    margin: 10px 0 15px;
+    border-radius: 50%;
+}
+
+.conn_img img{
+    height: 80px;
+    width: 80px;
+}
+
+.conn_name{
+    font-weight: bold;
+}
+
+.conn_view{
+    margin-top: 10px;
+}
+
+.conn_view button{
+    padding: 3px 12px;
+    color: white;
+    background-color: #3083bb;
+    border: none;
+    outline: none;
+    font-weight: bold;
+}
+
+.conn_view button:hover{
+    color: #3083bb;
+    border: 2px solid #3083bb;
+    background-color: white;
 }
 
 

@@ -40,7 +40,7 @@ public class ProfileController {
     public ResponseEntity<User> saveUserDetails(@RequestBody UserDetailsDto userDetailsDto){
         System.out.println(userDetailsDto);
         authService.saveInfos(userDetailsDto);
-        return new ResponseEntity<User>(this.getCurrentUser(),HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(this.getCurrentUser(),HttpStatus.ACCEPTED);
 
     }
 
@@ -60,7 +60,7 @@ public class ProfileController {
     @GetMapping("/profile")
     public ResponseEntity<User> currentUserInfos(){
         System.out.println("test profile");
-        return new ResponseEntity<User>(this.getCurrentUser(),HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(this.getCurrentUser(),HttpStatus.ACCEPTED);
     }
 
     @GetMapping("/profile/{userName}")

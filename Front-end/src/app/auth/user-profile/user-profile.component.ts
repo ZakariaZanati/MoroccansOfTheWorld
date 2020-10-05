@@ -36,6 +36,7 @@ export class UserProfileComponent implements OnInit {
   isVerified : boolean;
   editable : boolean = false;
   updateAboutMe : string;
+  option = 2;
 
   posts : Array<PostModel> = [];
 
@@ -124,6 +125,10 @@ export class UserProfileComponent implements OnInit {
     aboutme.append('aboutme',this.aboutMe);
     this.authService.setAboutMe(aboutme).subscribe(data => console.log(data),err => console.log(err));
     window.location.reload();
+  }
+
+  changeOption(opt : number){
+    this.option = opt;
   }
 
 }

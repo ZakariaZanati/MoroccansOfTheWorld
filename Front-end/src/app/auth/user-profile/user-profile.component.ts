@@ -5,6 +5,8 @@ import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import {PostModel} from '../../shared/post-model';
 import {PostService} from '../../shared/post.service';
+import {ConnectionsService} from '../../connections/connections.service';
+import { JoinRequest } from 'src/app/groups/join-requests/join-request.payload';
 
 
 
@@ -39,9 +41,10 @@ export class UserProfileComponent implements OnInit {
   option = 2;
 
   posts : Array<PostModel> = [];
+  connections : Array<JoinRequest> = [];
 
   constructor(private authService : AuthService,private httpClient : HttpClient,private router:Router,
-    private postService : PostService) {
+    private postService : PostService,private connectionService : ConnectionsService) {
       this.postService.getAllPostsByCurrentUser().subscribe(post =>{
         this.posts = post;
         this.posts.map(post =>{
@@ -72,6 +75,7 @@ export class UserProfileComponent implements OnInit {
       this.aboutMe = data.aboutMe;
     })
     this.getImage();
+    this.getConnections();
   }
 
   public onFileChanged(event) {
@@ -129,6 +133,18 @@ export class UserProfileComponent implements OnInit {
 
   changeOption(opt : number){
     this.option = opt;
+  }
+
+  getConnections(){
+    this.connectionService.getAllConnections().subscribe(data => {
+      this.connections = data;
+      this.connections.map(connection => {
+        const img = connection.image;
+        if (img) {
+          connection.image = "data:image/jpeg;base64,"+connection.image;
+        }
+      })
+    });
   }
 
 }

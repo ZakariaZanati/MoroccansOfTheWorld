@@ -7,7 +7,9 @@ import com.social.model.User;
 import com.social.model.UserConnection;
 import com.social.repository.UserRepository;
 import com.social.service.AuthService;
+import com.social.service.ConnectionsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +29,9 @@ public class ConnectionController {
 
     @Autowired
     private AuthService authService;
+
+    @Autowired
+    private ConnectionsService connectionsService;
 
     @Autowired
     private UserMapper userMapper;
@@ -123,27 +128,25 @@ public class ConnectionController {
 
     @GetMapping
     private ResponseEntity<List<UserInfos>> getAllConnections(){
-        Set<UserConnection> connections = authService.getCurrentUser().getConnections();
-        Set<UserConnection> receivedConnections = authService.getCurrentUser().getReceivedConnections();
-        List<User> users = new ArrayList<>();
 
-        for (UserConnection connection:
-                connections) {
-            if (connection.getStatus().equals(UserConnection.ConnectionStatus.CONNECTED)){
-                users.add(connection.getTarget());
-            }
-        }
-        for (UserConnection connection:
-             receivedConnections) {
-            if (connection.getStatus().equals(UserConnection.ConnectionStatus.CONNECTED)){
-                users.add(connection.getSource());
-            }
-        }
+        User user = authService.getCurrentUser();
 
-        List<UserInfos> requests = users.stream()
-                .map(userMapper::mapToDto)
-                .collect(Collectors.toList());
+        return ResponseEntity.status(HttpStatus.OK).body(connectionsService.getConnections(user));
+    }
 
-        return ResponseEntity.status(HttpStatus.OK).body(requests);
+    @GetMapping("/{id}")
+    private ResponseEntity<List<UserInfos>> getUserConnections(@PathVariable Long id){
+        User user = userRepository.findById(id).get();
+        return ResponseEntity.status(HttpStatus.OK).body(connectionsService.getConnections(user));
+    }
+
+    @GetMapping("/pageable")
+    private ResponseEntity<List<UserInfos>> getUsersPage(@Param(value = "page") int page,
+                                                         @Param(value = "size") int size,
+                                                         @Param(value = "name") String name,
+                                                         @Param(value = "city")String city,
+                                                         @Param(value = "country")String country){
+        List<UserInfos> users = connectionsService.getUsers(page, size, name, city, country);
+        return ResponseEntity.status(HttpStatus.OK).body(users);
     }
 }

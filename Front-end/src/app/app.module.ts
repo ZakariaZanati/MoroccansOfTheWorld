@@ -37,7 +37,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreateCourseComponent } from './courses/create-course/create-course.component';
 import { ViewCourseComponent } from './courses/view-course/view-course.component';
-import { ConnectionsComponent } from './connections/connections.component'; 
+import { ConnectionsComponent } from './connections/connections.component';
+import { UsersListComponent } from './users-list/users-list.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +65,8 @@ import { ConnectionsComponent } from './connections/connections.component';
     TrainingsComponent,
     CreateCourseComponent,
     ViewCourseComponent,
-    ConnectionsComponent
+    ConnectionsComponent,
+    UsersListComponent
   ],
   imports: [
     BrowserModule,

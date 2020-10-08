@@ -2,6 +2,7 @@ package com.social.controller;
 
 
 import com.social.dto.UserInfos;
+import com.social.dto.UsersResponse;
 import com.social.mapper.UserMapper;
 import com.social.model.User;
 import com.social.model.UserConnection;
@@ -141,12 +142,12 @@ public class ConnectionController {
     }
 
     @GetMapping("/pageable")
-    private ResponseEntity<List<UserInfos>> getUsersPage(@Param(value = "page") int page,
-                                                         @Param(value = "size") int size,
-                                                         @Param(value = "name") String name,
-                                                         @Param(value = "city")String city,
-                                                         @Param(value = "country")String country){
-        List<UserInfos> users = connectionsService.getUsers(page, size, name, city, country);
+    private ResponseEntity<UsersResponse> getUsersPage(@Param(value = "page") int page,
+                                                       @Param(value = "size") int size,
+                                                       @Param(value = "name") String name,
+                                                       @Param(value = "city")String city,
+                                                       @Param(value = "country")String country){
+        UsersResponse users = connectionsService.getUsers(page, size, name, city, country);
         return ResponseEntity.status(HttpStatus.OK).body(users);
     }
 }

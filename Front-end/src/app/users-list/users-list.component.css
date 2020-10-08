@@ -1,0 +1,73 @@
+.users_wrapper{
+    width: 70%;
+    height: 700px;
+    margin: 0 auto;
+}
+
+.users_container{
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+    background-color: whitesmoke;
+}
+
+.title{
+    font-weight: bold;
+    font-size: xx-large;
+    color: royalblue;
+    align-self: center;
+    padding: 30px 0;
+}
+
+.options{
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+}
+.name_filter{
+    position: relative;
+}
+.name_filter input{
+    border: none;
+    width: 200px;
+    padding: 6px 15px;
+    border-radius: 15px;
+    border: 1px solid royalblue;
+}
+
+.name_filter input:focus{
+    border: 3px solid royalblue;
+}
+.name_filter i {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.name_filter i:hover {
+    color: royalblue;
+}
+
+.users{
+    padding: 30px 0;
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    column-gap: 20px;
+}
+
+.user{
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid royalblue;
+    border-radius: 10px;
+    padding: 20px 10px;
+}
+
+.conn_img,.conn_img img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}

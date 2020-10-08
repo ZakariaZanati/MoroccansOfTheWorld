@@ -15,6 +15,7 @@ import {ListGroupComponent} from './groups/list-group/list-group.component';
 import { VerificationComponent } from './verification/verification.component';
 import { TrainingsComponent } from './trainings/trainings.component';
 import { CreateCourseComponent } from './courses/create-course/create-course.component';
+import { UsersListComponent } from './users-list/users-list.component';
 
 const routes: Routes = [
   {path : '',component : HomeComponent},
@@ -29,7 +30,9 @@ const routes: Routes = [
   {path : 'groups',component : ListGroupComponent,canActivate:[AuthGuard]},
   {path : 'verification',component : VerificationComponent,canActivate:[AdminGuard]},
   {path : 'courses',component : TrainingsComponent},
-  {path : 'create-course',component:CreateCourseComponent}
+  {path : 'create-course',component:CreateCourseComponent},
+  {path : 'users',component:UsersListComponent}
+
 ];
 
 @NgModule({

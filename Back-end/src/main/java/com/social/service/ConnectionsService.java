@@ -1,6 +1,9 @@
 package com.social.service;
 
 import com.social.dto.UserInfos;
+import com.social.dto.UserResponse;
+import com.social.dto.UsersResponse;
+import com.social.mapper.ConnectionMapper;
 import com.social.mapper.UserMapper;
 import com.social.model.User;
 import com.social.model.UserConnection;
@@ -25,6 +28,9 @@ public class ConnectionsService {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private ConnectionMapper connectionMapper;
 
     @Transactional
     public List<UserInfos> getConnections(User user){
@@ -51,7 +57,7 @@ public class ConnectionsService {
     }
 
     @Transactional
-    public List<UserInfos> getUsers(int page,int size,String name,String city,String country){
+    public UsersResponse getUsers(int page, int size, String name, String city, String country){
 
         Pageable requestedPage = PageRequest.of(page,size);
         Page<User> users;
@@ -68,8 +74,10 @@ public class ConnectionsService {
             users = userRepository.findByFirstNameContainsOrLastNameContains(name,name,requestedPage);
         }
 
-        return users.stream()
-                .map(userMapper::mapToDto)
+        List<UserResponse> userResponses = users.stream()
+                .map(connectionMapper::mapToDto)
                 .collect(Collectors.toList());
+
+        return new UsersResponse(userResponses,users.getTotalPages(),users.getNumber(),users.getSize());
     }
 }

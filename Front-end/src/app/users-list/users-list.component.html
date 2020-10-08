@@ -1,1 +1,45 @@
-<p>users-list works!</p>
+<div class="users_wrapper">
+    <div class="users_container">
+        <div class="title">Find new connections</div>
+        <div class="options">
+            <div class="name_filter">
+                <input (input)="onSearchChange($event.target.value)" type="search" placeholder="Search ..."><i class="fas fa-search"></i>
+            </div>
+            <div class="filters">
+                <div class="sort">
+                    <!--
+                    <label class="sort-label" for="sort">Categorie :</label>
+                    <select [(ngModel)]="categoryFilter" (change)="filterByCategory()" class="sort-select" name="" id="sort">
+                        <option *ngFor="let categ of categories" [ngValue]="categ">{{categ}}</option>
+                    </select>
+                    -->
+                </div>
+            </div>
+        </div>
+        <div class="users">
+            <div class="user" *ngFor="let user of users">
+                <div class="conn_img">
+                    <div *ngIf="user.image; else elseBlock">
+                        <img [src]="user.image" alt="">
+                    </div>
+                    <ng-template #elseBlock><img src="../../../assets/default_profile.jpg"></ng-template>
+                </div>
+                <div class="conn_name">
+                    {{user.firstName}} {{user.lastName}}
+                </div>
+                <div class="conn_view">
+                    <button (click)="goToProfile(user.username)">View</button>
+                </div>
+            </div>
+        </div>
+        <ul class="pagination justify-content-center">
+            <li class="page-item"><a (click)="previousClick()" class="page-link">Previous</a></li>
+            <li *ngFor='let index of pageIndexes' class="page-item" [ngClass]="active(index)">
+                    <a (click)="getPaginationWithIndex(index)" class="page-link">
+                      {{index + 1}}
+                    </a>
+            </li>
+            <li class="page-item"><a (click)="nextClick()" class="page-link">Next</a></li>
+        </ul>
+    </div>
+</div>

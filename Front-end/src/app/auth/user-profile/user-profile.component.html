@@ -20,10 +20,11 @@
               <div class="info" *ngIf="firstName">
                   <span class="value"><i class="far fa-user"></i>{{firstName}} {{lastName}} <i *ngIf="isVerified" style="color: #5151fd;" class="fas fa-check-circle"></i></span>
               </div>
-              
+              <!--
               <div class="info" *ngIf="birthDate">
                   <span class="value"><i class="fas fa-birthday-cake"></i>{{birthDate}}</span>
               </div>
+              -->
               <div class="info">
                   <span class="value"><i class="far fa-envelope"></i>{{email}}</span>
               </div>
@@ -60,7 +61,7 @@
                         </div>
                     </div>
                     <div *ngIf="editable">
-                        <textarea [(ngModel)]="aboutMe"  name="" id="" cols="40" rows="3"></textarea>
+                        <textarea [(ngModel)]="aboutMe"  name="" id="" cols="80" rows="3"></textarea>
                         <div class="edit">
                             <button class="submit" type="submit" (click)="saveAboutMe()"><i class="far fa-edit" ></i>Save</button>
                         </div>
@@ -73,7 +74,10 @@
                 </div>
             </div>
             <div *ngIf="option == 2">
-                <div class="connections_title header">Your connections</div>
+                <div class="connections_title header">
+                    <div>Your connections</div>
+                    <div class="add_connections"><a routerLink="/users">Add connections</a></div>
+                </div>
                 <div class="connections_content">
                     <div class="connection" *ngFor="let connection of connections">
                         <div class="conn_img">
@@ -86,7 +90,7 @@
                             {{connection.firstName}} {{connection.lastName}}
                         </div>
                         <div class="conn_view">
-                            <button>View</button>
+                            <button (click)="goToProfile(connection.username)">View</button>
                         </div>
                     </div>
                     

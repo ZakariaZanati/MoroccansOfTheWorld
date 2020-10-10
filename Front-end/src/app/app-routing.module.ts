@@ -23,7 +23,7 @@ const routes: Routes = [
   {path : 'login',component : LoginComponent},
   {path : 'newsfeed',component : NewsfeedComponent,canActivate:[AuthGuard]},
   {path : 'profile',component : UserProfileComponent,canActivate:[AuthGuard]},
-  {path : 'profile/:name',component : ProfileComponent,canActivate:[AuthGuard]},
+  {path : 'profile/:name',component : ProfileComponent},
   {path : 'userdetails',component : UserDetailsComponent,canActivate:[AuthGuard]},
   {path : 'userdetails/:verification',component : UserDetailsComponent,canActivate:[AuthGuard]},
   {path : 'group/:id',component : ViewGroupComponent,canActivate:[AuthGuard]},

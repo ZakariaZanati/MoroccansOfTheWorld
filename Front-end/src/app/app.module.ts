@@ -34,6 +34,7 @@ import { VerificationComponent } from './verification/verification.component';
 import { TrainingsComponent } from './trainings/trainings.component';
 import {CalendarModule} from 'primeng/calendar';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatSelectCountryModule } from '@angular-material-extensions/select-country'; 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreateCourseComponent } from './courses/create-course/create-course.component';
 import { ViewCourseComponent } from './courses/view-course/view-course.component';
@@ -79,6 +80,7 @@ import { UsersListComponent } from './users-list/users-list.component';
     FormsModule,
     CalendarModule,
     MatDatepickerModule,
+    MatSelectCountryModule,
     NgbModule
   ],
   providers: [

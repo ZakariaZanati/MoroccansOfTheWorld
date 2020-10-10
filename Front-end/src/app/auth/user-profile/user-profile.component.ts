@@ -38,7 +38,7 @@ export class UserProfileComponent implements OnInit {
   isVerified : boolean;
   editable : boolean = false;
   updateAboutMe : string;
-  option = 2;
+  option = 1;
 
   posts : Array<PostModel> = [];
   connections : Array<JoinRequest> = [];
@@ -146,5 +146,10 @@ export class UserProfileComponent implements OnInit {
       })
     });
   }
+
+  goToProfile(username : string){
+    this.router.navigateByUrl('/profile/'+username);
+  }
+
 
 }

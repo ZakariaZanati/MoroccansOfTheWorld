@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { throwError } from 'rxjs';
 import {UserVerification} from './user-verification.payload';
 import {VerificationService} from './verification.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-verification',
@@ -12,7 +13,7 @@ export class VerificationComponent implements OnInit {
 
   users : Array<UserVerification> = []
 
-  constructor(private verificationService : VerificationService) { }
+  constructor(private verificationService : VerificationService,private router:Router) { }
 
   ngOnInit(): void {
 
@@ -32,6 +33,10 @@ export class VerificationComponent implements OnInit {
       console.log(response);
       this.getRequests();
     },err => throwError(err));
+  }
+
+  goToProfile(username : string){
+    this.router.navigateByUrl('/profile/'+username);
   }
 
 }

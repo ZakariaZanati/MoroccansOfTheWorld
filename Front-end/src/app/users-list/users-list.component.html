@@ -6,13 +6,12 @@
                 <input (input)="onSearchChange($event.target.value)" type="search" placeholder="Search ..."><i class="fas fa-search"></i>
             </div>
             <div class="filters">
+                
                 <div class="sort">
-                    <!--
-                    <label class="sort-label" for="sort">Categorie :</label>
-                    <select [(ngModel)]="categoryFilter" (change)="filterByCategory()" class="sort-select" name="" id="sort">
-                        <option *ngFor="let categ of categories" [ngValue]="categ">{{categ}}</option>
-                    </select>
-                    -->
+                    <label for="">Country : </label>
+                    <input type="text">
+                    <label for="">City : </label>
+                    <input type="text">
                 </div>
             </div>
         </div>

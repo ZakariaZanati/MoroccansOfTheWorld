@@ -94,12 +94,12 @@ public class AuthService {
     public void saveInfos(UserDetailsDto userDetailsDto){
         User user = this.getCurrentUser();
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX");
-        LocalDateTime dateTime = LocalDateTime.parse(userDetailsDto.getBirthDate(),formatter);
+        //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX");
+        //LocalDateTime dateTime = LocalDateTime.parse(userDetailsDto.getBirthDate(),formatter);
 
         user.setFirstName(userDetailsDto.getFirstName());
         user.setLastName(userDetailsDto.getLastName());
-        user.setBirthDate(dateTime);
+        //user.setBirthDate(dateTime);
         user.setCity(userDetailsDto.getCity());
         user.setCountry(userDetailsDto.getCountry());
         user.setAboutMe(userDetailsDto.getAboutMe());
@@ -118,7 +118,7 @@ public class AuthService {
         return UserDetailsDto.builder()
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
-                .birthDate(user.getBirthDate().toString())
+                .birthDate(user.getBirthDate() == null ? null : user.getBirthDate().toString())
                 .city(user.getCity())
                 .country(user.getCountry())
                 .aboutMe(user.getAboutMe())

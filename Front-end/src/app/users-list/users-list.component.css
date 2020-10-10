@@ -58,6 +58,7 @@
 
 .user{
     width: 150px;
+    height: 200px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -70,4 +71,41 @@
     width: 80px;
     height: 80px;
     border-radius: 50%;
+}
+
+::ng-deep mat-select-country.country{
+    height: 100px;
+    background-color: royalblue;
+}
+
+.sort input {
+    border: none;
+    width: 150px;
+    padding: 6px 15px;
+    border-radius: 15px;
+    border: 1px solid royalblue;
+    margin-left: 10px;
+}
+
+.sort label{
+    margin-left: 10px;
+}
+
+.conn_view{
+    margin-top: 10px;
+}
+
+.conn_view button{
+    padding: 3px 12px;
+    color: white;
+    background-color: #3083bb;
+    border: none;
+    outline: none;
+    font-weight: bold;
+}
+
+.conn_view button:hover{
+    color: #3083bb;
+    border: 2px solid #3083bb;
+    background-color: white;
 }

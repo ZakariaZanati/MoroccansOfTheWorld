@@ -170,6 +170,8 @@ input[type="file"]{
 
 .connections_title{
     padding: 8px 5px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .connections_content{
@@ -224,6 +226,10 @@ input[type="file"]{
     color: #3083bb;
     border: 2px solid #3083bb;
     background-color: white;
+}
+
+.add_connections a{
+    color: black;
 }
 
 

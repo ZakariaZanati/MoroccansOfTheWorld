@@ -15,7 +15,7 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let user of users">
-                        <td>{{user.firstName}} {{user.lastName}} </td>
+                        <td (click)="goToProfile(user.username)" style="cursor: pointer;">{{user.firstName}} {{user.lastName}} </td>
                         <td>{{user.email}}</td>
                         <td>{{user.phoneNumber}}</td>
                         <td>{{user.city}}</td>
@@ -25,17 +25,6 @@
                         <td class="button"><button type="submit"class="reject" (click)="respondToRequest(user.userId,'reject')" ><i class="fas fa-times"></i> Reject</button></td>
                     </tr>
                     <tr> 
-                        <td>Zakaria Zanati</td>
-                        <td>zakaria@gmail.com</td>
-                        <td>0616144542</td>
-                        <td>Rabat</td>
-                        <td>Morocco</td>
-                        <td>Software engineer</td>
-                        <td class="button"><button type="submit" class="accept"><i class="fas fa-check"></i> Accept</button></td>
-                        <td class="button"><button type="submit"class="reject" ><i class="fas fa-times"></i> Reject</button></td>
-                    </tr>
-                    <tr>
-                        
                         <td>Zakaria Zanati</td>
                         <td>zakaria@gmail.com</td>
                         <td>0616144542</td>

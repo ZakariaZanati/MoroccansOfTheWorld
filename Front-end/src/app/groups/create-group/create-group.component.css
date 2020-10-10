@@ -9,6 +9,7 @@
     margin-right: auto;
     top: 160px;
     margin: auto;
+    z-index: 8;
 }
 
 .header{

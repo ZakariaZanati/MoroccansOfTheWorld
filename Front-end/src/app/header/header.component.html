@@ -24,7 +24,7 @@
             </div>
             <div class="two"><button (click)="logout()" class="logout">Logout</button></div>
         </div>
-        <div *ngIf="!isLoggedIn" class="sign-in">
+        <div *ngIf="!isLoggedIn" class="sign-in in">
             <div><a routerLink="/sign-up">SIGN UP</a></div>
             <div><a routerLink="/login">SIGN IN</a></div>
         </div>
@@ -34,8 +34,8 @@
             <div class="link" (click)="toggleClass()"><a routerLink='/newsfeed'>Feed</a></div>
             <div class="link" (click)="toggleClass()"><a routerLink='/profile'>Profil</a></div>
             <div class="link" (click)="toggleClass()"><a routerLink='/groups'>Groups</a></div>
-            <div class="link" (click)="toggleClass()"><a href="">Events</a></div>
-            <div class="link" (click)="toggleClass()"><a href="">Job Offers</a></div>
+            <div class="link" (click)="toggleClass()"><a routerLink='/users'>People</a></div>
+            <div class="link" (click)="toggleClass()"><a routerLink="/courses">Trainings</a></div>
     </div>
 </div>
 <div class="btn" (click)="toggleClass()">

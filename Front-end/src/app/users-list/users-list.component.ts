@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { throwError } from 'rxjs';
 import {ConnectionsService} from '../connections/connections.service';
-import {JoinRequest} from '../groups/join-requests/join-request.payload';
 import {UsersResponse} from './users-response';
 import {UserModel} from './users-model';
 import { Router } from '@angular/router';
+import {CscService} from '../csc/csc.service';
 
 @Component({
   selector: 'app-users-list',
@@ -23,17 +23,28 @@ export class UsersListComponent implements OnInit {
   city : string = "";
   country : string = "";
 
-  constructor(private connectionsService : ConnectionsService,private router : Router) { }
+  countries: {};
+  states: {};
+  cities: {};
+
+  constructor(private connectionsService : ConnectionsService,private router : Router,private cscService : CscService) { }
 
   ngOnInit(): void {
+
+    this.cscService.getCountries().subscribe(
+      
+      data => {this.countries = data;console.log(data);}
+    );
+
     this.getPage(0,18,this.name,this.city,this.country);
   }
 
   getPage(page : number,size : number,name : string,city : string, country : string){
     this.connectionsService.getUsersPage(page,size,name,city,country).subscribe((response : UsersResponse) => {
       this.users = response.users;
-      console.log(response)
-      this.users.map(user => {
+      this.users.filter(user => {
+        return user.username !=='admin'
+      }).map(user => {
         const img = user.image;
         if (img) {
           user.image = "data:image/jpeg;base64,"+user.image;
@@ -82,6 +93,31 @@ export class UsersListComponent implements OnInit {
 
   filterByPlace(){
     this.getPage(0,18,"",this.city,this.country);
+  }
+
+  onChangeCountry(countryId: number) {
+    console.log(this.country);
+    if (countryId) {
+      this.cscService.getStates(countryId).subscribe(
+        data => {
+          this.states = data;
+          this.cities = null;
+        }
+      );
+    } else {
+      this.states = null;
+      this.cities = null;
+    }
+  }
+
+  onChangeState(stateId: number) {
+    if (stateId) {
+      this.cscService.getCities(stateId).subscribe(
+        data => this.cities = data
+      );
+    } else {
+      this.cities = null;
+    }
   }
 
 }

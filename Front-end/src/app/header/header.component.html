@@ -38,6 +38,6 @@
             <div class="link" (click)="toggleClass()"><a routerLink="/courses">Trainings</a></div>
     </div>
 </div>
-<div class="btn" (click)="toggleClass()">
+<div *ngIf="isLoggedIn" class="btn" (click)="toggleClass()">
     <span class="fa fa-bars"></span>
 </div>

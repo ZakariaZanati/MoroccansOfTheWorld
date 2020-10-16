@@ -16,6 +16,7 @@ import { VerificationComponent } from './verification/verification.component';
 import { TrainingsComponent } from './trainings/trainings.component';
 import { CreateCourseComponent } from './courses/create-course/create-course.component';
 import { UsersListComponent } from './users-list/users-list.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 const routes: Routes = [
   {path : '',component : HomeComponent},
@@ -31,7 +32,8 @@ const routes: Routes = [
   {path : 'verification',component : VerificationComponent,canActivate:[AdminGuard]},
   {path : 'courses',component : TrainingsComponent},
   {path : 'create-course',component:CreateCourseComponent},
-  {path : 'users',component:UsersListComponent}
+  {path : 'users',component:UsersListComponent},
+  {path : 'home',component : HomePageComponent}
 
 ];
 

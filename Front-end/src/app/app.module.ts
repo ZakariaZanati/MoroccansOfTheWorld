@@ -39,7 +39,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreateCourseComponent } from './courses/create-course/create-course.component';
 import { ViewCourseComponent } from './courses/view-course/view-course.component';
 import { ConnectionsComponent } from './connections/connections.component';
-import { UsersListComponent } from './users-list/users-list.component'; 
+import { UsersListComponent } from './users-list/users-list.component';
+import { HomePageComponent } from './home-page/home-page.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +68,8 @@ import { UsersListComponent } from './users-list/users-list.component';
     CreateCourseComponent,
     ViewCourseComponent,
     ConnectionsComponent,
-    UsersListComponent
+    UsersListComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,

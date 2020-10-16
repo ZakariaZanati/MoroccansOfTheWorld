@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  option : number = 0;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  changeOption(opt : number){
+    this.option = opt;
   }
 
 }

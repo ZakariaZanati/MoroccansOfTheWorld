@@ -1,0 +1,106 @@
+.navbar{
+    display: flex;
+    width: 100%;
+    height: 70px;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid black;
+    margin-bottom: 20px;   
+    color: rgb(95, 95, 95);
+}
+
+.logo{
+    display: flex;
+    justify-content: space-between;
+    width: 310px;
+    height: 60px;
+}
+
+.image{
+    display: flex;
+    align-items: center;
+    background-image: url('../../assets/logo2.png');
+    background-position: center;
+    background-size: cover;
+    width: 140px;
+    height: 50px;
+    margin-right: 10px;
+    
+}
+
+.desc{
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.1em;
+
+}
+
+.links{
+    display: flex;
+    width: 40%;
+    justify-content: space-between;
+    font-size: 1.2em;
+}
+
+.links div{
+    cursor: pointer;
+}
+
+.links div:hover {
+    color: black;
+}
+
+.signin{
+    display: flex;
+    width: 150px;
+    justify-content: space-between;
+    font-size: 1.2em;
+}
+
+
+.content_wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.content_container{
+    width: 80%;
+    margin: 0 auto;
+    border-bottom: 1px solid grey;
+}
+
+.content_welcome{
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    margin: 100px auto;
+}
+
+.content_description{
+    margin-bottom: 30px;
+}
+
+.content_description .description{
+    font-size: 3em;
+    line-height: 1.1;
+    font-weight: bold;
+}
+
+.content_details{
+    margin-left: 30px;
+}
+
+.content_details>div{
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    color: rgb(95, 95, 95);
+}
+
+.content_details>div>i{
+    margin-right: 10px;
+    color: rgb(48, 175, 48);
+}
+
+

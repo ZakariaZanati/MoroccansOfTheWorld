@@ -1,6 +1,7 @@
 .content_wrapper{
     background-color: rgb(218, 218, 218);
     padding: 20px 0;
+    position: relative;
 }
 .content{
     width: 70%;
@@ -48,6 +49,7 @@
 ul li {
     list-style: none;
     padding: 6px;
+    font-size: 1.2em;
     border-bottom: 1px solid gray;
     color: white;
 }
@@ -82,6 +84,10 @@ ul li:hover {
     background-image: url('../../assets/pexels-fwstudio-131634.jpg');
     background-position: center;
     background-size: cover;
+    height: 600px;
+}
+
+.atlas,.media{
     height: 600px;
 }
 
@@ -133,20 +139,144 @@ ul li:hover {
     top: 26%; 
     left: 50%; 
     text-align: center;   
-    transform: translate(-50%, -20%);
+    transform: translate(-50%, 40%);
     font-size: 2.7em; 
     line-height: 1.4;
     color: rgb(134, 0, 0);
     font-weight: bold;
     
 }
-.welcome span{
-    font-family: 'Lobster', cursive;    
-    letter-spacing: -3px;
-    background: linear-gradient(to right, #0e5e0b 0%, #dd4c4c 100%);
-	-webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 1.2em;
 
+.header_wrapper{
+    padding-bottom: 40px;
+    border-bottom: 4px solid black;
+    height: 110px;
+}
+
+.home_header{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+
+.header_one{
+    font-size: large;
+    font-weight: bold;
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+}
+
+.header_two{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly; 
     
+}
+
+.header_two div{
+    height: 100%;
+    cursor: pointer;
+    align-self: center;
+    font-size: 1.2em;
+}
+
+
+.header_two div:hover{
+    font-weight: bold;
+}
+
+.clicked{
+    font-weight: bold;
+}
+
+.logo_back{
+    background-image: url('../../assets/a6ba0ec2-b5b0-494c-a1d8-587e8bcbed13_200x200.png');
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    background-position: center;
+    background-size: cover;
+    z-index: 0;
+}
+
+.l1{
+    top: 50px;
+    left: 20px;
+}
+
+.l2{
+    top: 200px;
+    left: 120px;
+}
+
+.l3{
+    top: 350px;
+    left: 50px;
+}
+
+.l4{
+    top: 50px;
+    right: 20px;
+}
+
+.l5{
+    top: 200px;
+    right: 120px;
+}
+
+.l6{
+    top: 350px;
+    right: 50px;
+}
+
+.l7{
+    top: 530px;
+    left: 120px;
+}
+
+.l8{
+    top: 530px;
+    right: 120px;
+}
+
+.l9{
+    top: 10px;
+    right: 350px;
+    width: 60px;
+    height: 60px;
+}
+
+.l10{
+    top: 10px;
+    left: 350px;
+    width: 60px;
+    height: 60px;
+}
+
+.search{
+    position: relative;
+    margin-left: 30px;
+}
+
+.search input{
+    border: none;
+    width: 200px;
+    padding: 6px 15px;
+    
+    background-color: rgb(192, 192, 192);
+}
+
+.search i {
+    position: absolute;
+    right: 9px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.search i:hover {
+    color: rgb(78, 78, 78);
 }

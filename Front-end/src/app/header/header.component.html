@@ -1,42 +1,44 @@
-<div class="nav-bar">  
-    <div class="logo-icon">
-        <div class="logo" routerLink="/" style="cursor: pointer;">
-            <img src="../../assets/logo2.png" alt="">
-        </div>
+<div class="navbar">
+    <div (click)="homePage()" class="logo" style="cursor: pointer;">
+        <div class="image"></div>
+        <div class="desc">Atlassian - Rain Drop</div>
     </div>
-    
-    
-    <div class="sign-in-container">
-        <div *ngIf="isLoggedIn" class="sign-in">
-            <div class="one">
-                <app-notifications></app-notifications>
-                <app-connections></app-connections>
-            </div>
-            <div class="two">
-                <a class="profile" routerLink="/profile">
-                    <div class="image" *ngIf="image">
-                        <img [src]="image" alt="profile image">
-                    </div>
-                    <div class="username">
-                        {{username}}
-                    </div>         
-                </a>
-            </div>
-            <div class="two"><button (click)="logout()" class="logout">Logout</button></div>
+    <div class="links">
+        <div><a routerLink='/services'>Business</a></div>
+        <div><a routerLink='courses'>Formations</a></div>
+        <div>Innovation</div>
+        <div>Press center</div>
+        <div>First step</div>
+    </div>
+    <div *ngIf="!isLoggedIn" class="signin">
+        <div><a routerLink="/sign-up">SIGN UP</a></div>
+        <div><a routerLink="/login">SIGN IN</a></div>
+    </div>
+    <div *ngIf="isLoggedIn" class="in">
+        <div class="one">
+            <app-notifications></app-notifications>
+            <app-connections></app-connections>
         </div>
-        <div *ngIf="!isLoggedIn" class="sign-in in">
-            <div><a routerLink="/sign-up">SIGN UP</a></div>
-            <div><a routerLink="/login">SIGN IN</a></div>
+        <div class="two">
+            <a class="profile" routerLink="/profile">
+                <div class="img" *ngIf="image">
+                    <img [src]="image" alt="profile image">
+                </div>
+                <div class="username">
+                    {{username}}
+                </div>         
+            </a>
         </div>
+        <div class="two"><button (click)="logout()" class="logout">Logout</button></div>
     </div>
     <div class="sidebar" [class.show]="show">
-            <div class="link" (click)="toggleClass()"><a routerLink='/'>Home</a></div>
-            <div class="link" (click)="toggleClass()"><a routerLink='/newsfeed'>Feed</a></div>
-            <div class="link" (click)="toggleClass()"><a routerLink='/profile'>Profil</a></div>
-            <div class="link" (click)="toggleClass()"><a routerLink='/groups'>Groups</a></div>
-            <div class="link" (click)="toggleClass()"><a routerLink='/users'>People</a></div>
-            <div class="link" (click)="toggleClass()"><a routerLink="/courses">Trainings</a></div>
-    </div>
+        <div class="link" (click)="toggleClass()"><a routerLink='/'>Home</a></div>
+        <div class="link" (click)="toggleClass()"><a routerLink='/newsfeed'>Feed</a></div>
+        <div class="link" (click)="toggleClass()"><a routerLink='/profile'>Profil</a></div>
+        <div class="link" (click)="toggleClass()"><a routerLink='/groups'>Groups</a></div>
+        <div class="link" (click)="toggleClass()"><a routerLink='/users'>People</a></div>
+        <div class="link" (click)="toggleClass()"><a routerLink="/courses">Trainings</a></div>
+</div>
 </div>
 <div *ngIf="isLoggedIn" class="btn" (click)="toggleClass()">
     <span class="fa fa-bars"></span>

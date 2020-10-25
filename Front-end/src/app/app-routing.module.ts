@@ -17,9 +17,10 @@ import { TrainingsComponent } from './trainings/trainings.component';
 import { CreateCourseComponent } from './courses/create-course/create-course.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { ServicesComponent } from './services/services.component';
 
 const routes: Routes = [
-  {path : '',component : HomeComponent},
+  {path : 'home',component : HomeComponent},
   {path : 'sign-up',component : SignupComponent},
   {path : 'login',component : LoginComponent},
   {path : 'newsfeed',component : NewsfeedComponent,canActivate:[AuthGuard]},
@@ -33,7 +34,8 @@ const routes: Routes = [
   {path : 'courses',component : TrainingsComponent},
   {path : 'create-course',component:CreateCourseComponent},
   {path : 'users',component:UsersListComponent},
-  {path : 'home',component : HomePageComponent}
+  {path : '',component : HomePageComponent},
+  {path : 'services',component : ServicesComponent}
 
 ];
 

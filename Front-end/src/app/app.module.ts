@@ -40,7 +40,8 @@ import { CreateCourseComponent } from './courses/create-course/create-course.com
 import { ViewCourseComponent } from './courses/view-course/view-course.component';
 import { ConnectionsComponent } from './connections/connections.component';
 import { UsersListComponent } from './users-list/users-list.component';
-import { HomePageComponent } from './home-page/home-page.component'; 
+import { HomePageComponent } from './home-page/home-page.component';
+import { ServicesComponent } from './services/services.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,7 +70,8 @@ import { HomePageComponent } from './home-page/home-page.component';
     ViewCourseComponent,
     ConnectionsComponent,
     UsersListComponent,
-    HomePageComponent
+    HomePageComponent,
+    ServicesComponent
   ],
   imports: [
     BrowserModule,

@@ -45,4 +45,8 @@ export class HeaderComponent implements OnInit {
     this.show = !this.show
   }
 
+  homePage(){
+    this.router.navigateByUrl('');
+  }
+
 }

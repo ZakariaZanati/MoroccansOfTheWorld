@@ -1,0 +1,41 @@
+.header{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(70, 180, 253);
+    color: white;
+}
+
+.service_wrapper{
+    width: 100%;
+}
+
+.service_container{
+    margin: 30px auto;
+    width: 70%;
+    display: grid;
+    grid-template-columns: 20% 75%;
+    column-gap: 5%;
+}
+
+.menu_header{
+    font-weight: bold;
+    font-size: 1.4em;
+    padding: 5px 0;
+}
+
+.menu_items>div{
+    padding: 5px;
+    margin-left: 20px;
+    border-left: 2px solid rgb(187, 187, 187);
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.menu_items>div:hover{
+    border-left: 2px solid #039be5;
+    color:  #039be5;
+}
+

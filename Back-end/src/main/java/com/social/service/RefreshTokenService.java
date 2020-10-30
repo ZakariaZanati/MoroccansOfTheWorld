@@ -1,6 +1,6 @@
 package com.social.service;
 
-import com.social.exceptions.SpringRedditException;
+import com.social.exceptions.SpringException;
 import com.social.model.RefreshToken;
 import com.social.repository.RefreshTokenRepository;
 import lombok.AllArgsConstructor;
@@ -26,7 +26,7 @@ public class RefreshTokenService {
 
     void validateRefreshToken(String token) {
         refreshTokenRepository.findByToken(token)
-                .orElseThrow(() -> new SpringRedditException("Invalid refresh Token"));
+                .orElseThrow(() -> new SpringException("Invalid refresh Token"));
     }
 
     public void deleteRefreshToken(String token) {

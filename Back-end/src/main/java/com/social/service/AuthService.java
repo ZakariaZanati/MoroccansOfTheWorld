@@ -1,7 +1,7 @@
 package com.social.service;
 
 import com.social.dto.*;
-import com.social.exceptions.SpringRedditException;
+import com.social.exceptions.SpringException;
 import com.social.model.*;
 import com.social.repository.UserRepository;
 import com.social.repository.VerificationTokenRepository;
@@ -18,8 +18,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -147,14 +145,14 @@ public class AuthService {
 
     public void verifyAccount(String token){
         Optional<VerificationToken> verificationToken = verificationTokenRepository.findByToken(token);
-        verificationToken.orElseThrow(()->new SpringRedditException("Invalid token"));
+        verificationToken.orElseThrow(()->new SpringException("Invalid token"));
         fetchUserAndEnable(verificationToken.get());
     }
 
     @Transactional
     public void fetchUserAndEnable(VerificationToken verificationToken){
         String username = verificationToken.getUser().getUsername();
-        User user = userRepository.findByUsername(username).orElseThrow(()->new SpringRedditException("User Not Found with name - "+username));
+        User user = userRepository.findByUsername(username).orElseThrow(()->new SpringException("User Not Found with name - "+username));
         user.setEnabled(true);
         userRepository.save(user);
     }

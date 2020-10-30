@@ -1,14 +1,13 @@
 package com.social.controller;
 
 import com.social.dto.UserDetailsDto;
-import com.social.exceptions.SpringRedditException;
+import com.social.exceptions.SpringException;
 import com.social.model.Image;
 import com.social.model.User;
 import com.social.repository.ImageRepository;
 import com.social.repository.UserRepository;
 import com.social.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -112,7 +111,7 @@ public class ProfileController {
 
     private User getCurrentUser(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        return userRepository.findByUsername(authentication.getName()).orElseThrow(()->new SpringRedditException("User Not Found"));
+        return userRepository.findByUsername(authentication.getName()).orElseThrow(()->new SpringException("User Not Found"));
     }
 
     // compress the image bytes before storing it in the database

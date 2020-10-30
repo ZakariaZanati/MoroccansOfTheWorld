@@ -1,7 +1,7 @@
 package com.social.service;
 
 import com.social.dto.PostResponse;
-import com.social.exceptions.SpringRedditException;
+import com.social.exceptions.SpringException;
 import com.social.mapper.PostMapper;
 import com.social.model.Group;
 import com.social.model.Post;
@@ -100,7 +100,7 @@ public class PostService {
 
     private User getCurrentUser(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        return userRepository.findByUsername(authentication.getName()).orElseThrow(()->new SpringRedditException("User Not Found"));
+        return userRepository.findByUsername(authentication.getName()).orElseThrow(()->new SpringException("User Not Found"));
     }
 
     public static byte[] compressBytes(byte[] data) {

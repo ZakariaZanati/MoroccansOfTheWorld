@@ -1,6 +1,6 @@
 package com.social.service;
 
-import com.social.exceptions.SpringRedditException;
+import com.social.exceptions.SpringException;
 import com.social.model.NotificationEmail;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -33,7 +33,7 @@ class MailService {
             log.info("Activation email sent!!");
         } catch (MailException e) {
             log.error("Exception occurred when sending mail", e);
-            throw new SpringRedditException("Exception occurred when sending mail to " + notificationEmail.getRecipient(), e);
+            throw new SpringException("Exception occurred when sending mail to " + notificationEmail.getRecipient(), e);
         }
     }
 

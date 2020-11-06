@@ -1,0 +1,27 @@
+input[type="file"]{
+    display: none;
+}
+
+.options{
+    display: flex;
+    justify-content: right;
+    margin-top: 20px;
+}
+
+.options>label:hover,.upload:hover{
+    opacity: 0.9;
+}
+
+
+.upload,.options>label{
+    padding: 6px 12px;
+    width: 100px;
+    height: 30px;
+    background-color: rgb(48, 131, 187);
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}

@@ -146,6 +146,4 @@ public class PostService {
                 .map(postMapper::mapToDto)
                 .collect(Collectors.toList());
     }
-
-
 }

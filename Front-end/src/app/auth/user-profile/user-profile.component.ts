@@ -34,6 +34,7 @@ export class UserProfileComponent implements OnInit {
   aboutMe? : string;
   country? : String;
   city ?: String;
+  id : number;
 
   isVerified : boolean;
   editable : boolean = false;
@@ -73,6 +74,8 @@ export class UserProfileComponent implements OnInit {
       this.website = data.website;
       this.currentJob = data.currentJob;
       this.aboutMe = data.aboutMe;
+      this.id = data.userId;
+      
     })
     this.getImage();
     this.getConnections();

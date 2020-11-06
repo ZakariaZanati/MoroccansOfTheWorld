@@ -41,7 +41,8 @@ import { ViewCourseComponent } from './courses/view-course/view-course.component
 import { ConnectionsComponent } from './connections/connections.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { ServicesComponent } from './services/services.component'; 
+import { ServicesComponent } from './services/services.component';
+import { ResumeComponent } from './resume/resume.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +72,8 @@ import { ServicesComponent } from './services/services.component';
     ConnectionsComponent,
     UsersListComponent,
     HomePageComponent,
-    ServicesComponent
+    ServicesComponent,
+    ResumeComponent
   ],
   imports: [
     BrowserModule,

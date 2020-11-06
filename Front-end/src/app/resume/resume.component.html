@@ -1,0 +1,23 @@
+<div class="resume_container">
+    <div class="content">
+        <div *ngIf="currentFile" class="progress">
+            <div
+              class="progress-bar progress-bar-info progress-bar-striped"
+              role="progressbar"
+              attr.aria-valuenow="{{ progress }}"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              [ngStyle]="{ width: progress + '%' }"
+            >
+              {{ progress }}%
+            </div>
+          </div>
+          <input type="file" name="" id="">
+
+    </div>
+    <div class="options">
+        <input type="file" id="cv" (input)="selectFile($event)">
+        <label *ngIf="!selectedFiles" for="cv">Upload</label>
+        <input class="upload" type="button" *ngIf="selectedFiles" (click)="upload()" value="Save">
+    </div>
+</div>

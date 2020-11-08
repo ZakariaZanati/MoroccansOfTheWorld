@@ -1,5 +1,11 @@
 <div class="resume_container">
-    <div class="content">
+    <div class="header">
+      Your Resume
+    </div>
+    <div *ngIf="fileInfos" class="content">
+        <button (click)="downloadFile()"><i class="far fa-file-pdf"></i>Download</button>
+    </div>
+    <div class="options">
         <div *ngIf="currentFile" class="progress">
             <div
               class="progress-bar progress-bar-info progress-bar-striped"
@@ -12,10 +18,6 @@
               {{ progress }}%
             </div>
           </div>
-          <input type="file" name="" id="">
-
-    </div>
-    <div class="options">
         <input type="file" id="cv" (input)="selectFile($event)">
         <label *ngIf="!selectedFiles" for="cv">Upload</label>
         <input class="upload" type="button" *ngIf="selectedFiles" (click)="upload()" value="Save">

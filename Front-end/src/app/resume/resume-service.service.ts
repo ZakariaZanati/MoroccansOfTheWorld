@@ -12,15 +12,20 @@ export class ResumeServiceService {
   uploadResume(file : File,userId : number):Observable<HttpEvent<any>>{
     const formData = new FormData();
     formData.append('file',file);
-    const req = new HttpRequest('POST','http://localhost:8181/file/upload/'+userId,formData, {
+    /*
+    const req = new HttpRequest('POST','http://localhost:8181/file/'+userId,formData, {
       reportProgress : true,
       responseType : 'json'
     });
+    */
     
-    return this.http.request(req);
+    return this.http.post<HttpEvent<any>>('http://localhost:8181/file/'+userId,formData, {
+      reportProgress : true,
+      responseType : 'json'
+    });
   }
 
-  getResume(userId : number):Observable<any>{
-    return this.http.get('http://localhost:8080/file/'+userId);
+  getResume(userId : number){
+    return this.http.get('http://localhost:8181/file/'+userId,{responseType : 'text'});
   }
 }

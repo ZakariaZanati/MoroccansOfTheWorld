@@ -1,5 +1,6 @@
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import {AuthService} from '../auth/shared/auth.service'
 import {ResumeServiceService} from './resume-service.service';
@@ -12,24 +13,24 @@ import {ResumeServiceService} from './resume-service.service';
 export class ResumeComponent implements OnInit {
 
 
-  @Input() userId : number;
+  @Input() id : number;
 
   current : boolean = false;
   selectedFiles: FileList;
   currentFile: File;
   progress = 0;
   message = '';
-  fileInfos : Observable<any>;
+  fileInfos : string;
 
-  constructor(private authService : AuthService,private fileService : ResumeServiceService) {}
+  constructor(private authService : AuthService,private fileService : ResumeServiceService,private router:Router) {}
 
   ngOnInit(): void {
     this.authService.getCurrentUserInfo().subscribe(data => {
-      if (data.userId == this.userId) {
+      if (data.userId == this.id) {
         this.current = true;
       }
     })
-    this.fileInfos = this.fileService.getResume(this.userId);
+    this.fileService.getResume(this.id).subscribe(data => this.fileInfos = data.toString());
   }
 
   selectFile(event){
@@ -40,12 +41,12 @@ export class ResumeComponent implements OnInit {
   upload(){
     this.progress = 0;
     this.currentFile = this.selectedFiles.item(0);
-    this.fileService.uploadResume(this.currentFile,this.userId).subscribe(event => {
+    this.fileService.uploadResume(this.currentFile,this.id).subscribe(event => {
       if (event.type === HttpEventType.UploadProgress) {
         this.progress = Math.round(100*event.loaded/event.total);
       } else if (event instanceof HttpResponse) {
         this.message = event.body.message
-        this.fileInfos = this.fileService.getResume(this.userId);
+        this.fileService.getResume(this.id).subscribe(data => this.fileInfos = data.toString());
       }
     },err => {
       this.progress = 0;
@@ -54,6 +55,10 @@ export class ResumeComponent implements OnInit {
     })
 
     this.selectedFiles = undefined;
+  }
+
+  downloadFile(){
+    window.location.href=this.fileInfos
   }
 
 }

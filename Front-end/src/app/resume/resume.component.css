@@ -2,6 +2,14 @@ input[type="file"]{
     display: none;
 }
 
+.header{
+    font-size: large;
+    font-weight: bold;
+    border-bottom: 1px solid grey;
+    margin-bottom: 10px;
+    color: #3083bb;
+}
+
 .options{
     display: flex;
     justify-content: right;
@@ -24,4 +32,19 @@ input[type="file"]{
     border: none;
     cursor: pointer;
     text-align: center;
+}
+
+button{
+    width: 150px;
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 10px;
+    border-radius: 5px;
+    background-color: whitesmoke;
+}
+button>i{
+    color: red;
+    font-size: x-large;
 }

@@ -37,6 +37,7 @@ export class UserProfileComponent implements OnInit {
   id : number;
 
   isVerified : boolean;
+  isLoaded : boolean;
   editable : boolean = false;
   updateAboutMe : string;
   option = 1;
@@ -75,6 +76,8 @@ export class UserProfileComponent implements OnInit {
       this.currentJob = data.currentJob;
       this.aboutMe = data.aboutMe;
       this.id = data.userId;
+      this.isLoaded = true;
+      console.log("user id is"+this.id);
       
     })
     this.getImage();

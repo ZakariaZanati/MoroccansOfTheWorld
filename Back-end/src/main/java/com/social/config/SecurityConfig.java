@@ -41,6 +41,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/swagger-ui.html",
                         "/webjars/**")
                 .permitAll()
+                .antMatchers("/file/**")
+                .permitAll()
                 .anyRequest()
                 .authenticated();
         httpSecurity.cors();

@@ -64,6 +64,9 @@ public class User {
     private boolean verificationRequested;
     private boolean verified;
 
+    @Lob
+    private byte[] resume;
+
     @Nullable
     @JsonIgnore
     @OneToOne(fetch = FetchType.EAGER)
@@ -90,8 +93,6 @@ public class User {
     @JsonIgnore
     @OneToMany(mappedBy = "target",cascade = CascadeType.ALL)
     private Set<UserConnection> receivedConnections = new HashSet<>();
-
-
 
     public Long getUserId() {
         return userId;
@@ -310,5 +311,13 @@ public class User {
 
     public void setReceivedConnections(Set<UserConnection> receivedConnections) {
         this.receivedConnections = receivedConnections;
+    }
+
+    public byte[] getResume() {
+        return resume;
+    }
+
+    public void setResume(byte[] resume) {
+        this.resume = resume;
     }
 }

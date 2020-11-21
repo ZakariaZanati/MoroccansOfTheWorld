@@ -18,6 +18,7 @@ import { CreateCourseComponent } from './courses/create-course/create-course.com
 import { UsersListComponent } from './users-list/users-list.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ServicesComponent } from './services/services.component';
+import { CreateJobOfferComponent } from './jobs/create-job-offer/create-job-offer.component';
 
 const routes: Routes = [
   {path : 'home',component : HomeComponent},
@@ -35,7 +36,8 @@ const routes: Routes = [
   {path : 'create-course',component:CreateCourseComponent},
   {path : 'users',component:UsersListComponent},
   {path : '',component : HomePageComponent},
-  {path : 'services',component : ServicesComponent}
+  {path : 'services',component : ServicesComponent},
+  {path : 'createjob',component : CreateJobOfferComponent}
 
 ];
 

@@ -42,7 +42,11 @@ import { ConnectionsComponent } from './connections/connections.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ServicesComponent } from './services/services.component';
-import { ResumeComponent } from './resume/resume.component'; 
+import { ResumeComponent } from './resume/resume.component';
+import { CreateJobOfferComponent } from './jobs/create-job-offer/create-job-offer.component';
+import { ViewJobsComponent } from './jobs/view-jobs/view-jobs.component';
+import { JobDetailsComponent } from './jobs/job-details/job-details.component';
+import { JobDescriptionComponent } from './jobs/job-description/job-description.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,7 +77,11 @@ import { ResumeComponent } from './resume/resume.component';
     UsersListComponent,
     HomePageComponent,
     ServicesComponent,
-    ResumeComponent
+    ResumeComponent,
+    CreateJobOfferComponent,
+    ViewJobsComponent,
+    JobDetailsComponent,
+    JobDescriptionComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,75 @@
+<div class="content_wrapper">
+    <h1>Find the best recruit for your job</h1>
+    <div class="job_form">
+        <form (ngSubmit)="onSubmit()" #f="ngForm">
+            <div class="form_element">
+                <label for="post">Post *</label><br>
+                <input 
+                    type="text"
+                    id="post"
+                    ngModel
+                    name="post"
+                    required>
+            </div>
+            <div class="form_element">
+                <label for="enterprise">Enterprise *</label><br>
+                <input 
+                    type="text"
+                    id="enterprise"
+                    ngModel
+                    name="enterprise"
+                    required>
+            </div>
+            <div class="form_element">
+                <label for="location">Job location *</label><br>
+                <input 
+                    type="text"
+                    id="location"
+                    ngModel
+                    name="location"
+                    required>
+            </div>
+            <div class="form_element">
+                <label for="type">Employment type *</label><br>
+                <select
+                    id="type"
+                    ngModel
+                    name="type">
+                    <option value="full-time">Full-time</option>
+                    <option value="part-time">Part-time</option>
+                    <option value="trainee">Trainee</option>
+                    <option value="temporary">Temporary job</option>
+                    <option value="freelance">Freelance</option>
+                </select>
+            </div>
+            <div class="form_element">
+                <label for="description">Description *</label>
+                <textarea
+                  name="description"
+                  rows="3"
+                  class="form-control"
+                  required
+                  ngModel></textarea>
+            </div>
+            <div class="form_element">
+                <label for="qualifications">Qualifications</label>
+                <textarea
+                  name="qualifications"
+                  rows="3"
+                  class="form-control"
+                  ngModel></textarea>
+            </div>
+            <div class="form_element">
+                <label for="salary">Salary range</label><br>
+                <input 
+                    type="text"
+                    id="salary"
+                    ngModel
+                    name="salary">
+            </div>
+            <div class="button">
+                <button class="form_button" type="submit" [disabled]="!f.valid">Create Offer</button>
+            </div>
+        </form>
+    </div>
+</div>

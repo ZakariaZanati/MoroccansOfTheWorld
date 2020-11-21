@@ -1,0 +1,51 @@
+.content_wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: 50px auto;
+    
+    
+}
+
+h1 {
+    align-self: center;
+    margin-bottom: 50px;
+    color: navy;
+    font-weight: bold;
+}
+
+.job_form{
+    border: 2px solid navy;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.form_element{
+    padding: 10px 0;
+    color: navy;
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+}
+
+.form_element input,select{
+    width: 400px;
+    height: 30px;
+    border-radius: 3px;
+    border: 1px solid rgb(197, 197, 197);
+    outline: none;
+    padding: 5px;
+}
+
+button {
+    margin-top: 50px;
+    width: 150px;
+    height: 30px;
+    color: white;
+    background-color: navy;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}

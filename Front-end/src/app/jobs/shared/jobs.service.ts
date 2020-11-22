@@ -11,7 +11,7 @@ export class JobsService {
   constructor(private http : HttpClient) { }
 
   createJobOffer(jobModel : JobModel){
-    return this.http.post('http://localhost:8181/api/jobs/',jobModel);
+    return this.http.post('http://localhost:8181/api/jobs/',jobModel,{responseType : "text"});
   }
 
   getJobs():Observable<JobModel[]>{

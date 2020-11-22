@@ -1,4 +1,4 @@
-export class JobModel {
+export interface JobModel {
 
     id? : number;
     post : string;
@@ -8,7 +8,8 @@ export class JobModel {
     description : string;
     qualifications? : string;
     salary? : string;
-    creationDate? : Date;
-    expirationDate? : Date;
-    autor? : Date;
+    creationDate? : string;
+    expirationDate? : string;
+    author? : string;
+    link? : string;
 }

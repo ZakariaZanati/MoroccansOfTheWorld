@@ -67,8 +67,20 @@
                     ngModel
                     name="salary">
             </div>
+            <div class="form_element">
+                <label for="link">Link to apply</label><br>
+                <input 
+                    type="text"
+                    id="link"
+                    ngModel
+                    name="link">
+            </div>
+            <div class="date">
+                <label for="expirationDate">Expiration Date </label><br>
+                <input name="expirationDate" placeholder="yyyy-mm-dd" type="date" ngModel>
+            </div>
             <div class="button">
-                <button class="form_button" type="submit" [disabled]="!f.valid">Create Offer</button>
+                <button class="form_button" type="submit" [disabled]="!f.valid ">Create Offer</button>
             </div>
         </form>
     </div>

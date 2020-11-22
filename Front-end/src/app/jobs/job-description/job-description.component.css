@@ -1,0 +1,19 @@
+.job_container{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 130px;
+    color: rgba(0, 0, 0, 0.45);
+    border-bottom: 1px solid  rgba(0, 0, 0, 0.45);
+}
+
+.title{
+    font-weight: bold;
+    font-size: 1.2em;
+    color: royalblue;
+    margin-bottom: 15px;
+}
+
+.location,.enterprise,.time{
+    margin-left: 30px;
+}

@@ -1,0 +1,82 @@
+.options{
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    border-right: 1px solid gray;
+    border-left: 1px solid gray;
+    height: 50px;
+    padding: 10px;
+    align-content: center;
+    margin: 10px auto;
+}
+
+.find{
+    width: 50%;
+}
+
+.find>form{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.search{
+    position: relative;
+}
+.search input{
+    border: none;
+    width: 150px;
+    padding: 6px 15px;
+    height: 35px;
+    border-radius: 15px;
+    border: 1px solid royalblue;
+}
+
+.search i {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    cursor: pointer;
+}
+
+i{
+    color: royalblue;
+}
+
+.search_button button{
+    width: 80px;
+    color: white;
+    background-color: royalblue;
+    border: none;
+    height: 35px;
+    border-radius: 15px;
+}
+
+.add_job button{
+    width: 200px;
+    height: 35px;
+    color: royalblue;
+    border: 2px solid royalblue;
+    border-radius: 15px;
+}
+
+.content_wrapper{
+    background-color: whitesmoke;
+}
+
+.jobs_content{
+    width: 60%;
+    display: grid;
+    margin: 0 auto;
+    grid-template-columns: repeat(2,1fr);
+    column-gap: 5px;
+    height: 600px;
+    padding: 10px 0;
+}
+
+.jobs_list,.jobs_details{
+    height: 500px;
+    background-color: white;
+    overflow-y: scroll;
+}
+

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-job-description',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JobDescriptionComponent implements OnInit {
 
-  constructor() { }
+  id = 1;
+  constructor(private router : Router,private route : ActivatedRoute) { }
 
   ngOnInit(): void {
+  }
+
+  viewJobDetails(){
+    this.router.navigate([this.id],{relativeTo : this.route})
   }
 
 }

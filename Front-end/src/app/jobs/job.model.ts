@@ -8,4 +8,7 @@ export class JobModel {
     description : string;
     qualifications? : string;
     salary? : string;
+    creationDate? : Date;
+    expirationDate? : Date;
+    autor? : Date;
 }

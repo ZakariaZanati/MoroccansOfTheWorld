@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {JobModel} from '../job.model';
+import {JobsService} from '../shared/jobs.service';
 
 @Component({
   selector: 'app-create-job-offer',
@@ -14,7 +15,7 @@ export class CreateJobOfferComponent implements OnInit {
   submitted = false;
   jobModel : JobModel;
 
-  constructor() { }
+  constructor(private jobsService : JobsService) { }
 
   ngOnInit() {
   }
@@ -22,6 +23,7 @@ export class CreateJobOfferComponent implements OnInit {
   onSubmit(){
     this.jobModel = this.jobForm.value;
     console.log(this.jobModel);
+    this.jobsService.createJobOffer(this.jobModel);
   }
 
 }

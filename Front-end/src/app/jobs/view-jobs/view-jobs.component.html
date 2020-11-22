@@ -1,5 +1,31 @@
 <div class="options">
-    <div class="search"></div>
-    <div class="location"></div>
+    <div class="find">
+        <form (ngSubmit)="onFindJobs()" #f="ngForm">
+            <div class="search">
+                <input type="text" name="search" ngModel placeholder="Job title..."><i class="fas fa-search"></i>
+            </div>
+            <div class="search">
+                <input type="text" name="location" ngModel placeholder="Location..."><i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="search_button">
+                <button type="submit">Find</button>
+            </div>
+        </form>
+    </div>
     
+    <div class="add_job">
+        <button>Add job offer</button>
+    </div>
+</div>
+<div class="content_wrapper">
+    <div class="jobs_content">
+        <div class="jobs_list">
+            <div class="list">
+                <app-job-description></app-job-description>
+            </div>
+        </div>
+        <div class="jobs_details">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
 </div>

@@ -19,6 +19,8 @@ import { UsersListComponent } from './users-list/users-list.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ServicesComponent } from './services/services.component';
 import { CreateJobOfferComponent } from './jobs/create-job-offer/create-job-offer.component';
+import { ViewJobsComponent } from './jobs/view-jobs/view-jobs.component';
+import { JobDetailsComponent } from './jobs/job-details/job-details.component';
 
 const routes: Routes = [
   {path : 'home',component : HomeComponent},
@@ -37,7 +39,10 @@ const routes: Routes = [
   {path : 'users',component:UsersListComponent},
   {path : '',component : HomePageComponent},
   {path : 'services',component : ServicesComponent},
-  {path : 'createjob',component : CreateJobOfferComponent}
+  {path : 'createjob',component : CreateJobOfferComponent},
+  {path : 'jobs',component : ViewJobsComponent,children : [
+    {path : ':id',component : JobDetailsComponent}
+  ]}
 
 ];
 

@@ -1,6 +1,6 @@
-<div class="job_container" (click)="viewJobDetails()">
-    <div class="title">Stage développement JAVA/JEE</div>
-    <div class="enterprise">Thales</div>
-    <div class="location">Nante, FR</div>
-    <div class="time">2 days ago</div>
+<div class="job_container" style="cursor: pointer;" (click)="viewJobDetails()">
+    <div class="title">{{jobOffer.post}}</div>
+    <div class="enterprise">{{jobOffer.enterprise}}</div>
+    <div class="location">{{jobOffer.location}}</div>
+    <div class="time">published : {{jobOffer.creationDate}} </div>
 </div>

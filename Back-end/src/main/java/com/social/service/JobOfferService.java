@@ -1,6 +1,7 @@
 package com.social.service;
 
 import com.social.dto.JobOfferDto;
+import com.social.mapper.JobOfferMapper;
 import com.social.model.JobOffer;
 import com.social.model.Provider;
 import com.social.repository.JobOfferRepository;
@@ -9,12 +10,17 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class JobOfferService {
 
     @Autowired
     private JobOfferRepository jobOfferRepository;
+
+    @Autowired
+    private JobOfferMapper jobOfferMapper;
 
     @Autowired
     private AuthService authService;
@@ -41,4 +47,27 @@ public class JobOfferService {
 
         jobOfferRepository.save(job);
     }
+
+
+    public List<JobOfferDto> getJobs(){
+
+        List<JobOffer> jobOffers = jobOfferRepository.findAll();
+        return jobOffers.stream()
+                .map(jobOfferMapper::mapToDto)
+                .collect(Collectors.toList());
+    }
+
+    public List<JobOfferDto> getUserJobOffers(String username){
+        List<JobOffer> jobOffers = jobOfferRepository.findByAuthor(username);
+        return jobOffers.stream()
+                .map(jobOfferMapper::mapToDto)
+                .collect(Collectors.toList());
+    }
+
+    public JobOfferDto getJobOffer(Long id){
+        JobOffer jobOffer = jobOfferRepository.findById(id).get();
+        return jobOfferMapper.mapToDto(jobOffer);
+    }
+
+
 }

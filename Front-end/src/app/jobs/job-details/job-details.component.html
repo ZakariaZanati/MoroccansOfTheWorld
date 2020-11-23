@@ -1,1 +1,22 @@
-<p>job-details works!</p>
+<div class="content">
+    <h1>{{jobOffer.post}} </h1>
+    <div class="enterprise">{{jobOffer.enterprise}}</div>
+    <div class="location">{{jobOffer.location}} </div>
+    <div class="owner">
+        <span>Author : </span>
+        <div>{{jobOffer.author}}</div>
+    </div>
+    <div class="description">
+        <span>Description</span>
+        <div>{{jobOffer.description}}</div>
+    </div>
+    <div *ngIf="jobOffer.qualifications" class="skills">
+        <span>Qualifications : </span>
+        <div>{{jobOffer.qualifications}}</div>
+    </div>
+    <div *ngIf="jobOffer.salary" class="salary">
+        <span>Salary : </span> 
+        <div> {{jobOffer.salary}} </div>
+    </div>
+    <button (click)="applyLink()">Apply here</button>
+</div>

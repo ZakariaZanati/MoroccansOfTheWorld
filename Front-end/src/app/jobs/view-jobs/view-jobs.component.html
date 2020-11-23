@@ -14,14 +14,18 @@
     </div>
     
     <div class="add_job">
-        <button>Add job offer</button>
+        <button routerLink="/createjob" >Add job offer</button>
     </div>
 </div>
 <div class="content_wrapper">
     <div class="jobs_content">
         <div class="jobs_list">
             <div class="list">
-                <app-job-description></app-job-description>
+
+                <div *ngFor="let job of jobs">
+                    <app-job-description [jobOffer]="job" ></app-job-description>
+                </div>
+                
             </div>
         </div>
         <div class="jobs_details">

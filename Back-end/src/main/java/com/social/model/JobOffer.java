@@ -41,6 +41,10 @@ public class JobOffer {
 
     private LocalDateTime expirationDate;
 
+    private String link;
+
+    private String author;
+
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "userId", referencedColumnName = "userId")
     private Provider provider;

@@ -8,8 +8,8 @@ export interface JobModel {
     description : string;
     qualifications? : string;
     salary? : string;
-    creationDate? : string;
+    creationDate : string;
     expirationDate? : string;
-    author? : string;
+    author : string;
     link? : string;
 }

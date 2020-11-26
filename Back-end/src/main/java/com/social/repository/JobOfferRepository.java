@@ -8,4 +8,5 @@ import java.util.List;
 public interface JobOfferRepository extends JpaRepository<JobOffer,Long> {
 
     List<JobOffer> findByAuthor(String author);
+    List<JobOffer> findByPostContainsOrLocationContains(String post,String location);
 }

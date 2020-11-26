@@ -19,6 +19,7 @@ export class CreateJobOfferComponent implements OnInit {
   constructor(private jobsService : JobsService,private authService : AuthService) { }
 
   ngOnInit() {
+    console.log(this.authService.getUserName());
   }
 
   onSubmit(){

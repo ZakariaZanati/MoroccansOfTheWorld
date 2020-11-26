@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import {JobsService} from '../shared/jobs.service';
 import {JobModel} from '../job.model';
 import { map } from 'rxjs/operators';
+import { AuthService } from 'src/app/auth/shared/auth.service';
 
 @Component({
   selector: 'app-view-jobs',
@@ -14,8 +15,10 @@ export class ViewJobsComponent implements OnInit {
   @ViewChild('f') jobSearch : NgForm;
 
   jobs : JobModel[] = [];
+  checked = false;
+  userType : string;
 
-  constructor(private jobsService : JobsService) { }
+  constructor(private jobsService : JobsService,private authService : AuthService) { }
 
   ngOnInit(): void {
     this.jobsService.getJobs().pipe(map((jobs : JobModel[]) => {
@@ -28,6 +31,8 @@ export class ViewJobsComponent implements OnInit {
       this.jobs = data;
       console.log(this.jobs);
     });
+
+    this.userType = this.authService.getUserType();
   }
 
   onFindJobs(){
@@ -36,6 +41,6 @@ export class ViewJobsComponent implements OnInit {
     let location = this.jobSearch.value.location;
     this.jobsService.findJobsByNameAndLocation(name,location).subscribe((data : JobModel[]) => {
       this.jobs = data;
-    });;
+    });
   }
 }

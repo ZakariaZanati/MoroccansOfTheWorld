@@ -13,7 +13,12 @@
         </form>
     </div>
     
-    <div class="add_job">
+    <div *ngIf="userType == 'PROVIDER' " class="add_job">
+        <mat-checkbox
+            [color]="'primary'"
+            [(ngModel)]="checked">
+            Your offers
+        </mat-checkbox>
         <button routerLink="/createjob" >Add job offer</button>
     </div>
 </div>

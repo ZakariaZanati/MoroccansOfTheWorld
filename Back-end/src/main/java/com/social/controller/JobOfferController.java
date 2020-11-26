@@ -1,10 +1,10 @@
 package com.social.controller;
 
 import com.social.dto.JobOfferDto;
-import com.social.model.JobOffer;
 import com.social.repository.JobOfferRepository;
 import com.social.service.JobOfferService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -50,6 +50,12 @@ public class JobOfferController {
     public ResponseEntity<String> deleteJobOffer(@PathVariable Long id){
         jobOfferRepository.delete(jobOfferRepository.findById(id).get());
         return new ResponseEntity<>("Job deleted Successfully",HttpStatus.OK);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<JobOfferDto>> findByNameOrLocation(@Param("name") String name,
+                                                                  @Param("location") String location){
+        return ResponseEntity.status(HttpStatus.OK).body(jobOfferService.find(name, location));
     }
 
 

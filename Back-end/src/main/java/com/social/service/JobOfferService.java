@@ -43,6 +43,7 @@ public class JobOfferService {
                 .description(jobOffer.getDescription())
                 .qualifications(jobOffer.getQualifications())
                 .salary(jobOffer.getSalary())
+                .author(jobOffer.getAuthor())
                 .build();
 
         jobOfferRepository.save(job);
@@ -67,6 +68,13 @@ public class JobOfferService {
     public JobOfferDto getJobOffer(Long id){
         JobOffer jobOffer = jobOfferRepository.findById(id).get();
         return jobOfferMapper.mapToDto(jobOffer);
+    }
+
+    public List<JobOfferDto> find(String name,String location){
+        List<JobOffer> jobOffers = jobOfferRepository.findByPostContainsOrLocationContains(name,location);
+        return jobOffers.stream()
+                .map(jobOfferMapper::mapToDto)
+                .collect(Collectors.toList());
     }
 
 

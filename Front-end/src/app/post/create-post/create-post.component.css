@@ -20,11 +20,7 @@
     border: none;
 
 }
-* {
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
-}
+
 .post_header{
     width: 100%;
     display: flex;
@@ -43,13 +39,21 @@ input[type="file"]{
 }
 
 .buttons>label{
-    padding: 6px 8px;
+    height: 30px;
+    width: 80px;
     color: white;
-    background-color: rgb(90, 123, 212);
+    background-color:royalblue;
     cursor: pointer;
     border-radius: 8px;
     border: none;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttons>label>i {
+    margin-right: 4px;
 }
 
 .buttons>label:hover{
@@ -58,9 +62,9 @@ input[type="file"]{
 
 .form_new_post{
     color: white;
-    width: 75px;
-    height: 35px;
-    background-color: rgb(90, 123, 212);
+    width: 80px;
+    height: 30px;
+    background-color: royalblue;
     cursor: pointer;
     border-radius: 8px;
     outline: none;

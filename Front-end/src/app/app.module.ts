@@ -47,7 +47,9 @@ import { ResumeComponent } from './resume/resume.component';
 import { CreateJobOfferComponent } from './jobs/create-job-offer/create-job-offer.component';
 import { ViewJobsComponent } from './jobs/view-jobs/view-jobs.component';
 import { JobDetailsComponent } from './jobs/job-details/job-details.component';
-import { JobDescriptionComponent } from './jobs/job-description/job-description.component'; 
+import { JobDescriptionComponent } from './jobs/job-description/job-description.component';
+import { PrevTrainningsComponent } from './preview/prev-trainnings/prev-trainnings.component';
+import { PrevJobsComponent } from './preview/prev-jobs/prev-jobs.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,7 +84,9 @@ import { JobDescriptionComponent } from './jobs/job-description/job-description.
     CreateJobOfferComponent,
     ViewJobsComponent,
     JobDetailsComponent,
-    JobDescriptionComponent
+    JobDescriptionComponent,
+    PrevTrainningsComponent,
+    PrevJobsComponent
   ],
   imports: [
     BrowserModule,

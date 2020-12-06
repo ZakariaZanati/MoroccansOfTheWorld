@@ -15,11 +15,10 @@
     </div>  
     <div class="reactions_container">
         <div class="reactions">
-            <div class="likes"><i class="fas fa-heart"></i> {{post.likeCount}} likes</div>
+            <div class="likes"><app-like [post]="post"></app-like> {{post.likeCount}} likes</div>
             <div class="comments"><i class="fas fa-comments"></i> {{post.commentCount}} comments</div>
         </div>
         
-        <app-like [post]="post"></app-like>
     </div>
     <app-comment [post]="post"></app-comment>
 </div>

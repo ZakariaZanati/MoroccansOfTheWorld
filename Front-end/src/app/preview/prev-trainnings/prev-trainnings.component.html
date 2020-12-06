@@ -1,0 +1,21 @@
+<div class="sort">
+    <label class="sort-label" for="sort">Sort by:</label>
+    <select class="sort-select" name="" id="sort">
+        <option value="">Nearest</option>
+        <option value="">Newest</option>
+    </select>
+</div>
+<div class="event">
+    <div class="event_container" *ngFor="let course of courses">
+        <div class="event-img"> 
+            <div *ngIf="course.imageBytes">
+                <img [src]="course.imageBytes" alt="">
+            </div>
+        </div>
+        <div class="event-desc"> 
+            <div class="event_title">{{course.name}}</div>
+            <p>Date : {{course.dateTime}} at {{course.time}}</p>
+            <p>Provider : {{course.providerUsername}}</p>
+        </div>
+    </div>
+</div>

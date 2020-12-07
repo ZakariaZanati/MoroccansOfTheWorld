@@ -10,4 +10,5 @@ export class PostModel{
     firstName : string;
     lastName : string;
     profileImage : any;
+    verifiedUser : boolean;
 }

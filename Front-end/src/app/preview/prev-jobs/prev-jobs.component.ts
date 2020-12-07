@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {JobModel} from '../../jobs/job.model';
+import {JobsService} from '../../jobs/shared/jobs.service';
 
 @Component({
   selector: 'app-prev-jobs',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrevJobsComponent implements OnInit {
 
-  constructor() { }
+  jobs : JobModel[] = [];
 
-  ngOnInit(): void {
+  constructor(private jobservice : JobsService) {
+    
   }
 
+  ngOnInit(): void {
+    this.getJobs();
+  }
+
+  getJobs(){
+    this.jobservice.previewJobs().subscribe((data)=>{
+      this.jobs = data;
+      console.log(data)
+    })
+  }
 }

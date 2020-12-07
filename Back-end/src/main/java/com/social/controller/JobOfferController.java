@@ -1,6 +1,7 @@
 package com.social.controller;
 
 import com.social.dto.JobOfferDto;
+import com.social.model.JobOffer;
 import com.social.repository.JobOfferRepository;
 import com.social.service.JobOfferService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,12 @@ public class JobOfferController {
     public ResponseEntity<List<JobOfferDto>> findByNameOrLocation(@Param("name") String name,
                                                                   @Param("location") String location){
         return ResponseEntity.status(HttpStatus.OK).body(jobOfferService.find(name, location));
+    }
+
+    @GetMapping("/preview")
+    public ResponseEntity<List<JobOfferDto>> previewOffers(){
+        List<JobOfferDto> jobOffers = jobOfferService.previewOffers();
+        return ResponseEntity.status(HttpStatus.OK).body(jobOffers);
     }
 
 

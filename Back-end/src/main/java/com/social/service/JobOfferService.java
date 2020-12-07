@@ -6,6 +6,9 @@ import com.social.model.JobOffer;
 import com.social.model.Provider;
 import com.social.repository.JobOfferRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -75,6 +78,15 @@ public class JobOfferService {
         return jobOffers.stream()
                 .map(jobOfferMapper::mapToDto)
                 .collect(Collectors.toList());
+    }
+
+    public List<JobOfferDto> previewOffers(){
+        Pageable pageable = PageRequest.of(0,4);
+        Page<JobOffer> page = jobOfferRepository.findAll(pageable);
+        return page.stream()
+                .map(jobOfferMapper::mapToDto)
+                .collect(Collectors.toList());
+
     }
 
 

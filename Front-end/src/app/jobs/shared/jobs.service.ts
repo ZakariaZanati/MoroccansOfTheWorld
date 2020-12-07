@@ -18,6 +18,10 @@ export class JobsService {
     return this.http.get<JobModel[]>('http://localhost:8181/api/jobs/');
   }
 
+  previewJobs():Observable<JobModel[]>{
+    return this.http.get<JobModel[]>('http://localhost:8181/api/jobs/preview/');
+  }
+
   getJob(id : number):Observable<JobModel>{
     return this.http.get<JobModel>('http://localhost:8181/api/jobs/'+id);
   }
@@ -28,4 +32,6 @@ export class JobsService {
     params = params.append('location',location);
     return this.http.get<JobModel[]>('http://localhost:8181/api/jobs/search',{params : params});
   }
+
+  
 }

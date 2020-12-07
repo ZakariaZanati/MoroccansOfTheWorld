@@ -17,6 +17,7 @@ public class PostResponse {
     private String duration;
     private String firstName;
     private String lastName;
+    private boolean verifiedUser;
     private byte[] profileImage;
     private boolean liked;
     private byte[] image;

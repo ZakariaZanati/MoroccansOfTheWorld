@@ -12,6 +12,8 @@
     justify-content: flex-start;
 }
 
+
+
 .user_img{
     background-color: rgb(46, 43, 36); 
     border-radius: 50%; 
@@ -70,6 +72,11 @@
     border-radius: 50%;
 }
 
+.spans{
+    display: flex;
+    flex-direction: column;
+}
+
 .username{
     cursor: pointer;
 }
@@ -79,6 +86,10 @@
     text-decoration: none;
 }
 
+.duration{
+    color: gray;
+    font-size: 0.8em;
+}
 
 
 

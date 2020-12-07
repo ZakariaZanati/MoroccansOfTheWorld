@@ -3,7 +3,12 @@
         <div class="user_img">
             <img [src]="post.profileImage" alt="">
         </div>
-        <span class="username"><a [routerLink]="['/profile',post.userName]">{{post.firstName}} {{post.lastName}}</a> </span>
+        <div class="spans">
+            <span class="username"><a [routerLink]="['/profile',post.userName]">{{post.firstName}} {{post.lastName}}</a> 
+                <i *ngIf="post.verifiedUser" style="color: #5151fd; margin-left: 6px; font-size: 0.7em;" class="fas fa-check-circle"></i>
+            </span>
+            <span class="duration"> {{post.duration}} </span>
+        </div>
     </div>
     <div class="text_container">
         <div class="text_content">
@@ -22,3 +27,4 @@
     </div>
     <app-comment [post]="post"></app-comment>
 </div>
+

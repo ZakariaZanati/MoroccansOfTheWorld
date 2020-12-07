@@ -16,6 +16,10 @@ import org.mapstruct.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+import java.time.LocalDateTime;
+import java.time.Period;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 
 @Mapper(componentModel = "spring")
@@ -36,10 +40,11 @@ public abstract class PostMapper {
     @Mapping(target = "userName",source = "user.username")
     @Mapping(target = "firstName",source = "user.firstName")
     @Mapping(target = "lastName",source = "user.lastName")
+    @Mapping(target = "verifiedUser",source = "user.verified")
     @Mapping(target = "profileImage", expression = "java(getImage(post.getUser().getUsername()))")
     @Mapping(target = "commentCount",expression = "java(commentCount(post))")
     @Mapping(target = "likeCount",source = "likeCount")
-    @Mapping(target = "duration",source = "createdDate")
+    @Mapping(target = "duration",expression = "java(getDuration(post))")
     @Mapping(target = "liked",expression = "java(isLiked(post))")
     @Mapping(target = "image",source = "imageBytes")
     public abstract PostResponse mapToDto(Post post);
@@ -49,7 +54,43 @@ public abstract class PostMapper {
     }
 
     String getDuration(Post post){
-        return TimeAgo.using(post.getCreatedDate().toEpochMilli());
+
+        LocalDateTime toDateTime = LocalDateTime.now();
+        LocalDateTime fromDateTime = LocalDateTime.ofInstant(post.getCreatedDate(), ZoneId.systemDefault());
+
+        LocalDateTime tempDateTime = LocalDateTime.from(fromDateTime);
+        long year = tempDateTime.until(toDateTime, ChronoUnit.YEARS);
+        tempDateTime = tempDateTime.plusYears(year);
+
+        long months = tempDateTime.until( toDateTime, ChronoUnit.MONTHS );
+        tempDateTime = tempDateTime.plusMonths( months );
+
+        long days = tempDateTime.until( toDateTime, ChronoUnit.DAYS );
+        tempDateTime = tempDateTime.plusDays( days );
+
+
+        long hours = tempDateTime.until( toDateTime, ChronoUnit.HOURS );
+        tempDateTime = tempDateTime.plusHours( hours );
+
+        long minutes = tempDateTime.until( toDateTime, ChronoUnit.MINUTES );
+
+
+
+        String duration = "";
+
+        if (year != 0){
+            duration += fromDateTime.getDayOfMonth()+" "+fromDateTime.getMonth().toString().toLowerCase() + " " + fromDateTime.getYear();
+        } else if (months != 0 || days != 0){
+            duration = fromDateTime.getDayOfMonth()+" "+fromDateTime.getMonth().toString().toLowerCase();
+        } else if (hours != 0){
+            duration = (hours == 1 ? hours+" hr" : (hours + " hrs"));
+        } else if (minutes != 0){
+            duration = (minutes == 1 ? minutes+" min" : (minutes + " mins"));
+        } else {
+            duration = "just now";
+        }
+
+        return duration;
     }
 
     boolean isLiked(Post post){

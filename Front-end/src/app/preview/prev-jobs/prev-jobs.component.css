@@ -1,0 +1,28 @@
+.event{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+    align-items: center;
+}
+
+.event_title{
+    font-weight: bold;
+}
+
+.event_container{
+    width: 80%;
+    display: flex;
+    margin-bottom: 5px;
+    cursor: pointer;
+
+}
+.event-img{
+    margin-right: 20px;
+    width: 80px;
+    height: 80px;
+}
+
+.event-img img{
+    width: 80px;
+    height: 80px;
+}

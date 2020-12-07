@@ -1,1 +1,12 @@
-<p>prev-jobs works!</p>
+<div class="event">
+    <div class="event_container" *ngFor="let job of jobs" >
+        <div class="event-img"> 
+            <a class="media-left"> <img alt="" src="../../../assets/300px-F12-80-wide.png"> </a>
+        </div>
+        <div class="event-desc"> 
+            <div class="event_title">{{job.post}}</div>
+            <p>Location : {{job.location}} </p>
+            <p>Type : {{job.contractType}}</p>
+        </div>
+    </div>
+</div>

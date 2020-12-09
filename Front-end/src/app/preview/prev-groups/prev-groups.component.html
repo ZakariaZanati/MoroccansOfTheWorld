@@ -1,0 +1,6 @@
+<div class="groups_list">
+    <div class="list_title">Groupes</div>
+    <div class="list">
+        <div *ngFor="let group of groups" style="cursor: pointer;" (click)="showGroup(group.id)"><i class="fas fa-users"></i> {{group.name}}</div>
+    </div>
+</div>

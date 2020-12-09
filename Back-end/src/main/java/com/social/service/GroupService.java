@@ -11,6 +11,9 @@ import com.social.repository.GroupRepository;
 import com.social.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -144,6 +147,22 @@ public class GroupService {
         return groupRepository.findAll()
                 .stream()
                 .map(groupMapper::mapToDto)
+                .collect(Collectors.toList());
+    }
+
+    public List<GroupResponse> preview(){
+        Pageable pageable = PageRequest.of(0,4);
+        Page<Group> page = groupRepository.findAll(pageable);
+        return page.stream()
+                .map(groupMapper::mapToDto)
+                .collect(Collectors.toList());
+    }
+
+    public List<UserInfos> getGroupMembers(Group group){
+        Set<UserGroup> userGroups = group.getUserGroups();
+        Set<User> users = userRepository.findByUserGroupsIn(userGroups);
+        return users.stream()
+                .map(userMapper::mapToDto)
                 .collect(Collectors.toList());
     }
 

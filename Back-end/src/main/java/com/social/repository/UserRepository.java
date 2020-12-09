@@ -19,4 +19,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findAllByVerificationRequestedAndVerified(Boolean verification,Boolean verified);
     Page<User> findByFirstNameContainsOrLastNameContains(String firstName, String lastName, Pageable pageable);
     Page<User> findByCityOrCountry(String city,String country,Pageable pageable);
+
+    Set<User> findByUserGroupsIn(java.util.Set userGroups);
 }

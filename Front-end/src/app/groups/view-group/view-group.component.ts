@@ -3,7 +3,8 @@ import {GroupModel} from '../group-model';
 import {GroupService} from '../group.service';
 import { Router,ActivatedRoute } from '@angular/router';
 import { PostModel } from 'src/app/shared/post-model';
-import {AuthService} from '../../auth/shared/auth.service'
+import {AuthService} from '../../auth/shared/auth.service';
+import {UserInfos} from '../../shared/user-info';
 
 @Component({
   selector: 'app-view-group',
@@ -15,6 +16,8 @@ export class ViewGroupComponent implements OnInit {
   group : GroupModel;
   id : number;
   posts : Array<PostModel> = [];
+  members : Array<UserInfos> = [];
+
   requestStatus : string;
   admin : string;
   userType : string;
@@ -79,6 +82,15 @@ export class ViewGroupComponent implements OnInit {
         }
       });
     });
+
+    this.groupService.getGroupMembers(this.id).subscribe((users : UserInfos[]) => {
+      this.members = users;
+      console.log("group members: \n "+users)
+      this.members.map( member => {
+        console.log(member)
+        member.image = "data:image/jpeg;base64,"+member.image
+      })
+    })
     
 
     

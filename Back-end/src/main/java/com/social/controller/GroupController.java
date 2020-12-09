@@ -124,10 +124,14 @@ public class GroupController {
         return ResponseEntity.status(HttpStatus.OK).body(groupsResponse);
     }
 
-
-
     @GetMapping("/{id}")
     public ResponseEntity<GroupResponse> getGroup(@PathVariable("id") Long id){
         return ResponseEntity.status(HttpStatus.OK).body(groupService.getGroup(groupRepository.findById(id).get()));
+    }
+
+    @GetMapping("/members/{id}")
+    public ResponseEntity<List<UserInfos>> getGroupMembers(@PathVariable("id") Long id){
+        Group group = groupRepository.findById(id).get();
+        return ResponseEntity.status(HttpStatus.OK).body(groupService.getGroupMembers(group));
     }
 }

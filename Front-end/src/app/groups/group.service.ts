@@ -5,7 +5,7 @@ import {GroupModel} from './group-model';
 import {GroupResponse} from './group-response';
 import {PostModel} from '../shared/post-model';
 import {JoinRequest} from './join-requests/join-request.payload';
-
+import {UserInfos} from '../shared/user-info';
 
 @Injectable({
   providedIn: 'root'
@@ -61,5 +61,9 @@ export class GroupService {
 
   respondToRequest(id : number,response : FormData){
     return this.http.post('http://localhost:8181/api/groups/respond/'+id,response);
+  }
+
+  getGroupMembers(id : number):Observable<Array<UserInfos>>{
+    return this.http.get<Array<UserInfos>>('http://localhost:8181/api/groups/members/'+id);
   }
 }

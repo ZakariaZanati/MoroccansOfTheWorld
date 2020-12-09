@@ -49,7 +49,8 @@ import { ViewJobsComponent } from './jobs/view-jobs/view-jobs.component';
 import { JobDetailsComponent } from './jobs/job-details/job-details.component';
 import { JobDescriptionComponent } from './jobs/job-description/job-description.component';
 import { PrevTrainningsComponent } from './preview/prev-trainnings/prev-trainnings.component';
-import { PrevJobsComponent } from './preview/prev-jobs/prev-jobs.component'; 
+import { PrevJobsComponent } from './preview/prev-jobs/prev-jobs.component';
+import { PrevGroupsComponent } from './preview/prev-groups/prev-groups.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,7 +87,8 @@ import { PrevJobsComponent } from './preview/prev-jobs/prev-jobs.component';
     JobDetailsComponent,
     JobDescriptionComponent,
     PrevTrainningsComponent,
-    PrevJobsComponent
+    PrevJobsComponent,
+    PrevGroupsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,20 @@
+.groups_list{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    font-size: 0.8em;
+    color: rgb(126, 125, 125);
+    border: 1px solid #b6b3b3;
+}
+
+.list_title{
+    margin: 10px;
+    font-weight: bold;
+}
+.list{
+    margin-left: 10px;
+}
+
+.list>div{
+    margin-bottom: 5px;
+}

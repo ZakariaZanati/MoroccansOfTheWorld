@@ -91,7 +91,7 @@ export class CreateCourseComponent implements OnInit {
     uploadCourse.append('date',dateFormat.toISOString());
     uploadCourse.append('category',this.courseForm.get('category').value);
     this.courseService.createCourse(uploadCourse);
-    console.log(dateFormat.toISOString())
+    console.log(uploadCourse);
     this.router.navigateByUrl('/courses')
   }
 

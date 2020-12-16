@@ -1,16 +1,21 @@
-<div class="course">
-    <div class="image">
-        <div *ngIf="course.imageBytes">
-            <img [src]="course.imageBytes" alt="">
+<div class="course_wrapper">
+    <div class="exit" (click)="cancel()"><i class="fas fa-times"></i></div>
+    <div class="course">
+        
+        <div class="image">
+            <div *ngIf="course.imageBytes">
+                <img [src]="course.imageBytes" alt="">
+            </div>
+        </div>
+        <div class="infos">
+            <div class="name"><strong>Course name : </strong> {{course.name}}</div>
+            <div class="description"><strong>Description : </strong> {{course.description}}</div>
+            <div class="provider"> <strong>Provided by : </strong> {{course.providerUsername}}</div>
+            <div class="date"><strong>Date :</strong> {{course.dateTime}} <strong>at</strong> {{course.time}} </div>
+            <div class="duration"><strong>Duration : </strong> {{course.duration}}</div>
+            <div *ngIf="course.link" class="link"><strong>Link : </strong> {{course.link}}</div>
+            <div *ngIf="course.location" class="location"><strong>Location : </strong> {{course.location}}</div>
         </div>
     </div>
-    <div class="infos">
-        <div class="name">{{course.name}}</div>
-        <div class="description">{{course.description}}</div>
-        <div class="provider">{{course.providerUsername}}</div>
-        <div class="date">{{course.dateTime}} at {{course.time}} </div>
-        <div class="duration">{{course.duration}}</div>
-        <div *ngIf="course.link" class="link">{{course.link}}</div>
-        <div *ngIf="course.location" class="location">{{course.location}}</div>
-    </div>
+    
 </div>

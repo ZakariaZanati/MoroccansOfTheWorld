@@ -23,7 +23,10 @@ public class Image {
     @Column(name = "type")
     private String type;
 
-    @Column(name = "picByte", length = 1048570)
+
+    //@Column(name = "picByte")
+    //@Column(name = "picByte", length = 1048570)
+    @Lob
     private byte[] picByte;
 
     @OneToOne(mappedBy = "image")

@@ -43,7 +43,8 @@ public class Course {
     private String category;
 
     @Nullable
-    @Column(length = 1048570)
+    //@Column(length = 1048570)
+    @Lob
     private byte[] imageBytes;
 
 

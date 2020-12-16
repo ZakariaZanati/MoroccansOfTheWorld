@@ -104,7 +104,7 @@ export class TrainingsComponent implements OnInit {
     this.getPage(0,8,"",this.categoryFilter,null);
   }
 
-  toogleCourse(course){
+  public toogleCourse(course){
     course.show = !course.show;
   }
 }

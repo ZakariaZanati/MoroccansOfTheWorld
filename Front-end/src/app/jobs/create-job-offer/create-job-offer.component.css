@@ -27,7 +27,9 @@ h1 {
 
 .button{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    width: 30%;
+    margin: 0 auto;
 }
 
 .form_element input,select{
@@ -41,7 +43,7 @@ h1 {
 
 .form_button {
     margin-top: 50px;
-    width: 150px;
+    width: 100px;
     height: 30px;
     color: white;
     background-color: navy;

@@ -42,9 +42,9 @@ public class CourseController {
     public ResponseEntity<Void> createCourse(@RequestPart("courseImg") MultipartFile courseImg,
                                              @RequestPart("name") String name,
                                              @RequestPart("description")String description,
-                                             @RequestPart("location")  String location,
+                                             @RequestPart(value = "location",required = false)  String location,
                                              @RequestPart("link")String link,
-                                             @RequestPart("category") String category,
+                                             @RequestPart(value = "category", required = false) String category,
                                              @RequestPart("date")String date,
                                              @RequestPart(value = "duration",required = false) String duration,
                                              @RequestPart("time") String time) throws IOException, ParseException {

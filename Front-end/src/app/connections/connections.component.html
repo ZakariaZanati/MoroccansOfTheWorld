@@ -2,18 +2,6 @@
 <div *ngIf="show" class="connections_container">
     <div class="title">Connection requests</div>
     <div class="requests" >
-        <div class="request">
-            <div class="img">
-
-            </div>
-            <div class="opt">
-                <div class="name">Zakaria Zanati</div>
-                <div class="response">
-                    <button class="accept">Accept</button>
-                    <button class="reject">Decline</button>
-                </div>
-            </div>
-        </div>
         <div *ngFor="let request of requests" class="request">
             <div class="img">
                 <div *ngIf="request.image; else elseBlock">

@@ -230,7 +230,7 @@
     position: absolute;
     z-index: 1;
     left: 50%;
-    top: 200%;
+    top: 175%;
     transform: translate(-50%, 0);
 
 }

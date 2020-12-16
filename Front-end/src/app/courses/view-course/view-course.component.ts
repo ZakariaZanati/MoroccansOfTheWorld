@@ -16,4 +16,8 @@ export class ViewCourseComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  cancel(){
+    this.course.show = false;
+  }
+
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/shared/auth.service';
 import {JobModel} from '../job.model';
 import {JobsService} from '../shared/jobs.service';
@@ -16,7 +17,7 @@ export class CreateJobOfferComponent implements OnInit {
   submitted = false;
   jobModel : JobModel;
 
-  constructor(private jobsService : JobsService,private authService : AuthService) { }
+  constructor(private jobsService : JobsService,private authService : AuthService,private router : Router) { }
 
   ngOnInit() {
     console.log(this.authService.getUserName());
@@ -32,6 +33,10 @@ export class CreateJobOfferComponent implements OnInit {
       console.log(message);
       this.jobForm.resetForm();
     });
+  }
+
+  returnToJobs(){
+    this.router.navigate(['/jobs']);
   }
 
 }

@@ -34,7 +34,7 @@
                 <select
                     id="type"
                     ngModel
-                    name="type">
+                    name="contractType">
                     <option value="full-time">Full-time</option>
                     <option value="part-time">Part-time</option>
                     <option value="trainee">Trainee</option>
@@ -81,6 +81,7 @@
             </div>
             <div class="button">
                 <button class="form_button" type="submit" [disabled]="!f.valid ">Create Offer</button>
+                <button class="form_button" (click)="returnToJobs()">Cancel</button>
             </div>
         </form>
     </div>

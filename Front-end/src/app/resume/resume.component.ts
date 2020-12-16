@@ -20,7 +20,7 @@ export class ResumeComponent implements OnInit {
   currentFile: File;
   progress = 0;
   message = '';
-  fileInfos : string;
+  fileInfos : string = undefined;
 
   constructor(private authService : AuthService,private fileService : ResumeServiceService,private router:Router) {}
 

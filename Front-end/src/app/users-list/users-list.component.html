@@ -24,8 +24,12 @@
                     <ng-template #elseBlock><img src="../../../assets/default_profile.jpg"></ng-template>
                 </div>
                 <div class="conn_name">
-                    {{user.firstName}} {{user.lastName}}
+                    <strong>{{user.username}} {{user.lastName}}</strong>
                 </div>
+                <div>
+                    {{user.city}}, {{user.country}}
+                </div>
+                <div> {{user.currentJob}} </div>
                 <div class="conn_view">
                     <button (click)="goToProfile(user.username)">View</button>
                 </div>

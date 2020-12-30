@@ -3,7 +3,7 @@
 }
 input{
     width: 90%;
-    border:1px solid #4761aa ;
+    border:1px solid red ;
     border-radius: 10px;
     height: 40px;
     padding: 10px;
@@ -21,12 +21,12 @@ input{
     height: 40px;
     width: 40px;
     color: white;
-    background-color: #4761aa;
+    background-color: black;
     border-radius: 10px;
     border-style: none;
 }
 .form_submit:hover{
-    background-color: #5973b9;
+    background-color: rgb(24, 24, 24);
 }
 
 .comments_container>.comment{
@@ -34,9 +34,9 @@ input{
     margin: 10px 0;
     border-radius: 10px;
     padding: 10px;
-    border:1px solid #4761aa ;
+    border:1px solid red ;
 }
 .comment>.user{
     font-weight: bold;
-    color:#4761aa;
+    color:black;
 }

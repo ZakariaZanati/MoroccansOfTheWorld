@@ -66,7 +66,7 @@ export class CreateGroupComponent implements OnInit {
     uploadGroup.append('name',this.createGroupForm.get('name').value);
     uploadGroup.append('description',this.createGroupForm.get('description').value);
     this.groupService.createGroup(uploadGroup);
-    window.location.reload();
+    //window.location.reload();
   }
 
 }

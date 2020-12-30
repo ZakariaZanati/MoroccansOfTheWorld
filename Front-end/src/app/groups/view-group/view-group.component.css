@@ -1,5 +1,6 @@
 .group_wrapper{
     background-color: rgba(238, 238, 238, 0.705);
+    min-height: 1500px;
 }
 
 .group_content{

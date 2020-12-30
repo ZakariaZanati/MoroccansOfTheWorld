@@ -133,8 +133,14 @@ export class UserProfileComponent implements OnInit {
   saveAboutMe(){
     let aboutme = new FormData();
     aboutme.append('aboutme',this.aboutMe);
-    this.authService.setAboutMe(aboutme).subscribe(data => console.log(data),err => console.log(err));
-    window.location.reload();
+    this.authService.setAboutMe(aboutme).subscribe(data => {
+    
+      console.log(data)
+      //this.getInfos();
+      window.location.reload();
+    },err => console.log(err));
+    //window.location.reload();
+    
   }
 
   changeOption(opt : number){
@@ -157,5 +163,24 @@ export class UserProfileComponent implements OnInit {
     this.router.navigateByUrl('/profile/'+username);
   }
 
+  getInfos(){
+    this.authService.getCurrentUserInfo().subscribe(data => {
+      this.username = data.username;
+      this.email = data.email;
+      this.firstName = data.firstName;
+      this.lastName = data.lastName;
+      this.phoneNumber = data.phoneNumber;
+      this.birthDate = data.birthDate;
+      this.city = data.city;
+      this.country = data.country;
+      this.website = data.website;
+      this.currentJob = data.currentJob;
+      this.aboutMe = data.aboutMe;
+      this.id = data.userId;
+      this.isLoaded = true;
+      console.log("user id is"+this.id);
+      
+    })
+  }
 
 }

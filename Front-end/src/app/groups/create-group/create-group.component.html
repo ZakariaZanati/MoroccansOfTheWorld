@@ -7,10 +7,9 @@
         <form [formGroup]="createGroupForm" (ngSubmit)="createGroup()">
             <div class="body">
                 <div class="img">
-                    <div *ngIf="imgURL; else elseBlock">
+                    <div *ngIf="imgURL">
                         <img [src]="imgURL">
                     </div>
-                    <ng-template #elseBlock><img src="../../../assets/defaultpng.png"></ng-template>
                     <input #file type="file" id="file" (change)="onFileChanged($event)" (change)="preview(file.files)">
                     <label for="file"><i class="fas fa-edit"></i></label>
                 </div>
@@ -22,7 +21,7 @@
                     </div>
                     <div class="description">
                         <label for="desc">Groupe description</label><br>
-                        <textarea [formControlName]="'description'" name="desc" id="desc" cols="30" rows="6"></textarea>
+                        <textarea [formControlName]="'description'" name="desc" id="desc"></textarea>
                     </div>
                 </div>
             </div>

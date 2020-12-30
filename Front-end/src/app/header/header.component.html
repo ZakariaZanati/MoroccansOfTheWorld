@@ -4,8 +4,8 @@
         <div class="desc">Atlassian - Rain Drop</div>
     </div>
     <div class="links">
-        <div><a routerLink='/services'>Business</a></div>
-        <div><a routerLink='courses'>Formations</a></div>
+        <div><a routerLink='services'>Business</a></div>
+        <div><a routerLink='courses'>Skills</a></div>
         <div>Innovation</div>
         <div>Press center</div>
         <div>First step</div>
@@ -39,8 +39,11 @@
         <div class="link" (click)="toggleClass()"><a routerLink='/users'>People</a></div>
         <div class="link" (click)="toggleClass()"><a routerLink="/jobs">Jobs</a></div>
         <div class="link" (click)="toggleClass()"><a routerLink="/courses">Trainings</a></div>
+        <div class="link" (click)="toggleClass()"><a routerLink="/home">Mobile version</a></div>
 </div>
 </div>
+<div class="nav_border"></div>
+<div class="nav_border2"></div>
 <div *ngIf="isLoggedIn" class="btn" (click)="toggleClass()">
     <span class="fa fa-bars"></span>
 </div>

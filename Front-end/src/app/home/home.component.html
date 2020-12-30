@@ -1,27 +1,10 @@
-<div class="header_wrapper">
-    <div class="home_header">
-        <div class="header_one">
-            <div><span>MOROCCANOFTHEWORLD.COM</span></div> 
-            <div class="search"><input type="search"><i class="fas fa-search"></i></div>
-        </div>
-        <div class="header_two">
-            <div><span (click)="changeOption(0)" [ngClass]="{'clicked':option === 0}">Home</span></div>
-            <div><span (click)="changeOption(1)" [ngClass]="{'clicked':option === 1}">ATLAS SYNERGY</span></div>
-            <div><span (click)="changeOption(2)" [ngClass]="{'clicked':option === 2}">MEDIA INSIGHT</span></div>
-            <div><span>PATRIMOINE</span></div>
-            <div><span>DONATION PROJECTS</span></div>
-            <div><span>ASSOCIATIONS</span></div>
-            <div><span>ART AND CULTURE</span></div>            
-        </div>
-    </div>
-</div>
+
 <div class="img" *ngIf="option == 0">
     <div class="description"></div>
     <div class="img_content"></div>
     <div class="welcome">
         Welcome to MoroccanOfTheWorld, here you can exchange with moroccans across the world, share your experiences,
         find new opportunities, and more ...
-    
     </div>
 </div>
 

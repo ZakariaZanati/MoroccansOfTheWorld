@@ -1,40 +1,52 @@
 <div class="list_wrapper">
     <div class="list_content">
         <div class="list_header">Groups List</div>
-        <div class="add_group">
-            <div *ngIf="userType.toLowerCase() == 'provider'" class="create_group" (click)="addGroup()"><i class="fas fa-plus"></i> Create group</div>
-        </div>
+        
         <div class="options">
             <div class="search"><input (input)="onSearchChange($event.target.value)" type="search" placeholder="Search ..."><i class="fas fa-search"></i></div>
-            <form><label class="checkbox-inline"><div class="current"><input type="checkbox" (change)="userGroups()"> Your groups</div></label>
-            
-        </form>
-            </div>
-        <div *ngFor="let group of groups">
-            <div class="group_container">
-                <div class="group_img">
-                    <div *ngIf="group.imageBytes; else elseBlock">
-                        <img [src]="group.imageBytes" alt="">
-                    </div>
-                    <ng-template #elseBlock><img src="../../../assets/defaultpng.png"></ng-template>
+            <div class="link">
+                <div>
+                    <form>
+                        <label class="checkbox-inline">
+                            <div class="current"><input type="checkbox" (change)="userGroups()"> Your groups</div>
+                        </label>
+                    </form>
                 </div>
-                <div class="group_infos">
-                    <div class="title"><a [routerLink]="['/group',group.id]"> {{group.name}}</a></div>
-                    <div class="description">{{group.description}}</div>
+                <div class="add_group">
+                    <div *ngIf="userType.toLowerCase() == 'provider'" class="create_group" (click)="addGroup()">
+                        <button><i class="fas fa-plus"></i> Create group</button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="groups_container">
+            <div  *ngFor="let group of groups">
+                <div class="group_container">
+                    <div class="group_img">
+                        <div *ngIf="group.imageBytes; else elseBlock">
+                            <img [src]="group.imageBytes" alt="">
+                        </div>
+                        <ng-template #elseBlock><img src="../../../assets/defaultpng.png"></ng-template>
+                    </div>
+                    <div class="group_infos">
+                        <div class="title"><a [routerLink]="['/group',group.id]"> {{group.name}}</a></div>
+                        <div class="description">{{group.description}}</div>
+                    </div>
                 </div>
             </div>
         </div>
-        <ul class="pagination justify-content-center">
-            <li class="page-item"><a (click)="previousClick()" class="page-link">Previous</a></li>
-            <li *ngFor='let index of pageIndexes' class="page-item" [ngClass]="active(index)">
-                    <a (click)="getPaginationWithIndex(index)" class="page-link">
-                      {{index + 1}}
-                    </a>
-            </li>
-            <li class="page-item"><a (click)="nextClick()" class="page-link">Next</a></li>
-        </ul>
         
     </div>
+    <ul class="pagination justify-content-center">
+        <li class="page-item"><a (click)="previousClick()" class="page-link">Previous</a></li>
+        <li *ngFor='let index of pageIndexes' class="page-item" [ngClass]="active(index)">
+                <a (click)="getPaginationWithIndex(index)" class="page-link">
+                  {{index + 1}}
+                </a>
+        </li>
+        <li class="page-item"><a (click)="nextClick()" class="page-link">Next</a></li>
+    </ul>
 </div>
 <div *ngIf="showForm">
     <app-create-group></app-create-group>

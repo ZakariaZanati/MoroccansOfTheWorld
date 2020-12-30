@@ -19,7 +19,7 @@
             </div>
           </div>
         <input type="file" id="cv" (input)="selectFile($event)">
-        <label *ngIf="!selectedFiles" for="cv">Upload</label>
+        <label *ngIf="!selectedFiles" for="cv"><i style="margin-right: 5px;" class="fas fa-upload"></i> Upload</label>
         <input class="upload" type="button" *ngIf="selectedFiles" (click)="upload()" value="Save">
     </div>
 </div>

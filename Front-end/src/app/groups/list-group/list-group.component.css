@@ -5,6 +5,7 @@
 }
 
 .list_content{
+    padding: 30px;
     width: 60%;
     margin: 0 auto;
     display: flex;
@@ -24,7 +25,6 @@
     background-color: #f3f3f3;
     display: flex;
     justify-content: space-around;
-    padding-bottom: 20px;
 }
 
 
@@ -32,8 +32,9 @@
 .group_container{
     display: flex;
     padding: 10px;
-    border: 1px solid rgb(192, 191, 191);
+    border: 2px solid red;
     background-color: white;
+    border-collapse: collapse;
 }
 
 .group_img{
@@ -50,7 +51,12 @@
 }
 
 .title{
+    color: black;
     font-weight: bold;
+}
+
+.title a{
+    color: black;
 }
 
 .description{
@@ -72,6 +78,7 @@ img{
     justify-content: space-between;
     background-color: #f3f3f3;
     padding-bottom: 20px;
+    
 }
 .search{
     position: relative;
@@ -82,8 +89,16 @@ img{
     padding: 6px 15px;
     border-radius: 15px;
 }
+
+.link{
+    display: flex;
+    width: 22%;
+    justify-content: space-between;
+    align-items: center;
+}
 .current{
     margin-top: 15px;
+    color: black;
 }
 .current input{
     width: 10px;
@@ -106,4 +121,17 @@ ul{
     background-color:  #f3f3f3;
     padding-top: 20px;
     padding-bottom: 20px;
+}
+
+.groups_container{
+    height: 470px;
+}
+
+button {
+    padding: 5px;
+    border: 2px solid black;
+    color: black;
+    background-color: white;
+    border-radius: 5px;
+    outline: none;
 }

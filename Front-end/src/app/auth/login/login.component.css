@@ -1,5 +1,6 @@
 .login-section{
     margin: 100px;
+    height: 600px;
 }
 
 .login-failed, .register-success{

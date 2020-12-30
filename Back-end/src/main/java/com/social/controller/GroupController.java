@@ -50,6 +50,7 @@ public class GroupController {
     public ResponseEntity<Void> createGroup(@RequestPart(value = "groupImage",required = false) MultipartFile file,
                                             @RequestPart("name") String name,
                                             @RequestPart("description") String description) throws IOException {
+        System.out.println(name + " " + description);
 
         groupService.save(file,name,description);
         return new ResponseEntity<>(HttpStatus.CREATED);

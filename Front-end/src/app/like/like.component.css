@@ -1,7 +1,7 @@
 .add_like{
     display: flex;
     width: 9%;
-    color: #4761aa;
+    color: black;
     justify-content: space-between;   
     cursor: pointer;
 }

@@ -31,8 +31,9 @@ public class Group {
     @OneToMany(fetch = LAZY)
     private List<Post> posts;
     private Instant createdDate;
+    @Lob
     @Nullable
-    @Column(length = 1048570)
+    //@Column(length = 1048570)
     private byte[] imageBytes;
 
     @OneToMany(mappedBy = "group",cascade = CascadeType.ALL)

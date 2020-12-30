@@ -41,10 +41,9 @@ export class UsersListComponent implements OnInit {
 
   getPage(page : number,size : number,name : string,city : string, country : string){
     this.connectionsService.getUsersPage(page,size,name,city,country).subscribe((response : UsersResponse) => {
-      this.users = response.users;
-      this.users.filter(user => {
-        return user.username !=='admin'
-      }).map(user => {
+      this.users = response.users.filter(user => user.username != 'admin');
+      this.users.map(user => {
+        
         const img = user.image;
         if (img) {
           user.image = "data:image/jpeg;base64,"+user.image;

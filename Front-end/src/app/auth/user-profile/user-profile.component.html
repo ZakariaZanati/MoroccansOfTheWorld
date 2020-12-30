@@ -12,13 +12,13 @@
             </ng-template>
             <div class="buttons">
                 <input type="file" id="file" (change)="onFileChanged($event)">
-                <label *ngIf="!selectedFile" for="file"><i class="far fa-file-image"></i> Select profile image</label>
+                <label *ngIf="!selectedFile" for="file"><i class="fas fa-camera"></i> Select profile image</label>
                 <input class="upload" type="button" *ngIf="selectedFile" (click)="onUpload()" value="upload">
             </div>
           </div>
           <div class="infos">
               <div class="info" *ngIf="firstName">
-                  <span class="value"><i class="far fa-user"></i>{{firstName}} {{lastName}} <i *ngIf="isVerified" style="color: #5151fd;" class="fas fa-check-circle"></i></span>
+                  <span class="value"><i class="far fa-user"></i>{{firstName}} {{lastName}} <i *ngIf="isVerified" style="color: red; font-size: 12px;" class="fas fa-check-circle"></i></span>
               </div>
               <!--
               <div class="info" *ngIf="birthDate">
@@ -109,5 +109,4 @@
     <div class="option"><a (click)="changeOption(1)" >Activities</a></div>
     <div class="option" *ngIf="!isVerified" [routerLink]="['/userdetails','verification']"><a >Become verified</a> </div>
     <div class="option"><a (click)="changeOption(2)">Connections</a> </div>
-    <div class="option"><a >Experiences</a> </div>
 </div>

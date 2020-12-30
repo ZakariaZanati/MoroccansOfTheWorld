@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     background-color: whitesmoke;
-    border: 1px solid #bbbbbb;
+    border: 1px solid red;
     margin-bottom: 10px;
 }
 
@@ -42,7 +42,7 @@ input[type="file"]{
     height: 30px;
     width: 80px;
     color: white;
-    background-color:royalblue;
+    background-color:black;
     cursor: pointer;
     border-radius: 8px;
     border: none;
@@ -57,21 +57,21 @@ input[type="file"]{
 }
 
 .buttons>label:hover{
-    background-color: rgb(71, 97, 170);
+    background-color: black;
 }
 
 .form_new_post{
     color: white;
     width: 80px;
     height: 30px;
-    background-color: royalblue;
+    background-color: black;
     cursor: pointer;
     border-radius: 8px;
     outline: none;
     border:none
 }
 .form_new_post:hover{
-    background-color: rgb(71, 97, 170);
+    background-color:black;
 }
 
 .buttons{

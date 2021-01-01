@@ -34,7 +34,8 @@ import { VerificationComponent } from './verification/verification.component';
 import { TrainingsComponent } from './trainings/trainings.component';
 import {CalendarModule} from 'primeng/calendar';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { MatSelectCountryModule } from '@angular-material-extensions/select-country'; 
+import {MatSelectCountryModule } from '@angular-material-extensions/select-country'; 
+import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox'; 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreateCourseComponent } from './courses/create-course/create-course.component';
@@ -103,6 +104,7 @@ import { PrevGroupsComponent } from './preview/prev-groups/prev-groups.component
     MatDatepickerModule,
     MatSelectCountryModule,
     MatCheckboxModule,
+    MatRadioModule,
     NgbModule
   ],
   providers: [

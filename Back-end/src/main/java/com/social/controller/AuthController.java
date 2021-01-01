@@ -32,8 +32,13 @@ public class AuthController {
 
     @PostMapping("/signup")
     public ResponseEntity<String> signup(@RequestBody RegisterRequest registerRequest) throws Exception {
-        authService.signup(registerRequest);
-        return new ResponseEntity<>("User Registration Successful", HttpStatus.OK);
+        try {
+            authService.signup(registerRequest);
+            return new ResponseEntity<>("User Registration Successful", HttpStatus.OK);
+        } catch (Exception e){
+            return new ResponseEntity<>("Registration failed",HttpStatus.BAD_REQUEST);
+        }
+
     }
 
     @GetMapping("accountVerification/{token}")

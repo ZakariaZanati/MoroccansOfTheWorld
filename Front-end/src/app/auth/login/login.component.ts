@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import {LoginRequestPayload} from './login.request.payload';
 import {AuthService} from '../shared/auth.service';
 import { Router,ActivatedRoute } from '@angular/router';
@@ -12,10 +12,10 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginForm : FormGroup;
+  
   loginRequestPayload : LoginRequestPayload;
   registerSuccessMessage: String;
-  isError : Boolean;
+  isError : Boolean = false;
 
   constructor(private authService : AuthService,private router: Router,
     private toastr : ToastrService,private activatedRoute : ActivatedRoute) { 
@@ -27,10 +27,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.loginForm = new FormGroup({
-      username : new FormControl('',Validators.required),
-      password : new FormControl('',Validators.required)
-    })
+    /*
 
     this.activatedRoute.queryParams.subscribe(params => {
         if (params.registered !== undefined && params.registered === 'true') {
@@ -40,27 +37,33 @@ export class LoginComponent implements OnInit {
             + 'activate your account before you Login!';
         }
       });
+      */
   }
 
-  login(){
-    this.loginRequestPayload.username = this.loginForm.get('username').value;
-    this.loginRequestPayload.password = this.loginForm.get('password').value;
+  onSubmit(form : NgForm){
+    if (!form.valid) {
+      return;
+    }
+    this.loginRequestPayload.username = form.value.username;
+    this.loginRequestPayload.password = form.value.password;
 
     this.authService.login(this.loginRequestPayload).subscribe(data => {
+      console.log(data)
       if (data) {
-        this.isError = false;
-        
         if (this.authService.isCompleted()) {
           this.router.navigateByUrl('/newsfeed');
-          this.toastr.success('Login Successful');
         } else {
           this.router.navigateByUrl('/userdetails');
         }
       } else {
         this.isError = true;
-        
       }
+    },error => {
+      this.isError = true;
     })
+
+    form.reset();
+
   }
 
 }

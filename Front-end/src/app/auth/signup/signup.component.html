@@ -1,3 +1,6 @@
+<!--
+
+
 <div class="register-section">
     <div class="row justify-content-center">
         <div class="col-md-3"></div>
@@ -63,4 +66,73 @@
         </div>
         <div class="col-md-3"></div>
     </div>
+</div>
+-->
+
+
+<div class="login_wrapper">
+
+    <form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)" >
+        <div class="header">
+            <div class="alert alert-danger" *ngIf="isError">
+                <p>{{error}}</p>
+            </div>
+        </div>
+        <div class="input_section">
+            <div class="label"> <label for="userType">User Type </label> </div>
+            <mat-radio-group name="userType"  ngModel required style="display: flex; justify-content: space-between; width: 200px; color: black;" >
+                <mat-radio-button *ngFor="let type of types" [value]="type">
+                    {{type}}
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <div class="input_section">
+            <div class="label"> <label for="email">Email </label> </div>
+            <input 
+                type="text" 
+                name="email" 
+                id="email"
+                ngModel
+                required
+                email>
+        </div>
+        <div class="input_section">
+            <div class="label"> <label for="username">Username </label> </div>
+            <input 
+                type="text" 
+                name="username" 
+                id="username"
+                ngModel
+                required
+                minlength="4">
+        </div>
+        <div class="input_section">
+            <div class="label"> <label for="password">Password </label> </div>
+            <input 
+                type="password" 
+                name="password" 
+                id="password"
+                ngModel
+                required
+                minlength="6">
+        </div>
+        <div class="input_section">
+            <div class="label"> <label for="confirmation">Confirm password </label> </div>
+            <input 
+                type="password" 
+                name="confirmation" 
+                id="confirmation"
+                ngModel
+                required
+                minlength="6">
+        </div>
+        <div class="footer">
+            <div class="submit">
+                <button type="submit" [disabled]="!signupForm.valid" >Sign up</button>
+            </div>
+            <div class="signup">You already have an account ? <a routerLink="/login">Login from here.</a> </div>
+        </div>
+        
+    </form>
+    
 </div>

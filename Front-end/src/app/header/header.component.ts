@@ -29,10 +29,13 @@ export class HeaderComponent implements OnInit {
     this.username = this.authService.getUserName();
     this.fullName = this.authService.fullName();
 
-    this.authService.getUserImage().subscribe(data => {
+    if (this.isLoggedIn) {
+      this.authService.getUserImage().subscribe(data => {
         this.response = data;
         this.image =  'data:image/jpeg;base64,'+this.response.picByte;
     })
+    }
+    
   }
 
   logout(){

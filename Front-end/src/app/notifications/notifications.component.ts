@@ -21,6 +21,7 @@ export class NotificationsComponent implements OnInit {
   ngOnInit(): void {
 
     this.notificationService.getNotifications().subscribe(data => {
+      console.log(data)
       this.notifications = data;
       this.notifications.map(notification => {
         if (!notification.seen) {
@@ -38,8 +39,11 @@ export class NotificationsComponent implements OnInit {
     this.ids.map(id => {
       this.notificationService.setNotificationSeen(id).subscribe(data => {
         console.log(data);
+        
       });
     })
+
+    this.ids = [];
 
   }
 

@@ -3,17 +3,17 @@ package com.social.service;
 import com.social.dto.CommentsDto;
 import com.social.exceptions.PostNotFoundException;
 import com.social.mapper.CommentMapper;
-import com.social.model.Comment;
-import com.social.model.Post;
-import com.social.model.User;
+import com.social.model.*;
 import com.social.repository.CommentRepository;
 import com.social.repository.PostRepository;
 import com.social.repository.UserRepository;
+import io.swagger.models.auth.In;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,8 +31,18 @@ public class CommentService {
     public void save(CommentsDto commentsDto){
         Post post = postRepository.findById(commentsDto.getPostId())
                 .orElseThrow(()-> new PostNotFoundException(commentsDto.getPostId().toString()));
-        Comment comment = commentMapper.map(commentsDto,post,authService.getCurrentUser());
+
+        User user = authService.getCurrentUser();
+        Comment comment = commentMapper.map(commentsDto,post,user);
         commentRepository.save(comment);
+
+        Notification notification = Notification.builder()
+                .user(post.getUser())
+                .message(user.getFirstName()+" "+user.getLastName()+" added a comment on your post")
+                .notificationType(NotificationType.COMMENT)
+                .createdDate(Instant.now())
+                .seen(false)
+                .build();
     }
 
     public List<CommentsDto> getAllCommentsForPost(Long postId){

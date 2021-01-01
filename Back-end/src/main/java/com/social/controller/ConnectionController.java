@@ -4,8 +4,11 @@ package com.social.controller;
 import com.social.dto.UserInfos;
 import com.social.dto.UsersResponse;
 import com.social.mapper.UserMapper;
+import com.social.model.Notification;
+import com.social.model.NotificationType;
 import com.social.model.User;
 import com.social.model.UserConnection;
+import com.social.repository.NotificationRepository;
 import com.social.repository.UserRepository;
 import com.social.service.AuthService;
 import com.social.service.ConnectionsService;
@@ -15,6 +18,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -36,6 +40,9 @@ public class ConnectionController {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private NotificationRepository notificationRepository;
 
     @GetMapping("/request/{id}")
     private ResponseEntity<Void> sendConnectionRequest(@PathVariable Long id){
@@ -107,12 +114,21 @@ public class ConnectionController {
     @PostMapping("/respond/{id}")
     private ResponseEntity<Void> respondToRequest(@PathVariable Long id,@RequestPart("response") String response){
         Set<UserConnection> connections = authService.getCurrentUser().getReceivedConnections();
+        User current = authService.getCurrentUser();
         User user = userRepository.findById(id).get();
         for (UserConnection connection:
              connections) {
             if (connection.getSource() == user){
                 if (response.equals("ACCEPTED")){
                     connection.setStatus(UserConnection.ConnectionStatus.CONNECTED);
+                    Notification notification = Notification.builder()
+                            .notificationType(NotificationType.CONNECTION)
+                            .user(user)
+                            .createdDate(Instant.now())
+                            .message(current.getFirstName()+" "+current.getLastName()+" accepted your connections request")
+                            .seen(false)
+                            .build();
+                    notificationRepository.save(notification);
                 }
                 else {
                     connections.remove(connection);

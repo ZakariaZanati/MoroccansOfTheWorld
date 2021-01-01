@@ -1,5 +1,16 @@
 <div (click)="showNotifications()" [class.new] = "new" class="notification"><i  class="fas fa-bell"></i><span *ngIf="new">{{count}}</span></div>
 <div *ngIf="show" class="notifications_container">
     <div class="title">Notifications</div>
-    <div class="notif" *ngFor="let notification of notifications">{{notification.message}}</div>
+    <div class="notif" *ngFor="let notification of notifications">
+
+        <div class="icon">
+            <div *ngIf="notification.notificationType == 'VERIFICATION'"><i class="far fa-check-circle"></i></div>
+            <div *ngIf="notification.notificationType == 'GROUP'"><i class="far fa-users"></i></div>
+            <div *ngIf="notification.notificationType == 'LIKE'"><i class="far fa-heart"></i></div>
+            <div *ngIf="notification.notificationType == 'COMMENT'"><i class="far fa-comment"></i></div>
+            <div *ngIf="notification.notificationType == 'CONNECTION'"><i class="fas fa-user-plus"></i></div>
+        </div>
+        
+        {{notification.message}}
+    </div>
 </div>

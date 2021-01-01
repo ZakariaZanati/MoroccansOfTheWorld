@@ -4,11 +4,9 @@ import com.social.dto.GroupResponse;
 import com.social.dto.GroupsResponse;
 import com.social.dto.UserInfos;
 import com.social.mapper.GroupMapper;
-import com.social.model.Group;
-import com.social.model.Status;
-import com.social.model.User;
-import com.social.model.UserGroup;
+import com.social.model.*;
 import com.social.repository.GroupRepository;
+import com.social.repository.NotificationRepository;
 import com.social.repository.UserRepository;
 import com.social.service.AuthService;
 import com.social.service.GroupService;
@@ -23,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -45,6 +44,9 @@ public class GroupController {
 
     @Autowired
     private GroupMapper groupMapper;
+
+    @Autowired
+    private NotificationRepository notificationRepository;
 
     @PostMapping
     public ResponseEntity<Void> createGroup(@RequestPart(value = "groupImage",required = false) MultipartFile file,
@@ -74,12 +76,21 @@ public class GroupController {
                                                  @RequestPart("userName")String userName,
                                                  @RequestPart("response")String response){
         User user = userRepository.findByUsername(userName).get();
+        Group group = groupRepository.findById(id).get();
 
         if (response.equals("accepted")){
-            groupService.respondToRequest(Status.JOINED,groupRepository.findById(id).get(),user);
+            groupService.respondToRequest(Status.JOINED,group,user);
+            Notification notification = Notification.builder()
+                    .user(user)
+                    .message("Your request to join the group "+group.getName() +" has been accepted")
+                    .notificationType(NotificationType.GROUP)
+                    .createdDate(Instant.now())
+                    .seen(false)
+                    .build();
+            notificationRepository.save(notification);
         }
         else if (response.equals("rejected")){
-            groupService.respondToRequest(Status.REJECTED,groupRepository.findById(id).get(),user);
+            groupService.respondToRequest(Status.REJECTED,group,user);
         }
 
         return ResponseEntity.status(HttpStatus.OK).build();

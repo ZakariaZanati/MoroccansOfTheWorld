@@ -1,6 +1,7 @@
 package com.social.service;
 
 import com.social.dto.PostResponse;
+import com.social.exceptions.PostNotFoundException;
 import com.social.exceptions.SpringException;
 import com.social.mapper.PostMapper;
 import com.social.model.Group;
@@ -9,6 +10,7 @@ import com.social.model.User;
 import com.social.repository.GroupRepository;
 import com.social.repository.PostRepository;
 import com.social.repository.UserRepository;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -28,19 +30,18 @@ import java.util.zip.Deflater;
 @Service
 @Slf4j
 @Transactional
+@AllArgsConstructor
 public class PostService {
 
-    @Autowired
-    private PostRepository postRepository;
+    private final PostRepository postRepository;
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    @Autowired
-    private GroupRepository groupRepository;
+    private final GroupRepository groupRepository;
 
-    @Autowired
-    private PostMapper postMapper;
+    private final PostMapper postMapper;
+
+    private final AuthService authService;
 
 
     @Transactional
@@ -55,7 +56,7 @@ public class PostService {
                     .imageName(file.getOriginalFilename())
                     .imageType(file.getContentType())
                     .imageBytes(file.getBytes())
-                    .user(this.getCurrentUser())
+                    .user(authService.getCurrentUser())
                     .build();
         }
         else{
@@ -63,7 +64,7 @@ public class PostService {
                     .createdDate(Instant.now())
                     .description(description)
                     .likeCount(0)
-                    .user(this.getCurrentUser())
+                    .user(authService.getCurrentUser())
                     .build();
         }
         postRepository.save(post);
@@ -82,7 +83,7 @@ public class PostService {
                     .imageName(file.getOriginalFilename())
                     .imageType(file.getContentType())
                     .imageBytes(file.getBytes())
-                    .user(this.getCurrentUser())
+                    .user(authService.getCurrentUser())
                     .group(group.get())
                     .build();
         }
@@ -91,36 +92,11 @@ public class PostService {
                     .createdDate(Instant.now())
                     .description(description)
                     .likeCount(0)
-                    .user(this.getCurrentUser())
+                    .user(authService.getCurrentUser())
                     .group(group.get())
                     .build();
         }
         postRepository.save(post);
-    }
-
-    private User getCurrentUser(){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        return userRepository.findByUsername(authentication.getName()).orElseThrow(()->new SpringException("User Not Found"));
-    }
-
-    public static byte[] compressBytes(byte[] data) {
-        Deflater deflater = new Deflater();
-        deflater.setInput(data);
-        deflater.finish();
-
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream(data.length);
-        byte[] buffer = new byte[1024];
-        while (!deflater.finished()) {
-            int count = deflater.deflate(buffer);
-            outputStream.write(buffer, 0, count);
-        }
-        try {
-            outputStream.close();
-        } catch (IOException e) {
-        }
-        System.out.println("Compressed Image Byte Size - " + outputStream.toByteArray().length);
-
-        return outputStream.toByteArray();
     }
 
     @Transactional(readOnly = true)
@@ -145,5 +121,12 @@ public class PostService {
                 .stream()
                 .map(postMapper::mapToDto)
                 .collect(Collectors.toList());
+    }
+
+    @Transactional(readOnly = true)
+    public PostResponse getPost(Long id){
+        Post post = postRepository.findById(id)
+                .orElseThrow(()-> new PostNotFoundException(id.toString()));
+        return postMapper.mapToDto(post);
     }
 }

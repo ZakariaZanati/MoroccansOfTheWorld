@@ -94,6 +94,15 @@ public class User {
     @OneToMany(mappedBy = "target",cascade = CascadeType.ALL)
     private Set<UserConnection> receivedConnections = new HashSet<>();
 
+    public User(long l, String zakaria, String password, String s, int i, String zakaria1, String zanati) {
+        userId = l;
+        username = zakaria;
+        this.password = password;
+        email = s;
+        firstName = zakaria1;
+        lastName = zanati;
+    }
+
     public Long getUserId() {
         return userId;
     }

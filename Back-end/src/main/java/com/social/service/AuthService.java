@@ -72,7 +72,7 @@ public class AuthService {
                 user.setCreated(Instant.now());
                 user.setUserType(UserType.PROVIDER);
             }
-            user.setEnabled(true);
+            user.setEnabled(false);
             user.setCompleted(false);
             user.setVerificationRequested(false);
             user.setVerified(false);

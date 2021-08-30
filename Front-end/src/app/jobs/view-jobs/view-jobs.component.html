@@ -2,13 +2,13 @@
     <div class="find">
         <form (ngSubmit)="onFindJobs()" #f="ngForm">
             <div class="search">
-                <input type="text" name="search" ngModel placeholder="Job title..."><i class="fas fa-search"></i>
+                <input type="text" name="search" ngModel placeholder="titre..."><i class="fas fa-search"></i>
             </div>
             <div class="search">
                 <input type="text" name="location" ngModel placeholder="Location..."><i class="fas fa-map-marker-alt"></i>
             </div>
             <div class="search_button">
-                <button type="submit">Find</button>
+                <button type="submit">Chercher</button>
             </div>
         </form>
     </div>
@@ -17,9 +17,9 @@
         <mat-checkbox
             [color]="'primary'"
             [(ngModel)]="checked">
-            Your offers
+            Vos offres
         </mat-checkbox>
-        <button routerLink="/createjob" >Add job offer</button>
+        <button routerLink="/createjob" >Ajouter une offre</button>
     </div>
 </div>
 <div class="content_wrapper">

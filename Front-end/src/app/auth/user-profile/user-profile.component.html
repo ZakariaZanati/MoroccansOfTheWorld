@@ -2,7 +2,7 @@
     <div class="profil-wrapper">
 
       <div class="profil-1" >
-          <span class="pers">Personnal Informations</span>
+          <span class="pers">Informations personnelles</span>
           <div class="profile-img">
             <div *ngIf="retrievedImage; else elseBlock">
                 <img [src]="retrievedImage" class="img"/>
@@ -12,7 +12,7 @@
             </ng-template>
             <div class="buttons">
                 <input type="file" id="file" (change)="onFileChanged($event)">
-                <label *ngIf="!selectedFile" for="file"><i class="fas fa-camera"></i> Select profile image</label>
+                <label *ngIf="!selectedFile" for="file"><i class="fas fa-camera"></i> Choisir une image</label>
                 <input class="upload" type="button" *ngIf="selectedFile" (click)="onUpload()" value="upload">
             </div>
           </div>
@@ -41,29 +41,29 @@
                   <span class="value"><i class="fas fa-link"></i>{{website}}</span>
               </div>
               <div class="update">
-                  <button type="submit" (click)="updateForm()">Update</button>
+                  <button type="submit" (click)="updateForm()">Modifier</button>
               </div>
           </div>
       </div>
         <div class="profil-2">
             <div *ngIf="option == 1">
                 <div class="about-me">
-                    <span class="header">About Me</span> 
+                    <span class="header">A propos</span> 
                     <div *ngIf="!editable">
                         <div class="text" *ngIf="aboutMe">
                             {{aboutMe}}
                         </div>
                         <div *ngIf="!aboutMe">
-                                Write something about yourself...
+                                Ecrire quelque chose...
                         </div>
                         <div class="edit">
-                            <button class="submit" type="submit" (click)="editAboutMe()"><i class="far fa-edit"></i>Edit</button>
+                            <button class="submit" type="submit" (click)="editAboutMe()"><i class="far fa-edit"></i>Modifier</button>
                         </div>
                     </div>
                     <div *ngIf="editable">
                         <textarea [(ngModel)]="aboutMe"  name="" id="" cols="80" rows="3"></textarea>
                         <div class="edit">
-                            <button class="submit" type="submit" (click)="saveAboutMe()"><i class="far fa-edit" ></i>Save</button>
+                            <button class="submit" type="submit" (click)="saveAboutMe()"><i class="far fa-edit" ></i>Enregistrer</button>
                         </div>
                     </div>
                    
@@ -79,8 +79,8 @@
             </div>
             <div *ngIf="option == 2">
                 <div class="connections_title header">
-                    <div>Your connections</div>
-                    <div class="add_connections"><a routerLink="/users">Add connections</a></div>
+                    <div>Vos connections</div>
+                    <div class="add_connections"><a routerLink="/users">Ajouter des connections</a></div>
                 </div>
                 <div class="connections_content">
                     <div class="connection" *ngFor="let connection of connections">
@@ -94,7 +94,7 @@
                             {{connection.firstName}} {{connection.lastName}}
                         </div>
                         <div class="conn_view">
-                            <button (click)="goToProfile(connection.username)">View</button>
+                            <button (click)="goToProfile(connection.username)">Voir</button>
                         </div>
                     </div>
                     
@@ -106,7 +106,7 @@
     </div>
 </div>
 <div class="options">
-    <div class="option"><a (click)="changeOption(1)" >Activities</a></div>
-    <div class="option" *ngIf="!isVerified" [routerLink]="['/userdetails','verification']"><a >Become verified</a> </div>
+    <div class="option"><a (click)="changeOption(1)" >Activités</a></div>
+    <div class="option" *ngIf="!isVerified" [routerLink]="['/userdetails','verification']"><a >Devenir vérifié</a> </div>
     <div class="option"><a (click)="changeOption(2)">Connections</a> </div>
 </div>

@@ -16,7 +16,7 @@ export class SignupComponent implements OnInit {
   isError : boolean = false;
   error : string = null;
   userType : string = '';
-  types : string[] = ['Candidate','Provider']
+  types : string[] = ['Candidat','Provider']
 
   constructor(private authService : AuthService,private router: Router,
     private toastr : ToastrService) {

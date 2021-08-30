@@ -1,16 +1,16 @@
 <div class="users_wrapper">
     <div class="users_container">
-        <div class="title">Find new connections</div>
+        <div class="title">Chercher des nouvelles connections</div>
         <div class="options">
             <div class="name_filter">
-                <input (input)="onSearchChange($event.target.value)" type="search" placeholder="Search ..."><i class="fas fa-search"></i>
+                <input (input)="onSearchChange($event.target.value)" type="search" placeholder="Chercher ..."><i class="fas fa-search"></i>
             </div>
             <div class="filters">
                 
                 <div class="sort">
-                    <label for="">Country : </label>
+                    <label for="">Pays : </label>
                     <input type="text">
-                    <label for="">City : </label>
+                    <label for="">Ville : </label>
                     <input type="text">
                 </div>
             </div>
@@ -31,7 +31,7 @@
                 </div>
                 <div> {{user.currentJob}} </div>
                 <div class="conn_view">
-                    <button (click)="goToProfile(user.username)">View</button>
+                    <button (click)="goToProfile(user.username)">Voir</button>
                 </div>
             </div>
         </div>

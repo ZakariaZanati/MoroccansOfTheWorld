@@ -32,6 +32,7 @@
 .group_container{
     display: flex;
     padding: 10px;
+    margin-bottom: 5px;
     border: 2px solid red;
     background-color: white;
     border-collapse: collapse;
@@ -92,7 +93,7 @@ img{
 
 .link{
     display: flex;
-    width: 22%;
+    width: 30%;
     justify-content: space-between;
     align-items: center;
 }

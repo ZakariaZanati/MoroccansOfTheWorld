@@ -1,9 +1,9 @@
 <div class="content_wrapper">
-    <h1>Find the best recruit for your job</h1>
+    <h1>Chercher le meilleur candidat pour votre poste</h1>
     <div class="job_form">
         <form (ngSubmit)="onSubmit()" #f="ngForm">
             <div class="form_element">
-                <label for="post">Post *</label><br>
+                <label for="post">Poste *</label><br>
                 <input 
                     type="text"
                     id="post"
@@ -21,7 +21,7 @@
                     required>
             </div>
             <div class="form_element">
-                <label for="location">Job location *</label><br>
+                <label for="location">Location *</label><br>
                 <input 
                     type="text"
                     id="location"
@@ -30,7 +30,7 @@
                     required>
             </div>
             <div class="form_element">
-                <label for="type">Employment type *</label><br>
+                <label for="type">Type d'emploiment *</label><br>
                 <select
                     id="type"
                     ngModel
@@ -60,7 +60,7 @@
                   ngModel></textarea>
             </div>
             <div class="form_element">
-                <label for="salary">Salary range</label><br>
+                <label for="salary">Salaire</label><br>
                 <input 
                     type="text"
                     id="salary"
@@ -68,7 +68,7 @@
                     name="salary">
             </div>
             <div class="form_element">
-                <label for="link">Link to apply</label><br>
+                <label for="link">Lien pour postuler</label><br>
                 <input 
                     type="text"
                     id="link"
@@ -76,12 +76,12 @@
                     name="link">
             </div>
             <div class="date">
-                <label for="expirationDate">Expiration Date </label><br>
+                <label for="expirationDate">Date d'éxpiration </label><br>
                 <input name="expirationDate" placeholder="yyyy-mm-dd" type="date" ngModel>
             </div>
             <div class="button">
-                <button class="form_button" type="submit" [disabled]="!f.valid ">Create Offer</button>
-                <button class="form_button" (click)="returnToJobs()">Cancel</button>
+                <button class="form_button" type="submit" [disabled]="!f.valid ">Créer offre</button>
+                <button class="form_button" (click)="returnToJobs()">Annuler</button>
             </div>
         </form>
     </div>

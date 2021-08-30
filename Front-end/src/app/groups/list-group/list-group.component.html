@@ -1,20 +1,20 @@
 <div class="list_wrapper">
     <div class="list_content">
-        <div class="list_header">Groups List</div>
+        <div class="list_header">Liste des groupes</div>
         
         <div class="options">
-            <div class="search"><input (input)="onSearchChange($event.target.value)" type="search" placeholder="Search ..."><i class="fas fa-search"></i></div>
+            <div class="search"><input (input)="onSearchChange($event.target.value)" type="search" placeholder="Chercher ..."><i class="fas fa-search"></i></div>
             <div class="link">
                 <div>
                     <form>
                         <label class="checkbox-inline">
-                            <div class="current"><input type="checkbox" (change)="userGroups()"> Your groups</div>
+                            <div class="current"><input type="checkbox" (change)="userGroups()"> Vos groupes</div>
                         </label>
                     </form>
                 </div>
                 <div class="add_group">
                     <div *ngIf="userType.toLowerCase() == 'provider'" class="create_group" (click)="addGroup()">
-                        <button><i class="fas fa-plus"></i> Create group</button>
+                        <button><i class="fas fa-plus"></i> Créer un groupe</button>
                     </div>
                 </div>
             </div>
@@ -39,13 +39,13 @@
         
     </div>
     <ul class="pagination justify-content-center">
-        <li class="page-item"><a (click)="previousClick()" class="page-link">Previous</a></li>
-        <li *ngFor='let index of pageIndexes' class="page-item" [ngClass]="active(index)">
-                <a (click)="getPaginationWithIndex(index)" class="page-link">
+        <li class="page-item"><a (click)="previousClick()" class="page-link" style="color:black">Previous</a></li>
+        <li *ngFor='let index of pageIndexes' class="page-item" style="background-color: black; color: white;" [ngClass]="active(index)">
+                <a (click)="getPaginationWithIndex(index)" class="page-link" style="background-color: black; color: white; border: 1px solid black;">
                   {{index + 1}}
                 </a>
         </li>
-        <li class="page-item"><a (click)="nextClick()" class="page-link">Next</a></li>
+        <li class="page-item"><a (click)="nextClick()" class="page-link" style="color: black;">Next</a></li>
     </ul>
 </div>
 <div *ngIf="showForm">

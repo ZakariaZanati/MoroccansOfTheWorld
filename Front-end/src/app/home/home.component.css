@@ -1,7 +1,7 @@
 .content_wrapper{
-    background-color: rgb(218, 218, 218);
     padding: 20px 0;
     position: relative;
+    height: 1000px;
 }
 .content{
     width: 70%;
@@ -28,15 +28,15 @@
 .hub{
     display: flex;
     flex-direction: column;
-    background-color: rgb(146, 182, 230);
+    background-color: rgb(70, 71, 73);
     width: auto;
-    height: 550px;
+    height: 500px;
 
 }
 
 
 .title{
-    background-color: rgb(97, 105, 170);
+    background-color: rgb(216, 0, 0);
     color: white;
     padding: 14px;
     font-size: large;
@@ -54,8 +54,39 @@ ul li {
     color: white;
 }
 ul li:hover {
-    color: gray;
+    color: white;
     cursor: pointer;
+}
+
+.logos{
+    margin: 50px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 700px;
+    height: 60px;
+}
+
+.logo1{
+    background-image: url('../../assets/logo2.png');
+    height: 300px;
+    width: 300px;
+}
+
+.logo2{
+    position : absolute;
+    background-image: url('../../assets/logo_ccme.png');
+    height: 60px;
+    width: 150px;
+    left: 0px;
+    top: 30px;
+}
+
+.logo1, .logo2{
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    
 }
 
 .hub-img1{
@@ -81,14 +112,9 @@ ul li:hover {
 
 
 .img{
-    background-image: url('../../assets/pexels-fwstudio-131634.jpg');
     background-position: center;
     background-size: cover;
-    height: 600px;
-}
-
-.atlas,.media{
-    height: 600px;
+    height: 300px;
 }
 
 
@@ -97,31 +123,6 @@ ul li:hover {
   margin-right: 5px;
 }
 
-
-.background{
-    width: 100%;
-    background-color: black;
-    opacity: 0.5;
-    height: 200px;
-    top: 480px;
-    position: absolute;
-}
-
-.about-us{
-    background-color: rgb(238, 202, 103); 
-    text-align: center; 
-    border-radius: 50%; 
-    width: 140px; 
-    line-height: 140px; 
-    height: 140px;
-    font-weight: bold;
-    font-size: 0.9em;
-    cursor: pointer;
-}
-
-.about-us:hover{
-    background-color: rgb(245, 219, 149); 
-}
 
 .background-2{
     width: 100%;
@@ -133,16 +134,18 @@ ul li:hover {
     justify-content: space-around;
     align-items: center;
 }
-
+.welcome_wrapper{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .welcome{
-    position: absolute; 
-    top: 26%; 
-    left: 50%; 
-    text-align: center;   
-    transform: translate(-50%, 40%);
+    text-align: center;
+    width: 60%;
     font-size: 2.7em; 
     line-height: 1.4;
-    color: rgb(134, 0, 0);
     font-weight: bold;
     
 }
@@ -177,30 +180,19 @@ ul li:hover {
     
 }
 
-.header_two div{
-    height: 100%;
-    cursor: pointer;
-    align-self: center;
-    font-size: 1.2em;
-}
-
-
-.header_two div:hover{
-    font-weight: bold;
-}
 
 .clicked{
     font-weight: bold;
 }
 
 .logo_back{
-    background-image: url('../../assets/a6ba0ec2-b5b0-494c-a1d8-587e8bcbed13_200x200.png');
-    width: 80px;
-    height: 80px;
+    background-image: url('../../assets/c18146e7dcb84b1391e9ed3553f76a64.png');
+    width: 100px;
+    height: 100px;
     position: absolute;
     background-position: center;
     background-size: cover;
-    z-index: 0;
+    z-index: -3;
 }
 
 .l1{
@@ -257,6 +249,26 @@ ul li:hover {
     height: 60px;
 }
 
+.l11{
+    top: 710px;
+    left: 50px;
+}
+
+.l12{
+    top: 710px;
+    right: 50px;
+}
+
+.l13{
+    top: 890px;
+    left: 120px;
+}
+
+.l14{
+    top: 890px;
+    right: 120px;
+}
+
 .search{
     position: relative;
     margin-left: 30px;
@@ -278,5 +290,5 @@ ul li:hover {
 }
 
 .search i:hover {
-    color: rgb(78, 78, 78);
+    color: white;
 }

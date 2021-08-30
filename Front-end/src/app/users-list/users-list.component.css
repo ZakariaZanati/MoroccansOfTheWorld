@@ -14,7 +14,7 @@
 .title{
     font-weight: bold;
     font-size: xx-large;
-    color: royalblue;
+    color: black;
     align-self: center;
     padding: 30px 0;
 }
@@ -32,11 +32,11 @@
     width: 200px;
     padding: 6px 15px;
     border-radius: 15px;
-    border: 1px solid royalblue;
+    border: 1px solid red;
 }
 
 .name_filter input:focus{
-    border: 3px solid royalblue;
+    border: 3px solid red;
 }
 .name_filter i {
     position: absolute;
@@ -46,7 +46,7 @@
 }
 
 .name_filter i:hover {
-    color: royalblue;
+    color: black;
 }
 
 .users{
@@ -64,7 +64,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid royalblue;
+    border: 1px solid black;
     border-radius: 10px;
     padding: 20px 10px;
 }
@@ -78,7 +78,7 @@
 
 ::ng-deep mat-select-country.country{
     height: 100px;
-    background-color: royalblue;
+    background-color: red;
 }
 
 .sort input {
@@ -86,7 +86,7 @@
     width: 150px;
     padding: 6px 15px;
     border-radius: 15px;
-    border: 1px solid royalblue;
+    border: 1px solid red;
     margin-left: 10px;
 }
 
@@ -101,14 +101,15 @@
 .conn_view button{
     padding: 3px 12px;
     color: white;
-    background-color: #3083bb;
+    background-color: black;
     border: none;
     outline: none;
     font-weight: bold;
+    border: 2px solid red;
 }
 
 .conn_view button:hover{
-    color: #3083bb;
-    border: 2px solid #3083bb;
+    color: black;
+    border: 2px solid black;
     background-color: white;
 }

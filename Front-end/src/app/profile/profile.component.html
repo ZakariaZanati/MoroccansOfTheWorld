@@ -2,7 +2,7 @@
     <div class="profil-wrapper">
 
       <div class="profil-1" >
-          <span class="pers">Personnal Informations</span>
+          <span class="pers">Informations personnelles</span>
           <div class="profile-img">
             <div *ngIf="retrievedImage; else elseBlock">
                 <img [src]="retrievedImage" class="img"/>
@@ -12,9 +12,9 @@
             </ng-template>
           </div>
           <div class="connect">
-              <button *ngIf="connectionStatus == 'NotCONNECTED'" (click)="snedConnectionRequest()">Connect</button>
-              <button *ngIf="connectionStatus == 'REQUESTED'" >Pending</button>
-              <button *ngIf="connectionStatus == 'CONNECTED'">Connected</button>
+              <button *ngIf="connectionStatus == 'NotCONNECTED'" (click)="snedConnectionRequest()">Se connecter</button>
+              <button *ngIf="connectionStatus == 'REQUESTED'" >En attente</button>
+              <button *ngIf="connectionStatus == 'CONNECTED'">Connecté</button>
           </div>
           <div class="infos">
               <div class="info">
@@ -40,7 +40,7 @@
 
       <div class="profil-2">
           <div class="about-me" *ngIf="aboutMe">
-              <span class="header">About Me</span> 
+              <span class="header">A propos</span> 
               <div class="text" >
                   {{aboutMe}}
               </div>

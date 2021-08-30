@@ -1,9 +1,9 @@
 <div class="resume_container">
     <div class="header">
-      Your Resume
+      Votre CV
     </div>
     <div *ngIf="fileInfos" class="content">
-        <button (click)="downloadFile()"><i class="far fa-file-pdf"></i>Download</button>
+        <button (click)="downloadFile()"><i class="far fa-file-pdf"></i>Télécharger</button>
     </div>
     <div class="options">
         <div *ngIf="currentFile" class="progress">
@@ -19,7 +19,7 @@
             </div>
           </div>
         <input type="file" id="cv" (input)="selectFile($event)">
-        <label *ngIf="!selectedFiles" for="cv"><i style="margin-right: 5px;" class="fas fa-upload"></i> Upload</label>
+        <label *ngIf="!selectedFiles" for="cv"><i style="margin-right: 5px;" class="fas fa-upload"></i> Modifier</label>
         <input class="upload" type="button" *ngIf="selectedFiles" (click)="upload()" value="Save">
     </div>
 </div>

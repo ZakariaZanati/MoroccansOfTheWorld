@@ -1,41 +1,37 @@
 <div class="cove_img">
 </div>
 <div class="title">
-    Find Trainnings & Courses <br> to expand you knowledge <br> on the latest skills and tools <br> across core functional areas
-</div>
+    Trouvez des formations et des cours <br> pour élargir vos connaissances <br> sur les dernières compétences et outils <br> dans les domaines fonctionnels de base</div>
 <div class="topics_container">
     <div class="topics">
         <div class="topic">
-            <span>Business Topics</span>
+            <span>Thèmes d'affaires</span>
             <div class="img img1"></div>
             <div class="desc">
-                Business skills training is becoming a necessity in maximizing employee performance, regardless of job level or function. From leadership development to soft skills training, our business courses can help your team stay ahead.
-            </div>
+                La formation aux compétences en affaires devient une nécessité pour maximiser la performance des employés, quel que soit le niveau d'emploi ou la fonction. Du développement du leadership à la formation aux compétences générales, nos cours de gestion peuvent aider votre équipe à garder une longueur d'avance.            </div>
     
         </div>
         <div class="topic">
-            <span>Technology Topics</span>
+            <span>Thèmes technologiques</span>
             <div class="img img2"></div>
             <div class="desc">
-                As technology continues to evolve, the skills gap for workplace technology experts widens. Our technology courses can provide your technical teams with the training they need to gain new skills or become more advanced in their existing skillsets.         
-            </div>  
+                À mesure que la technologie continue d'évoluer, le déficit de compétences des experts en technologie sur le lieu de travail se creuse. Nos cours de technologie peuvent fournir à vos équipes techniques la formation dont elles ont besoin pour acquérir de nouvelles compétences ou devenir plus avancées dans leurs compétences existantes.            </div>  
         </div>
         <div class="topic">
-            <span>Creative Topics</span>
+            <span>Thèmes créatifs</span>
             <div class="img img3"></div>
             <div class="desc">
-                These days, design and technology go hand in hand. Being adept with design and engineering technology has become just as important as creative soft skills. Our creative courses can help you learn AutoCAD, Photoshop, and many other software tools to improve creative skills.
-            </div>   
+                De nos jours, design et technologie vont de pair. Être adepte de la technologie de conception et d'ingénierie est devenu tout aussi important que les compétences non techniques créatives. Nos cours de création peuvent vous aider à apprendre AutoCAD, Photoshop et de nombreux autres outils logiciels pour améliorer vos compétences créatives.            </div>   
         </div>
     </div>
-    <div *ngIf="userType.toLowerCase()=='provider'" class="create"><button type="submit" (click)="addCourse()">Offer a course</button></div>
+    <div *ngIf="userType.toLowerCase()=='provider'" class="create"><button type="submit" (click)="addCourse()">Offrir un cours</button></div>
 </div>
 
 <div class="courses_wrapper">
-    <span>Explore courses</span>
+    <span>Explorer les cours</span>
     <div class="options">
         <div class="name_filter">
-            <input (input)="onSearchChange($event.target.value)" type="search" placeholder="Search ..."><i class="fas fa-search"></i>
+            <input (input)="onSearchChange($event.target.value)" type="search" placeholder="Chercher ..."><i class="fas fa-search"></i>
         </div>
         <div class="filters">
             <div class="sort">
@@ -66,7 +62,7 @@
                
                 <div class="name">{{course.name}}</div>
                 <div class="info ">Date : {{course.dateTime}} at {{course.time}}</div>
-                <div class="info ">Duration : {{course.duration}}</div>
+                <div class="info ">Durée : {{course.duration}}</div>
                 <div class="info ">Provider : {{course.providerUsername}}</div>
                 <div class="details"><button (click)="toogleCourse(course)"><i class="fas fa-info"></i> Details</button></div>
             </div>
@@ -75,12 +71,12 @@
         
     </div>
     <ul class="pagination justify-content-center">
-        <li class="page-item"><a (click)="previousClick()" class="page-link">Previous</a></li>
+        <li class="page-item"><a (click)="previousClick()" class="page-link">Précédent</a></li>
         <li *ngFor='let index of pageIndexes' class="page-item" [ngClass]="active(index)">
                 <a (click)="getPaginationWithIndex(index)" class="page-link">
                   {{index + 1}}
                 </a>
         </li>
-        <li class="page-item"><a (click)="nextClick()" class="page-link">Next</a></li>
+        <li class="page-item"><a (click)="nextClick()" class="page-link">Suivant</a></li>
     </ul>
 </div>

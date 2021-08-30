@@ -1,18 +1,18 @@
 <div class="navbar">
     <div (click)="homePage()" class="logo" style="cursor: pointer;">
         <div class="image"></div>
-        <div class="desc">Atlassian - Rain Drop</div>
+        <div class="desc">Moroccan Rain Drop</div>
     </div>
     <div class="links">
         <div><a routerLink='services'>Business</a></div>
-        <div><a routerLink='courses'>Skills</a></div>
+        <div><a routerLink='courses'>Compétences</a></div>
         <div>Innovation</div>
-        <div>Press center</div>
-        <div>First step</div>
+        <div>Centre de presse</div>
+        <div><a routerLink='home'>Premier pas</a></div>
     </div>
     <div *ngIf="!isLoggedIn" class="signin">
-        <div><a routerLink="/sign-up">SIGN UP</a></div>
-        <div><a routerLink="/login">SIGN IN</a></div>
+        <div><a routerLink="/sign-up">S'enregistrer </a></div>
+        <div><a routerLink="/login"> Se connecter</a></div>
     </div>
     <div *ngIf="isLoggedIn" class="in">
         <div class="one">
@@ -29,17 +29,16 @@
                 </div>         
             </a>
         </div>
-        <div class="two"><button (click)="logout()" class="logout">Logout</button></div>
+        <div class="two"><button (click)="logout()" class="logout">Déconnexion</button></div>
     </div>
     <div class="sidebar" [class.show]="show">
-        <div class="link" (click)="toggleClass()"><a routerLink='/'>Home</a></div>
-        <div class="link" (click)="toggleClass()"><a routerLink='/newsfeed'>Feed</a></div>
-        <div class="link" (click)="toggleClass()"><a routerLink='/profile'>Profil</a></div>
-        <div class="link" (click)="toggleClass()"><a routerLink='/groups'>Groups</a></div>
-        <div class="link" (click)="toggleClass()"><a routerLink='/users'>People</a></div>
-        <div class="link" (click)="toggleClass()"><a routerLink="/jobs">Jobs</a></div>
-        <div class="link" (click)="toggleClass()"><a routerLink="/courses">Trainings</a></div>
-        <div class="link" (click)="toggleClass()"><a routerLink="/home">Mobile version</a></div>
+        <div class="link" (click)="toggleClass()"><a routerLink='/'>Acceuil</a></div>
+        <div class="link" (click)="toggleClass()"><a routerLink='/newsfeed'>Nouveautés</a></div>
+        <div class="link" (click)="toggleClass()"><a routerLink='/profile'>Espace personnel</a></div>
+        <div class="link" (click)="toggleClass()"><a routerLink='/groups'>Groupes</a></div>
+        <div class="link" (click)="toggleClass()"><a routerLink='/users'>Connections</a></div>
+        <div class="link" (click)="toggleClass()"><a routerLink="/jobs">Espace emploi</a></div>
+        <div class="link" (click)="toggleClass()"><a routerLink="/courses">Cours / Workshops</a></div>
 </div>
 </div>
 <div class="nav_border"></div>

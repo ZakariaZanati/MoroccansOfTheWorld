@@ -23,19 +23,19 @@
 .logo{
     display: flex;
     justify-content: space-between;
-    width: 330px;
+    width: 250px;
     height: 60px;
 }
 
 .image{
     display: flex;
     align-items: center;
-    background-image: url('../../assets/logo2.png');
+    background-image: url('../../assets/logo222.png');
     background-position: center;
     background-size: cover;
-    width: 140px;
+    width: 50px;
     height: 50px;
-    margin-right: 10px;
+    margin-right: 20px;
     
 }
 
@@ -72,7 +72,7 @@
 
 .signin{
     display: flex;
-    width: 150px;
+    width: 200px;
     justify-content: space-between;
     font-size: 1.2em;
 }
@@ -95,7 +95,7 @@
 }
 .in>.two{
     align-self: center;
-    width: 30%;
+    width: 32%;
 }
 
 /*

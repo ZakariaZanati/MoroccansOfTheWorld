@@ -10,19 +10,17 @@
 h1 {
     align-self: center;
     margin-bottom: 50px;
-    color: navy;
     font-weight: bold;
 }
 
 .job_form{
-    border: 2px solid navy;
+    border: 2px solid black;
     border-radius: 5px;
     padding: 10px;
 }
 
 .form_element,.date{
     padding: 10px 0;
-    color: navy;
 }
 
 .button{
@@ -46,7 +44,7 @@ h1 {
     width: 100px;
     height: 30px;
     color: white;
-    background-color: navy;
+    background-color: black;
     border: none;
     outline: none;
     border-radius: 5px;

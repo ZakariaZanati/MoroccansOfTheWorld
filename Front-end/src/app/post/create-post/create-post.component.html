@@ -1,10 +1,10 @@
 <div class="new_post">
     <form [formGroup]="createPostForm" (ngSubmit)="createPost()">
         <div class="post_header">
-            <span class="post_title">Create post</span>
+            <span class="post_title">Créer une publications</span>
         </div>
         <div class="text">
-            <textarea [formControlName]="'description'"  id="post_text" cols="100" rows="10" placeholder="What's on your mind"></textarea>
+            <textarea [formControlName]="'description'"  id="post_text" cols="100" rows="10"></textarea>
         </div>
         <div class="image">
             <div *ngIf="imgURL">
@@ -14,7 +14,7 @@
         <div class="buttons">
             <input #file type="file" id="file" (change)="onFileChanged($event)"  (change)="preview(file.files)" >
             <label for="file"><i class="fas fa-camera"></i> Image</label>
-            <button class="form_new_post" type="submit">Post</button>
+            <button class="form_new_post" type="submit">Publier</button>
         </div>
     </form>
 </div>

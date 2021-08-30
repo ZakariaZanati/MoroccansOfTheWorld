@@ -3,7 +3,7 @@
     <div class="enterprise">{{jobOffer.enterprise}}</div>
     <div class="location">{{jobOffer.location}} </div>
     <div class="owner">
-        <span>Author : </span>
+        <span>Auteur : </span>
         <div>{{jobOffer.author}}</div>
     </div>
     <div class="description">
@@ -15,8 +15,8 @@
         <div>{{jobOffer.qualifications}}</div>
     </div>
     <div *ngIf="jobOffer.salary" class="salary">
-        <span>Salary : </span> 
+        <span>Salaire : </span> 
         <div> {{jobOffer.salary}} </div>
     </div>
-    <button (click)="applyLink()">Apply here</button>
+    <button (click)="applyLink()">Postuler ici</button>
 </div>

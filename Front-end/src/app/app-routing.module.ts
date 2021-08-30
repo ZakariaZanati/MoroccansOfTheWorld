@@ -23,7 +23,7 @@ import { ViewJobsComponent } from './jobs/view-jobs/view-jobs.component';
 import { JobDetailsComponent } from './jobs/job-details/job-details.component';
 
 const routes: Routes = [
-  {path : 'home',component : HomeComponent},
+  {path : '',component : HomeComponent},
   {path : 'sign-up',component : SignupComponent},
   {path : 'login',component : LoginComponent},
   {path : 'newsfeed',component : NewsfeedComponent,canActivate:[AuthGuard]},
@@ -37,7 +37,7 @@ const routes: Routes = [
   {path : 'courses',component : TrainingsComponent},
   {path : 'create-course',component:CreateCourseComponent},
   {path : 'users',component:UsersListComponent},
-  {path : '',component : HomePageComponent},
+  {path : 'home',component : HomePageComponent},
   {path : 'services',component : ServicesComponent},
   {path : 'createjob',component : CreateJobOfferComponent},
   {path : 'jobs',component : ViewJobsComponent,children : [
